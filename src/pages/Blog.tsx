@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -110,7 +109,7 @@ const Blog = () => {
               { "opacity-100 translate-y-0": isLoaded }
             )}
           >
-            Our Journal
+            Our Itineraries
           </span>
           <h1 
             className={cn(

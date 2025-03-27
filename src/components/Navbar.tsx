@@ -29,10 +29,10 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         {
-          "bg-white/70 backdrop-blur-md shadow-sm": isScrolled,
-          "bg-white/70 backdrop-blur-md": isMobileMenuOpen,
+          "bg-white/70 backdrop-blur-md shadow-sm": isScrolled || isMobileMenuOpen,
+          "bg-transparent": !isScrolled && !isMobileMenuOpen,
         }
       )}
     >
@@ -46,7 +46,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/blog" className={cn("nav-link", { "after:scale-x-100 text-foreground": isActive("/blog") })}>
-            Journal
+            Itineraries
           </Link>
           <Link to="/facilities" className={cn("nav-link", { "after:scale-x-100 text-foreground": isActive("/facilities") })}>
             Partners
@@ -74,7 +74,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link to="/blog" className={cn("py-2 font-medium", { "text-gold": isActive("/blog") })}>
-              Journal
+              Itineraries
             </Link>
             <Link to="/facilities" className={cn("py-2 font-medium", { "text-gold": isActive("/facilities") })}>
               Partners

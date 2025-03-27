@@ -38,7 +38,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center h-20">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-serif text-2xl font-semibold text-navy">Bespoke Thai</span>
+          <span className="font-serif text-2xl font-semibold text-navy">Hayat Concierge</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

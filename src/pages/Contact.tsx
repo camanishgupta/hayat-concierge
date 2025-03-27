@@ -76,7 +76,7 @@ const Contact = () => {
               { "opacity-100 translate-y-0": isLoaded }
             )}
           >
-            Let's Plan Your Journey
+            Begin Your Luxurious Thai Journey
           </h1>
           <p 
             className={cn(
@@ -84,7 +84,7 @@ const Contact = () => {
               { "opacity-100 translate-y-0": isLoaded }
             )}
           >
-            We're here to curate a bespoke Thai experience tailored to your specific needs and preferences.
+            Let us craft an exceptional experience tailored to your needs, blending luxury, wellness, and world-class medical care in Thailand.
           </p>
         </div>
       </section>
@@ -101,8 +101,7 @@ const Contact = () => {
           >
             <h2 className="heading-lg mb-6 text-navy">Contact Information</h2>
             <p className="text-muted-foreground mb-8">
-              Our team of expert concierges is available to assist you in planning your perfect Thai experience, 
-              from medical tourism to luxury wellness retreats.
+              Our multilingual team is available to assist Middle Eastern clients in planning premium medical tourism and luxury wellness experiences in Thailand.
             </p>
             
             <div className="space-y-6">
@@ -123,7 +122,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-medium text-navy">Email</h3>
-                  <p className="text-muted-foreground">concierge@bespokethai.com</p>
+                  <p className="text-muted-foreground">contact@hayatconcierge.com</p>
                   <p className="text-muted-foreground">Response within 24 hours</p>
                 </div>
               </div>
@@ -155,7 +154,7 @@ const Contact = () => {
                 </div>
                 <h3 className="heading-md mb-3 text-navy">Message Received!</h3>
                 <p className="text-muted-foreground">
-                  Thank you for reaching out. One of our concierge specialists will contact you shortly to discuss your travel plans.
+                  Thank you for reaching out. One of our multilingual concierge specialists will contact you shortly to discuss your travel and healthcare needs.
                 </p>
               </div>
             ) : (
@@ -217,9 +216,9 @@ const Contact = () => {
                       <option value="medical">Medical Tourism</option>
                       <option value="wellness">Wellness Retreat</option>
                       <option value="luxury">Luxury Travel</option>
-                      <option value="accommodation">Accommodation</option>
-                      <option value="transportation">Transportation</option>
-                      <option value="other">Other</option>
+                      <option value="accommodation">Luxury Accommodation</option>
+                      <option value="transportation">Private Transportation</option>
+                      <option value="other">Other Services</option>
                     </select>
                   </div>
                   
@@ -230,7 +229,7 @@ const Contact = () => {
                       name="message"
                       value={formState.message}
                       onChange={handleInputChange}
-                      placeholder="Tell us about your travel needs and preferences..."
+                      placeholder="Tell us about your specific needs and preferences for your Thailand experience..."
                       className="flex min-h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-1"
                       required
                     />

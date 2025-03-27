@@ -3,7 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowLeft, Clock, Calendar, User, Tag, Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  Clock, 
+  Calendar, 
+  User, 
+  Tag, 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Mail,
+  ArrowRight  // Added ArrowRight icon
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Sample blog post data - would typically come from an API

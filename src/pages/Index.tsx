@@ -13,7 +13,10 @@ import {
   ArrowRight, 
   Check, 
   Send, 
-  Star
+  Star,
+  Phone,  // Added Phone icon
+  Mail,   // Added Mail icon
+  MapPin  // Added MapPin icon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

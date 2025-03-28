@@ -45,6 +45,9 @@ const Navbar = () => {
           <Link to="/" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/") })}>
             Home
           </Link>
+          <Link to="/founder" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/founder") })}>
+            Founder
+          </Link>
           <Link to="/blog" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/blog") })}>
             Itineraries
           </Link>
@@ -75,6 +78,9 @@ const Navbar = () => {
           <nav className="flex flex-col space-y-4">
             <Link to="/" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/") })}>
               Home
+            </Link>
+            <Link to="/founder" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/founder") })}>
+              Founder
             </Link>
             <Link to="/blog" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/blog") })}>
               Itineraries

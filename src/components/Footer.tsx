@@ -86,11 +86,26 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gold/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-offwhite/60">
-          <p>© {new Date().getFullYear()} Hayat Concierge. All rights reserved.</p>
+        {/* Legal Links */}
+        <div className="mt-12 pt-6 border-t border-gold/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center md:text-left">
+            <Link to="/privacy-policy" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-conditions" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+              Terms & Conditions
+            </Link>
+            <Link to="/cookie-policy" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+              Cookie Policy
+            </Link>
+          </div>
+        </div>
+
+        <div className="border-t border-gold/10 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-offwhite/60">
+          <p>© {new Date().getFullYear()} Hayat Concierge. All rights reserved. Luxury medical tourism and wellness concierge services in Thailand.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-gold transition-colors">Sitemap</a>
+            <a href="#" className="hover:text-gold transition-colors">Accessibility</a>
           </div>
         </div>
       </div>

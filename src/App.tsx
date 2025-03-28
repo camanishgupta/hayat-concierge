@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import Founder from "./pages/Founder";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CookiePolicy from "./pages/CookiePolicy";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContentProvider } from "./contexts/ContentContext";
@@ -36,6 +39,9 @@ const App = () => (
                 <Route path="/founder" element={<Founder />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-conditions" element={<TermsConditions />} />
+                <Route path="/cookie-policy" element={<CookiePolicy />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

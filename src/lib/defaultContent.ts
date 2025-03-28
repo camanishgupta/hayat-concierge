@@ -65,6 +65,34 @@ export const defaultContent: CMSContent = {
           lastUpdated: new Date().toISOString(),
         }
       ]
+    },
+    {
+      id: "testimonials",
+      name: "Client Testimonials",
+      description: "Testimonials from satisfied clients",
+      items: [
+        {
+          id: "testimonial-1",
+          section: "testimonials",
+          title: "Ahmed K. - UAE",
+          content: "My medical procedure in Bangkok was handled with the utmost professionalism. Hayat Concierge took care of everything, from hospital appointments to luxury accommodation. Their cultural understanding made me feel completely at ease.",
+          lastUpdated: new Date().toISOString(),
+        },
+        {
+          id: "testimonial-2",
+          section: "testimonials",
+          title: "Fatima M. - Saudi Arabia",
+          content: "The wellness retreat arranged by Hayat Concierge exceeded all expectations. Every detail was tailored to my preferences, with perfect respect for my cultural and personal needs. A transformative experience I will never forget.",
+          lastUpdated: new Date().toISOString(),
+        },
+        {
+          id: "testimonial-3",
+          section: "testimonials",
+          title: "Khalid & Aisha - Qatar",
+          content: "Our family trip to Thailand was flawless thanks to Hayat Concierge. From private tours to excellent halal dining options, everything was arranged with our comfort in mind. We particularly appreciated the Arabic-speaking guides.",
+          lastUpdated: new Date().toISOString(),
+        }
+      ]
     }
   ]
 };

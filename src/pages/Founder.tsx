@@ -2,9 +2,12 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, Briefcase, MapPin, Star, UserRound } from 'lucide-react';
+import { Award, Briefcase, MapPin, Star, UserRound, Globe, Languages, Heart } from 'lucide-react';
+import { useContentItem } from '@/hooks/useContentItem';
 
 const Founder = () => {
+  const founderIntro = useContentItem("founder-intro");
+
   return (
     <div className="bg-offwhite">
       {/* Hero Section */}
@@ -37,54 +40,59 @@ const Founder = () => {
                   <UserRound className="text-gold" />
                   <h2 className="heading-md">A Unique Cultural Perspective</h2>
                 </div>
-                <p className="text-charcoal leading-relaxed">
-                  Born into a French-Algerian heritage, I have always been immersed in a rich blend of cultures, 
-                  which has given me a deep appreciation for diversity. My profound understanding of Middle Eastern 
-                  and Thai cultures allows me to bridge the gap between these two worlds, ensuring seamless and 
-                  culturally attuned luxury experiences for my clients.
-                </p>
+                <div className="relative h-64 w-full rounded-xl overflow-hidden mb-4">
+                  <img 
+                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+                    alt="Diverse cultural background" 
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>French-Algerian heritage providing a rich multicultural perspective</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Deep understanding of both Middle Eastern and Thai cultures</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Multilingual: Fluent in Arabic, French, and English</p>
+                  </li>
+                </ul>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Briefcase className="text-gold" />
-                  <h2 className="heading-md">A Journey Through Luxury & Hospitality</h2>
-                </div>
-                <p className="text-charcoal leading-relaxed">
-                  With a strong background in luxury services and hospitality, my experience spans across high-end 
-                  brands such as IXINA (German high-end kitchens) and working in a 4-star hotel in Paris. These 
-                  roles shaped my expertise in delivering top-tier services, where attention to detail and client 
-                  satisfaction are paramount.
-                </p>
-                <p className="text-charcoal leading-relaxed">
-                  Additionally, having worked as a teacher for over a decade, I developed invaluable skills in 
-                  organization, patience, leadership, problem-solving, and active listening—qualities that now 
-                  define my approach to providing exceptional concierge services.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <MapPin className="text-gold" />
-                  <h2 className="heading-md">A Passion for Travel & Wellness</h2>
+                  <h2 className="heading-md">Professional Background</h2>
                 </div>
                 <div className="relative h-64 w-full rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05" 
-                    alt="Thailand landscapes" 
+                    src="https://images.unsplash.com/photo-1531297484001-80022131f5a1" 
+                    alt="Professional experience" 
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-charcoal leading-relaxed">
-                  My passion for travel and cultural exploration led me to extensively explore Asia, where I 
-                  ultimately fell in love with Thailand. There is an undeniable magic in this country—its welcoming 
-                  spirit, breathtaking landscapes, and deep-rooted traditions in wellness and hospitality captivated me.
-                </p>
-                <p className="text-charcoal leading-relaxed">
-                  During my travels, I also developed a love for yoga and wellness services, discovering Thailand's 
-                  unparalleled offerings in holistic health, rejuvenation retreats, and world-class medical facilities. 
-                  This inspired me to merge my passions for luxury travel, wellness, and personalized experiences.
-                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Experience with luxury brands including IXINA (German high-end kitchens)</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Worked in a 4-star hotel in Paris, developing hospitality expertise</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Over 10 years teaching experience, developing organizational and leadership skills</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Professional training from The Travel Institute (Luxury Travel & Hospitality)</p>
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -92,56 +100,73 @@ const Founder = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Star className="text-gold" />
-                  <h2 className="heading-md">A Personal Experience That Inspired Hayat Concierge</h2>
+                  <Globe className="text-gold" />
+                  <h2 className="heading-md">Travel & Wellness Passion</h2>
                 </div>
                 <div className="relative h-64 w-full rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843" 
-                    alt="Thailand wellness" 
+                    src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" 
+                    alt="Thailand landscapes" 
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-charcoal leading-relaxed">
-                  The turning point in my journey came when I personally experienced Thailand's medical system after 
-                  an unexpected accident. I was taken to a Thai hospital, and from the moment I arrived, I was 
-                  overwhelmed by the exceptional hospitality, professionalism, and world-class medical services I received.
-                </p>
-                <p className="text-charcoal leading-relaxed">
-                  The level of care was unlike anything I had ever encountered—warm, efficient, and deeply respectful. 
-                  This experience made me realize that Thailand is not just a luxury travel destination but also a 
-                  premier hub for medical tourism.
-                </p>
-                <p className="text-charcoal leading-relaxed">
-                  I knew then that I wanted to share this experience with others. I wanted Middle Eastern clients to 
-                  feel the same sense of comfort, trust, and excellence when seeking medical and wellness services 
-                  abroad. This is why I created Hayat Concierge—to be the exclusive bridge connecting the Middle 
-                  Eastern elite with Thailand's luxury hospitality, wellness, and world-class medical care.
-                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Extensive travel throughout Asia led to falling in love with Thailand</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Deep passion for yoga and wellness services</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Personal experience with Thailand's exceptional medical system</p>
+                  </li>
+                </ul>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Award className="text-gold" />
-                  <h2 className="heading-md">Bridging Luxury & Medical Excellence</h2>
+                  <Heart className="text-gold" />
+                  <h2 className="heading-md">Inspiration Behind Hayat Concierge</h2>
                 </div>
-                <p className="text-charcoal leading-relaxed">
-                  With my multilingual skills (Arabic, French, and English) and professional training from The 
-                  Travel Institute (Luxury Travel & Hospitality), I am uniquely positioned to curate seamless, 
-                  personalized experiences that cater to the specific needs of high-end Middle Eastern travelers.
-                </p>
-                
-                <Card className="border-gold/20 bg-white/80 backdrop-blur-sm shadow-lg mt-6">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl text-teal font-medium mb-4">At Hayat Concierge, my mission is simple:</h3>
-                    <blockquote className="border-l-4 border-gold pl-4 italic text-charcoal/90">
-                      "To offer unparalleled access to Thailand's finest medical institutions, luxury resorts, 
-                      and bespoke experiences—ensuring every client receives the highest level of care, privacy, 
-                      and exclusivity."
-                    </blockquote>
-                  </CardContent>
-                </Card>
+                <div className="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-black/10 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1501854140801-50d01698950b" 
+                    alt="Thailand wellness" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-90"
+                  />
+                  <div className="relative z-10 w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
+                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Personal medical experience in Thailand revealed exceptional care standards</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Inspired to share Thailand's world-class medical and wellness offerings</p>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">•</span>
+                    <p>Mission to bridge cultural gaps for Middle Eastern clients seeking services in Thailand</p>
+                  </li>
+                </ul>
               </div>
+              
+              <Card className="border-gold/20 bg-white/80 backdrop-blur-sm shadow-lg mt-6">
+                <CardContent className="p-6">
+                  <h3 className="text-xl text-teal font-medium mb-4">My Mission:</h3>
+                  <blockquote className="border-l-4 border-gold pl-4 italic text-charcoal/90">
+                    "To offer unparalleled access to Thailand's finest medical institutions, luxury resorts, 
+                    and bespoke experiences—ensuring every client receives the highest level of care, privacy, 
+                    and exclusivity."
+                  </blockquote>
+                </CardContent>
+              </Card>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                 <div className="bg-white p-4 rounded-lg shadow text-center">

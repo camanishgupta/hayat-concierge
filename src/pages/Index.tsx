@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import HeroSection from '@/components/HeroSection';
 import ServiceCard from '@/components/ServiceCard';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
 import { 
   Heart, 
@@ -14,23 +14,21 @@ import {
   Check, 
   Send, 
   Star,
-  Phone,  // Added Phone icon
-  Mail,   // Added Mail icon
-  MapPin  // Added MapPin icon
+  Phone,
+  Mail,
+  MapPin
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState<{[key: string]: boolean}>({
     about: false,
-    testimonials: false,
     partners: false,
     contact: false
   });
   
   const sectionRefs = {
     about: useRef<HTMLDivElement>(null),
-    testimonials: useRef<HTMLDivElement>(null),
     partners: useRef<HTMLDivElement>(null),
     contact: useRef<HTMLDivElement>(null)
   };
@@ -97,27 +95,6 @@ const Index = () => {
       description: "Reservations at Thailand's most exclusive restaurants and private dining experiences.",
       icon: <Utensils size={24} />,
       imageSrc: "https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Medical Tourism Patient",
-      text: "The attention to detail was impeccable. From my hospital arrangements to my beachside recovery, everything was seamless and truly luxurious.",
-      rating: 5
-    },
-    {
-      name: "Robert Williams",
-      role: "Executive Traveler",
-      text: "As a frequent business traveler to Thailand, their concierge service has transformed my experience. Every detail is handled with precision and care.",
-      rating: 5
-    },
-    {
-      name: "Emma Thompson",
-      role: "Wellness Retreat Guest",
-      text: "My wellness journey in Thailand exceeded all expectations. The personalized program and exclusive access to top facilities made all the difference.",
-      rating: 5
     }
   ];
 
@@ -243,53 +220,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Testimonials */}
-      <section 
-        id="testimonials" 
-        ref={sectionRefs.testimonials} 
-        className="section-container bg-navy text-white"
-      >
-        <div className="text-center mb-16">
-          <span className="inline-block py-1 px-3 bg-gold/20 text-gold rounded-full text-sm font-medium mb-6">
-            Client Experiences
-          </span>
-          <h2 className="heading-lg mb-4 text-white">What Our Clients Say</h2>
-          <p className="subheading mx-auto text-white/70">
-            Discover how we've transformed our clients' experiences in Thailand with our premium concierge services.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={testimonial.name}
-              className={cn(
-                "glass-card bg-white/5 border-white/10 p-8 opacity-0 transform translate-y-8 transition-all duration-700",
-                { "opacity-100 translate-y-0": isVisible.testimonials }
-              )}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="flex space-x-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={18} className="text-gold fill-gold" />
-                ))}
-              </div>
-              <blockquote className="mb-6 text-white/90 italic">
-                "{testimonial.text}"
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold mr-3">
-                  {testimonial.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-sm text-white/60">{testimonial.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Testimonials Section */}
+      <TestimonialsSection />
       
       {/* Partners */}
       <section 

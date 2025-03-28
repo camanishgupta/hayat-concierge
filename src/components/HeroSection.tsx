@@ -1,9 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useContentItem } from '@/hooks/useContentItem';
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Get content from CMS
+  const heroTitle = useContentItem('home-hero-title');
+  const heroSubtitle = useContentItem('home-hero-subtitle');
+  const heroButtonText = useContentItem('home-hero-button');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,18 +42,18 @@ const HeroSection = () => {
             className={`text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
           >
             Bespoke Thai <br />
-            <span className="text-gold">Journeys</span>
+            <span className="text-gold">{heroTitle}</span>
           </h1>
           <p 
             className={`text-lg md:text-xl text-white/80 mt-6 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
           >
-            Crafting tailored luxury experiences in Thailand with seamless medical, wellness, and travel concierge services.
+            {heroSubtitle}
           </p>
           <div 
             className={`mt-8 flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4 transition-all duration-1000 delay-600 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
           >
             <a href="#contact" className="button-primary border-2 border-transparent bg-gold hover:bg-gold/90 text-navy flex items-center justify-center sm:justify-start gap-2">
-              Book Your Experience
+              {heroButtonText}
               <ArrowRight className="w-4 h-4" />
             </a>
             <a href="#services" className="button-secondary border-2 border-white text-white hover:bg-white/10 flex items-center justify-center sm:justify-start gap-2">

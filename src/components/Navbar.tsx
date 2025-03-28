@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,6 +24,34 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Secret admin button - press "a" key 3 times
+  useEffect(() => {
+    let keyPresses: string[] = [];
+    let timer: NodeJS.Timeout;
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'a' || e.key === 'A') {
+        keyPresses.push(e.key);
+        
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          keyPresses = [];
+        }, 1000);
+
+        if (keyPresses.length === 3) {
+          setShowAdmin(true);
+          keyPresses = [];
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -57,6 +86,12 @@ const Navbar = () => {
           <Link to="/contact" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/contact") })}>
             Contact
           </Link>
+          {showAdmin && (
+            <Link to="/admin" className={cn("nav-link flex items-center", { "after:scale-x-100 text-gold": isActive("/admin") })}>
+              <Settings className="w-4 h-4 mr-1" />
+              Admin
+            </Link>
+          )}
           <a href="tel:+6623456789" className="button-primary flex items-center gap-1 text-sm">
             <Phone className="w-4 h-4" />
             <span>Contact Us</span>
@@ -91,6 +126,12 @@ const Navbar = () => {
             <Link to="/contact" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/contact") })}>
               Contact
             </Link>
+            {showAdmin && (
+              <Link to="/admin" className={cn("py-2 font-medium text-offwhite flex items-center", { "text-gold": isActive("/admin") })}>
+                <Settings className="w-4 h-4 mr-1" />
+                Admin
+              </Link>
+            )}
             <a href="tel:+6623456789" className="button-primary flex items-center justify-center gap-1 mt-2 text-sm">
               <Phone className="w-4 h-4" />
               <span>Contact Us</span>

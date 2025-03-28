@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,32 +8,32 @@
 @layer base {
   :root {
     --background: 40 33% 98%;
-    --foreground: 220 32% 12%;
+    --foreground: 0 0% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 32% 12%;
+    --card-foreground: 0 0% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 32% 12%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 215 54% 15%;
-    --primary-foreground: 40 33% 98%;
+    --primary: 161 41% 17%;
+    --primary-foreground: 45 57% 52%;
 
-    --secondary: 43 60% 85%;
-    --secondary-foreground: 220 32% 12%;
+    --secondary: 45 57% 52%;
+    --secondary-foreground: 161 41% 17%;
 
-    --muted: 43 30% 92%;
-    --muted-foreground: 220 12% 40%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 43 60% 85%;
-    --accent-foreground: 220 32% 12%;
+    --accent: 45 57% 52%;
+    --accent-foreground: 161 41% 17%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 40 33% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 32% 12%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 45 57% 52%;
 
     --radius: 0.5rem;
   }
@@ -43,18 +43,18 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-offwhite text-charcoal antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5 {
-    @apply font-serif;
+    @apply text-gold font-sans font-semibold;
   }
 }
 
 @layer components {
   .hero-text-gradient {
-    @apply bg-gradient-to-r from-navy via-navy to-teal bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold via-gold to-gold/80 bg-clip-text text-transparent;
   }
   
   .section-container {
@@ -62,19 +62,19 @@
   }
   
   .heading-xl {
-    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight;
+    @apply font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-gold;
   }
   
   .heading-lg {
-    @apply font-serif text-3xl md:text-4xl font-semibold tracking-tight;
+    @apply font-sans text-3xl md:text-4xl font-semibold tracking-tight text-gold;
   }
   
   .heading-md {
-    @apply font-serif text-2xl md:text-3xl font-semibold;
+    @apply font-sans text-2xl md:text-3xl font-semibold text-gold;
   }
   
   .subheading {
-    @apply text-base md:text-lg text-muted-foreground max-w-3xl;
+    @apply text-base md:text-lg text-charcoal/80 max-w-3xl;
   }
   
   .glass-card {
@@ -82,23 +82,27 @@
   }
   
   .nav-link {
-    @apply relative text-foreground/70 hover:text-foreground transition-colors font-medium text-sm 
+    @apply relative text-offwhite hover:text-gold transition-colors font-medium text-sm 
            after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gold 
            after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform;
   }
   
   .button-primary {
-    @apply bg-navy hover:bg-navy/90 text-white px-6 py-3 rounded-full transition-all 
-           shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-300;
+    @apply bg-gold hover:bg-teal text-teal hover:text-gold px-6 py-3 rounded-full transition-all 
+           shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-300 border-2 border-gold;
   }
   
   .button-secondary {
-    @apply bg-transparent border-2 border-navy text-navy hover:bg-navy/5 px-6 py-[10px] 
+    @apply bg-transparent border-2 border-gold text-gold hover:bg-gold/5 px-6 py-[10px] 
            rounded-full transition-all transform hover:-translate-y-0.5 duration-300;
   }
   
   .animated-card {
     @apply transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .geometric-pattern-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }
 
@@ -113,16 +117,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: theme('colors.sand/10');
+  background: theme('colors.offwhite/10');
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.navy/30');
+  background: theme('colors.gold/30');
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.navy/50');
+  background: theme('colors.gold/50');
 }
 
 /* Image loading effects */

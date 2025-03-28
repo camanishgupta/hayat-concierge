@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,12 +56,17 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        "navy": "#0A2342",
-        "sand": "#E6DECA",
+        "teal": "#1A3C34",
         "gold": "#D4AF37",
-        "cream": "#F8F5F0",
+        "offwhite": "#F5F5F5",
         "charcoal": "#333333",
-        "teal": "#008080",
+        "navy": "#1A3C34",
+        "sand": "#F5F5F5",
+        "cream": "#F5F5F5",
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -114,9 +118,8 @@ export default {
         "slide-in-left": "slide-in-left 0.5s ease-out forwards",
         "image-glow": "image-glow 1.8s ease-in-out forwards",
       },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+      backgroundImage: {
+        'geometric-pattern': "url('/patterns/geometric-gold.svg')",
       },
     },
   },

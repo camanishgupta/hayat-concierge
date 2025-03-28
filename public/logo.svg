@@ -1,0 +1,7 @@
+
+<svg width="120" height="140" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="50" r="45" fill="none" stroke="#D4AF37" stroke-width="2" />
+  <path d="M40,50 C40,40 50,35 60,35 C70,35 80,40 80,50 C80,60 70,65 60,65 C50,65 40,60 40,50 Z" stroke="#D4AF37" fill="none" stroke-width="2" />
+  <text x="60" y="55" font-family="Arial" font-size="8" fill="#D4AF37" text-anchor="middle">حياة</text>
+  <text x="60" y="95" font-family="Montserrat" font-size="12" fill="#D4AF37" text-anchor="middle" font-weight="600">HAYAT CONCIERGE</text>
+</svg>

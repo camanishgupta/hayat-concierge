@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -7,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 145 67% 12%;
+    --background: 145 67% 8%;
     --foreground: 45 57% 52%;
 
     --card: 0 0% 100%;
@@ -16,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 145 67% 12%;
 
-    --primary: 145 67% 12%;
+    --primary: 145 67% 8%;
     --primary-foreground: 45 57% 52%;
 
     --secondary: 45 57% 52%;
@@ -43,7 +42,7 @@
   }
 
   body {
-    @apply bg-offwhite text-charcoal antialiased;
+    @apply bg-[#0A3A2A] text-offwhite antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 

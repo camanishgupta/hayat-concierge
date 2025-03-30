@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Settings } from 'lucide-react';
@@ -25,7 +24,6 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Secret admin button - press "a" key 3 times
   useEffect(() => {
     let keyPresses: string[] = [];
     let timer: NodeJS.Timeout;
@@ -58,10 +56,9 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 geometric-pattern-bg",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0A3A2A]",
         {
-          "bg-teal/95 backdrop-blur-md shadow-md": isScrolled || isMobileMenuOpen,
-          "bg-teal/80": !isScrolled && !isMobileMenuOpen,
+          "shadow-md": isScrolled || isMobileMenuOpen,
         }
       )}
     >
@@ -107,9 +104,8 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden px-6 py-4 bg-teal/95 backdrop-blur-md border-t border-gold/10 animate-fade-in">
+        <div className="md:hidden px-6 py-4 bg-[#0A3A2A] border-t border-gold/10 animate-fade-in">
           <nav className="flex flex-col space-y-4">
             <Link to="/" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/") })}>
               Home

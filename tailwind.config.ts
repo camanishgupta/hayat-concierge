@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -56,13 +57,14 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        "teal": "#1A3C34",
+        "teal": "#0D503C", // Darker emerald green
         "gold": "#D4AF37",
         "offwhite": "#F5F5F5",
         "charcoal": "#333333",
-        "navy": "#1A3C34",
+        "navy": "#0D503C", // Updated to match teal
         "sand": "#F5F5F5",
         "cream": "#F5F5F5",
+        "emerald": "#0D503C", // Added emerald color
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

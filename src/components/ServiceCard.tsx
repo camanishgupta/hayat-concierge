@@ -47,7 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     <div
       ref={cardRef}
       className={cn(
-        "glass-card transition-all duration-700 opacity-0 transform translate-y-8 animated-card",
+        "glass-card bg-emerald/20 backdrop-blur-md border-gold/20 transition-all duration-700 opacity-0 transform translate-y-8 animated-card",
         { "opacity-100 translate-y-0": isVisible }
       )}
     >
@@ -62,13 +62,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             )}
             onLoad={() => setImageLoaded(true)}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald/50 to-transparent" />
         </div>
       )}
       <div className="p-6">
         <div className="mb-4 text-gold">{icon}</div>
-        <h3 className="heading-md mb-2 text-navy">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
+        <h3 className="heading-md mb-2 text-gold">{title}</h3>
+        <p className="text-offwhite/90">{description}</p>
       </div>
     </div>
   );

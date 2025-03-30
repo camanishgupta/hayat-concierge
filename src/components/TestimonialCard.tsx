@@ -17,7 +17,7 @@ const TestimonialCard = ({ id, titleId, delay = 0 }: TestimonialCardProps) => {
   return (
     <div 
       className={cn(
-        "glass-card bg-white/5 border-white/10 p-8 opacity-0 transform translate-y-8 transition-all duration-700",
+        "glass-card bg-emerald/40 border-gold/10 p-8 opacity-0 transform translate-y-8 transition-all duration-700",
         { "opacity-100 translate-y-0": true }
       )}
       style={{ transitionDelay: `${delay}ms` }}
@@ -38,7 +38,7 @@ const TestimonialCard = ({ id, titleId, delay = 0 }: TestimonialCardProps) => {
           {title.split(' ')[0][0]}
         </div>
         <div>
-          <p className="font-medium">{title}</p>
+          <p className="font-medium text-gold">{title}</p>
           <p className="text-sm text-white/60">{title.split(' - ')[1]}</p>
         </div>
       </div>

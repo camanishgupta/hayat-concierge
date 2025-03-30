@@ -45,6 +45,7 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
+            {/* Only render one Footer component */}
             <Footer />
           </div>
         </BrowserRouter>

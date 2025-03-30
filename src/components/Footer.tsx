@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className="bg-teal text-offwhite pt-16 pb-8 geometric-pattern-bg">
+    <footer className="bg-emerald text-offwhite pt-16 pb-8 geometric-pattern-bg">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
@@ -60,9 +60,6 @@ const Footer = () => {
               <li className="text-offwhite/70 text-sm">Medical Tourism</li>
               <li className="text-offwhite/70 text-sm">Wellness Retreats</li>
               <li className="text-offwhite/70 text-sm">Luxury Accommodations</li>
-              <li className="text-offwhite/70 text-sm">Private Transportation</li>
-              <li className="text-offwhite/70 text-sm">Bespoke Itineraries</li>
-              <li className="text-offwhite/70 text-sm">Multilingual Support</li>
             </ul>
           </div>
 

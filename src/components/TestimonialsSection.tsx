@@ -31,13 +31,13 @@ const TestimonialsSection = () => {
     <section 
       id="testimonials"
       ref={sectionRef}
-      className="section-container bg-navy text-white"
+      className="section-container bg-emerald text-white"
     >
       <div className="text-center mb-16">
         <span className="inline-block py-1 px-3 bg-gold/20 text-gold rounded-full text-sm font-medium mb-6">
           Client Experiences
         </span>
-        <h2 className="heading-lg mb-4 text-white">What Our Clients Say</h2>
+        <h2 className="heading-lg mb-4 text-gold">What Our Clients Say</h2>
         <p className="subheading mx-auto text-white/70">
           Discover how we've transformed our clients' experiences in Thailand with our premium concierge services.
         </p>

@@ -6,7 +6,6 @@ import AboutSection from '@/components/AboutSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import PartnersSection from '@/components/PartnersSection';
 import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -17,7 +16,7 @@ const Index = () => {
       <TestimonialsSection />
       <PartnersSection />
       <ContactSection />
-      <Footer />
+      {/* Footer is now only rendered in App.tsx */}
     </div>
   );
 };

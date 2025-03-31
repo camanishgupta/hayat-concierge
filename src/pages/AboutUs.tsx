@@ -119,7 +119,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-6 py-12">
         {/* About Hayat Section */}
         <section 
-          ref={el => sectionsRef.current.about = el}
+          ref={(el) => sectionsRef.current.about = el as HTMLDivElement}
           className="mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -162,7 +162,7 @@ const AboutUs = () => {
         
         {/* Our Mission Section */}
         <section 
-          ref={el => sectionsRef.current.mission = el}
+          ref={(el) => sectionsRef.current.mission = el as HTMLDivElement}
           className="mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -218,7 +218,7 @@ const AboutUs = () => {
         
         {/* Why Choose Us Section */}
         <section 
-          ref={el => sectionsRef.current.why = el}
+          ref={(el) => sectionsRef.current.why = el as HTMLDivElement}
           className="mb-20"
         >
           <div className="text-center mb-12">
@@ -285,7 +285,7 @@ const AboutUs = () => {
         
         {/* Why Bangkok Section */}
         <section 
-          ref={el => sectionsRef.current.bangkok = el}
+          ref={(el) => sectionsRef.current.bangkok = el as HTMLDivElement}
           className="mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

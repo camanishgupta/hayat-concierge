@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Settings } from 'lucide-react';
@@ -71,6 +72,9 @@ const Navbar = () => {
           <Link to="/" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/") })}>
             Home
           </Link>
+          <Link to="/about-us" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/about-us") })}>
+            About Us
+          </Link>
           <Link to="/founder" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/founder") })}>
             Founder
           </Link>
@@ -109,6 +113,9 @@ const Navbar = () => {
           <nav className="flex flex-col space-y-4">
             <Link to="/" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/") })}>
               Home
+            </Link>
+            <Link to="/about-us" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/about-us") })}>
+              About Us
             </Link>
             <Link to="/founder" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/founder") })}>
               Founder

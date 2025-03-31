@@ -1,8 +1,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Settings } from 'lucide-react';
+import { Menu, X, Phone, Settings, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,7 +66,7 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0A3A2A]",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white",
         {
           "shadow-md": isScrolled || isMobileMenuOpen,
         }
@@ -69,26 +78,64 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/") })}>
+          <Link to="/" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/") })}>
             Home
           </Link>
-          <Link to="/about-us" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/about-us") })}>
-            About Us
+          
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="nav-link text-teal bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent">
+                  About Us
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4 bg-white">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/about-us"
+                          className={cn(
+                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            { "bg-accent": isActive("/about-us") }
+                          )}
+                        >
+                          <div className="text-sm font-medium text-teal">About Hayat Concierge</div>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/founder"
+                          className={cn(
+                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            { "bg-accent": isActive("/founder") }
+                          )}
+                        >
+                          <div className="text-sm font-medium text-teal">About Founder</div>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          
+          <Link to="/services" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}>
+            Services
           </Link>
-          <Link to="/founder" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/founder") })}>
-            Founder
-          </Link>
-          <Link to="/blog" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/blog") })}>
+          <Link to="/blog" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/blog") })}>
             Itineraries
           </Link>
-          <Link to="/facilities" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/facilities") })}>
+          <Link to="/facilities" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}>
             Partners
           </Link>
-          <Link to="/contact" className={cn("nav-link", { "after:scale-x-100 text-gold": isActive("/contact") })}>
+          <Link to="/contact" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/contact") })}>
             Contact
           </Link>
           {showAdmin && (
-            <Link to="/admin" className={cn("nav-link flex items-center", { "after:scale-x-100 text-gold": isActive("/admin") })}>
+            <Link to="/admin" className={cn("nav-link flex items-center text-teal", { "after:scale-x-100 text-gold": isActive("/admin") })}>
               <Settings className="w-4 h-4 mr-1" />
               Admin
             </Link>
@@ -100,7 +147,7 @@ const Navbar = () => {
         </nav>
 
         <button 
-          className="md:hidden text-gold"
+          className="md:hidden text-teal"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -109,28 +156,41 @@ const Navbar = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden px-6 py-4 bg-[#0A3A2A] border-t border-gold/10 animate-fade-in">
+        <div className="md:hidden px-6 py-4 bg-white border-t border-gold/10 animate-fade-in">
           <nav className="flex flex-col space-y-4">
-            <Link to="/" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/") })}>
+            <Link to="/" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/") })}>
               Home
             </Link>
-            <Link to="/about-us" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/about-us") })}>
-              About Us
+            
+            <div className="flex flex-col space-y-2">
+              <div className="flex items-center justify-between py-2 font-medium text-teal cursor-pointer">
+                <span>About Us</span>
+                <ChevronDown className="w-4 h-4" />
+              </div>
+              <div className="pl-4 flex flex-col space-y-2">
+                <Link to="/about-us" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about-us") })}>
+                  About Hayat Concierge
+                </Link>
+                <Link to="/founder" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/founder") })}>
+                  About Founder
+                </Link>
+              </div>
+            </div>
+            
+            <Link to="/services" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}>
+              Services
             </Link>
-            <Link to="/founder" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/founder") })}>
-              Founder
-            </Link>
-            <Link to="/blog" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/blog") })}>
+            <Link to="/blog" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/blog") })}>
               Itineraries
             </Link>
-            <Link to="/facilities" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/facilities") })}>
+            <Link to="/facilities" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}>
               Partners
             </Link>
-            <Link to="/contact" className={cn("py-2 font-medium text-offwhite", { "text-gold": isActive("/contact") })}>
+            <Link to="/contact" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/contact") })}>
               Contact
             </Link>
             {showAdmin && (
-              <Link to="/admin" className={cn("py-2 font-medium text-offwhite flex items-center", { "text-gold": isActive("/admin") })}>
+              <Link to="/admin" className={cn("py-2 font-medium text-teal flex items-center", { "text-gold": isActive("/admin") })}>
                 <Settings className="w-4 h-4 mr-1" />
                 Admin
               </Link>

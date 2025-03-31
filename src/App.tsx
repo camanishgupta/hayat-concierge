@@ -11,6 +11,7 @@ import Facilities from "./pages/Facilities";
 import Contact from "./pages/Contact";
 import AboutUs from "./pages/AboutUs";
 import Founder from "./pages/Founder";
+import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -39,6 +40,7 @@ const App = () => (
                 <Route path="/facilities" element={<Facilities />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/founder" element={<Founder />} />
+                <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />

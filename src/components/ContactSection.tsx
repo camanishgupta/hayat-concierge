@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -83,10 +83,10 @@ const ContactSection = () => {
                 <MapPin size={18} className="text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">Address</p>
+                <p className="font-medium text-navy">{language === 'ar' ? 'العنوان' : 'Address'}</p>
                 <address className="text-muted-foreground not-italic">
-                  123 Sukhumvit Road<br />
-                  Bangkok, Thailand 10110
+                  {language === 'ar' ? '١٢٣ شارع سوخومفيت' : '123 Sukhumvit Road'}<br />
+                  {language === 'ar' ? 'بانكوك، تايلاند ١٠١١٠' : 'Bangkok, Thailand 10110'}
                 </address>
               </div>
             </div>

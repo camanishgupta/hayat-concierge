@@ -2,6 +2,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
+import { Globe } from 'lucide-react';
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -24,6 +25,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         )}
       >
         {language === 'en' ? 'العربية' : 'English'}
+        <Globe className="w-4 h-4" />
       </button>
     );
   }
@@ -32,11 +34,12 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     <button
       onClick={toggleLanguage}
       className={cn(
-        "language-switcher",
+        "language-switcher flex items-center gap-1 bg-teal/10 hover:bg-teal/20 px-2 py-1 rounded text-teal",
         className
       )}
       aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
     >
+      <Globe className="w-4 h-4" />
       <span>{language === 'en' ? 'AR' : 'EN'}</span>
     </button>
   );

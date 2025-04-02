@@ -2,10 +2,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Check, ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,21 +43,21 @@ const AboutSection = () => {
           )}
         >
           <span className="inline-block py-1 px-3 bg-sand text-navy rounded-full text-sm font-medium mb-6">
-            Why Choose Us
+            {t('home.about.subtitle')}
           </span>
           <h2 className="heading-lg mb-6 hero-text-gradient">
-            Elevating Luxury Travel in Thailand
+            {t('home.about.title')}
           </h2>
           <p className="text-muted-foreground mb-6">
-            Bespoke Thai Journeys was founded with a singular mission: to provide discerning travelers with effortless access to Thailand's finest experiences. Our deep local connections and attention to detail ensure a seamless journey.
+            {t('home.about.description')}
           </p>
           
           <div className="space-y-4 mb-8">
             {[
-              "Personalized service with dedicated concierge",
-              "VIP access to premium facilities",
-              "End-to-end journey management",
-              "24/7 support throughout your stay"
+              t('home.about.feature1'),
+              t('home.about.feature2'),
+              t('home.about.feature3'),
+              t('home.about.feature4')
             ].map((point, index) => (
               <div key={index} className="flex items-start">
                 <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center mt-1 mr-3">
@@ -67,7 +69,7 @@ const AboutSection = () => {
           </div>
           
           <a href="#contact" className="button-primary inline-flex items-center gap-2">
-            Learn More About Our Approach
+            {t('home.about.cta')}
             <ArrowRight size={16} />
           </a>
         </div>
@@ -95,7 +97,7 @@ const AboutSection = () => {
           <div className="absolute top-24 -right-10 w-32 h-32 bg-gold/10 rounded-full backdrop-blur-md flex items-center justify-center p-4 text-center shadow-lg border border-gold/20">
             <p className="font-serif text-navy">
               <span className="block text-2xl font-bold">10+</span>
-              <span className="text-xs">Years of Excellence</span>
+              <span className="text-xs">{t('home.about.feature3')}</span>
             </p>
           </div>
         </div>

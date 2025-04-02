@@ -21,43 +21,87 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContentProvider } from "./contexts/ContentContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ContentProvider>
-      <LanguageProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="flex flex-col min-h-screen bg-offwhite">
-              <Navbar />
-              <main className="flex-grow pt-20">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:id" element={<BlogPost />} />
-                  <Route path="/facilities" element={<Facilities />} />
-                  <Route path="/about-us" element={<AboutUs />} />
-                  <Route path="/founder" element={<Founder />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/enquiry" element={<Enquiry />} />
-                  <Route path="/admin" element={<Admin />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/terms-conditions" element={<TermsConditions />} />
-                  <Route path="/cookie-policy" element={<CookiePolicy />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </ContentProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useEffect(() => {
+    // Add CSS to handle RTL layout adjustments
+    const style = document.createElement('style');
+    style.textContent = `
+      .rtl {
+        direction: rtl;
+        text-align: right;
+      }
+      
+      .rtl .nav-link::after {
+        left: auto;
+        right: 0;
+      }
+      
+      .rtl .language-switcher {
+        margin-right: 0.5rem;
+        margin-left: 0;
+      }
+      
+      html[dir="rtl"] button,
+      html[dir="rtl"] .button-primary,
+      html[dir="rtl"] .button-secondary {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      
+      html[dir="rtl"] .flex {
+        flex-direction: inherit;
+      }
+      
+      html[dir="rtl"] .flex.flex-row-reverse {
+        flex-direction: row;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ContentProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <div className="flex flex-col min-h-screen bg-offwhite">
+                <Navbar />
+                <main className="flex-grow pt-20">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path="/facilities" element={<Facilities />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/founder" element={<Founder />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/enquiry" element={<Enquiry />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms-conditions" element={<TermsConditions />} />
+                    <Route path="/cookie-policy" element={<CookiePolicy />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            </BrowserRouter>
+          </TooltipProvider>
+        </LanguageProvider>
+      </ContentProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

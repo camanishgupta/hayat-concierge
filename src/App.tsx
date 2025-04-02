@@ -13,6 +13,9 @@ import Contact from "./pages/Contact";
 import AboutUs from "./pages/AboutUs";
 import Founder from "./pages/Founder";
 import Services from "./pages/Services";
+import HealthcareSolutions from "./pages/HealthcareSolutions";
+import WellnessJourney from "./pages/WellnessJourney";
+import LuxuryExperience from "./pages/LuxuryExperience";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -159,6 +162,9 @@ const App = () => {
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/founder" element={<Founder />} />
                     <Route path="/services" element={<Services />} />
+                    <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
+                    <Route path="/wellness-journey" element={<WellnessJourney />} />
+                    <Route path="/luxury-experience" element={<LuxuryExperience />} />
                     <Route path="/enquiry" element={<Enquiry />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/admin" element={<Admin />} />

@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Facilities from "./pages/Facilities";
-import Contact from "./pages/Contact";
+import Enquiry from "./pages/Enquiry";
 import AboutUs from "./pages/AboutUs";
 import Founder from "./pages/Founder";
 import Services from "./pages/Services";
@@ -20,40 +20,42 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContentProvider } from "./contexts/ContentContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ContentProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="flex flex-col min-h-screen bg-offwhite">
-            <Navbar />
-            <main className="flex-grow pt-20">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:id" element={<BlogPost />} />
-                <Route path="/facilities" element={<Facilities />} />
-                <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/founder" element={<Founder />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-conditions" element={<TermsConditions />} />
-                <Route path="/cookie-policy" element={<CookiePolicy />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            {/* Only render one Footer component */}
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="flex flex-col min-h-screen bg-offwhite">
+              <Navbar />
+              <main className="flex-grow pt-20">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:id" element={<BlogPost />} />
+                  <Route path="/facilities" element={<Facilities />} />
+                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/founder" element={<Founder />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/enquiry" element={<Enquiry />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-conditions" element={<TermsConditions />} />
+                  <Route path="/cookie-policy" element={<CookiePolicy />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </ContentProvider>
   </QueryClientProvider>
 );

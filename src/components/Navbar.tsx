@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Settings, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,13 +12,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const location = useLocation();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,14 +80,14 @@ const Navbar = () => {
 
         <nav className="hidden md:flex items-center gap-8">
           <Link to="/" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/") })}>
-            Home
+            {t('nav.home')}
           </Link>
           
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="nav-link text-teal bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent">
-                  About Us
+                  {t('nav.aboutUs')}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[200px] gap-3 p-4 bg-white">
@@ -99,7 +100,7 @@ const Navbar = () => {
                             { "bg-accent": isActive("/about-us") }
                           )}
                         >
-                          <div className="text-sm font-medium text-teal">About Hayat Concierge</div>
+                          <div className="text-sm font-medium text-teal">{t('nav.aboutHayat')}</div>
                         </Link>
                       </NavigationMenuLink>
                     </li>
@@ -112,7 +113,7 @@ const Navbar = () => {
                             { "bg-accent": isActive("/founder") }
                           )}
                         >
-                          <div className="text-sm font-medium text-teal">About Founder</div>
+                          <div className="text-sm font-medium text-teal">{t('nav.aboutFounder')}</div>
                         </Link>
                       </NavigationMenuLink>
                     </li>
@@ -123,16 +124,16 @@ const Navbar = () => {
           </NavigationMenu>
           
           <Link to="/services" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}>
-            Services
+            {t('nav.services')}
           </Link>
           <Link to="/blog" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/blog") })}>
-            Itineraries
+            {t('nav.itineraries')}
           </Link>
           <Link to="/facilities" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}>
-            Partners
+            {t('nav.partners')}
           </Link>
-          <Link to="/contact" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/contact") })}>
-            Contact
+          <Link to="/enquiry" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/enquiry") })}>
+            {t('nav.enquiry')}
           </Link>
           {showAdmin && (
             <Link to="/admin" className={cn("nav-link flex items-center text-teal", { "after:scale-x-100 text-gold": isActive("/admin") })}>
@@ -140,54 +141,61 @@ const Navbar = () => {
               Admin
             </Link>
           )}
+          
+          <LanguageSwitcher variant="text" className="mx-2" />
+          
           <a href="tel:+6623456789" className="button-primary flex items-center gap-1 text-sm">
             <Phone className="w-4 h-4" />
-            <span>Contact Us</span>
+            <span>{t('nav.contactUs')}</span>
           </a>
         </nav>
 
-        <button 
-          className="md:hidden text-teal"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <LanguageSwitcher />
+          
+          <button 
+            className="text-teal"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {isMobileMenuOpen && (
         <div className="md:hidden px-6 py-4 bg-white border-t border-gold/10 animate-fade-in">
           <nav className="flex flex-col space-y-4">
             <Link to="/" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/") })}>
-              Home
+              {t('nav.home')}
             </Link>
             
             <div className="flex flex-col space-y-2">
               <div className="flex items-center justify-between py-2 font-medium text-teal cursor-pointer">
-                <span>About Us</span>
+                <span>{t('nav.aboutUs')}</span>
                 <ChevronDown className="w-4 h-4" />
               </div>
               <div className="pl-4 flex flex-col space-y-2">
                 <Link to="/about-us" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about-us") })}>
-                  About Hayat Concierge
+                  {t('nav.aboutHayat')}
                 </Link>
                 <Link to="/founder" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/founder") })}>
-                  About Founder
+                  {t('nav.aboutFounder')}
                 </Link>
               </div>
             </div>
             
             <Link to="/services" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}>
-              Services
+              {t('nav.services')}
             </Link>
             <Link to="/blog" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/blog") })}>
-              Itineraries
+              {t('nav.itineraries')}
             </Link>
             <Link to="/facilities" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}>
-              Partners
+              {t('nav.partners')}
             </Link>
-            <Link to="/contact" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/contact") })}>
-              Contact
+            <Link to="/enquiry" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/enquiry") })}>
+              {t('nav.enquiry')}
             </Link>
             {showAdmin && (
               <Link to="/admin" className={cn("py-2 font-medium text-teal flex items-center", { "text-gold": isActive("/admin") })}>
@@ -197,7 +205,7 @@ const Navbar = () => {
             )}
             <a href="tel:+6623456789" className="button-primary flex items-center justify-center gap-1 mt-2 text-sm">
               <Phone className="w-4 h-4" />
-              <span>Contact Us</span>
+              <span>{t('nav.contactUs')}</span>
             </a>
           </nav>
         </div>

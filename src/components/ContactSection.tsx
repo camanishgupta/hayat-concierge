@@ -2,10 +2,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,13 +44,13 @@ const ContactSection = () => {
           )}
         >
           <span className="inline-block py-1 px-3 bg-navy/10 text-navy rounded-full text-sm font-medium mb-6">
-            Get in Touch
+            {t('nav.contactUs')}
           </span>
           <h2 className="heading-lg mb-6 hero-text-gradient">
-            Begin Your Bespoke Journey
+            {t('enquiry.title')}
           </h2>
           <p className="text-muted-foreground mb-8">
-            Contact our concierge team to discuss your needs and let us craft an exceptional Thai experience tailored just for you.
+            {t('enquiry.formSubtitle')}
           </p>
           
           <div className="space-y-6">
@@ -56,7 +59,7 @@ const ContactSection = () => {
                 <Phone size={18} className="text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">Call Us</p>
+                <p className="font-medium text-navy">{t('enquiry.phone')}</p>
                 <a href="tel:+6623456789" className="text-muted-foreground hover:text-navy transition-colors">
                   +66 2 345 6789
                 </a>
@@ -68,9 +71,9 @@ const ContactSection = () => {
                 <Mail size={18} className="text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">Email</p>
-                <a href="mailto:contact@bespokethai.com" className="text-muted-foreground hover:text-navy transition-colors">
-                  contact@bespokethai.com
+                <p className="font-medium text-navy">{t('enquiry.email')}</p>
+                <a href="mailto:hayat01ourahmoun@gmail.com" className="text-muted-foreground hover:text-navy transition-colors">
+                  hayat01ourahmoun@gmail.com
                 </a>
               </div>
             </div>
@@ -96,72 +99,17 @@ const ContactSection = () => {
             { "opacity-100 translate-y-0": isVisible }
           )}
         >
-          <form className="glass-card p-8">
-            <h3 className="heading-md mb-6 text-navy">Inquire Now</h3>
+          <div className="glass-card p-8 text-center">
+            <h3 className="heading-md mb-6 text-navy">{t('enquiry.formTitle')}</h3>
+            <p className="text-muted-foreground mb-8">
+              {t('enquiry.formSubtitle')}
+            </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-navy mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy/60 transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-navy mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy/60 transition-all"
-                  placeholder="Your email"
-                />
-              </div>
-            </div>
-            
-            <div className="mb-6">
-              <label htmlFor="service" className="block text-sm font-medium text-navy mb-1">
-                Service of Interest
-              </label>
-              <select
-                id="service"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy/60 transition-all"
-              >
-                <option value="">Select a service</option>
-                <option value="medical">Medical Tourism</option>
-                <option value="wellness">Wellness Retreat</option>
-                <option value="accommodation">Luxury Accommodation</option>
-                <option value="transportation">Private Transportation</option>
-                <option value="itinerary">Bespoke Itinerary</option>
-                <option value="dining">Fine Dining</option>
-              </select>
-            </div>
-            
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-medium text-navy mb-1">
-                Your Requirements
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy/60 transition-all"
-                placeholder="Tell us about your needs and preferences"
-              ></textarea>
-            </div>
-            
-            <button 
-              type="submit" 
-              className="button-primary bg-navy w-full flex items-center justify-center gap-2"
-            >
-              Send Inquiry
+            <Link to="/enquiry" className="button-primary bg-navy w-full md:w-auto flex items-center justify-center gap-2 mx-auto px-10">
+              {t('enquiry.submitInquiry')}
               <Send size={16} />
-            </button>
-          </form>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

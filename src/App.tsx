@@ -45,19 +45,67 @@ const App = () => {
         margin-left: 0;
       }
       
-      html[dir="rtl"] button,
-      html[dir="rtl"] .button-primary,
-      html[dir="rtl"] .button-secondary {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-      
       html[dir="rtl"] .flex {
-        flex-direction: inherit;
+        flex-direction: row-reverse;
       }
       
       html[dir="rtl"] .flex.flex-row-reverse {
         flex-direction: row;
+      }
+      
+      html[dir="rtl"] .text-right {
+        text-align: left;
+      }
+      
+      html[dir="rtl"] .text-left {
+        text-align: right;
+      }
+      
+      html[dir="rtl"] .mr-1, 
+      html[dir="rtl"] .mr-2, 
+      html[dir="rtl"] .mr-3, 
+      html[dir="rtl"] .mr-4 {
+        margin-right: 0;
+      }
+      
+      html[dir="rtl"] .ml-1,
+      html[dir="rtl"] .ml-2,
+      html[dir="rtl"] .ml-3,
+      html[dir="rtl"] .ml-4 {
+        margin-left: 0;
+        margin-right: 0.25rem;
+      }
+      
+      /* Fix footer positioning */
+      footer {
+        position: relative;
+        width: 100%;
+        clear: both;
+      }
+      
+      /* Ensure content takes full width and footer stays at bottom */
+      .flex.flex-col.min-h-screen {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .flex-grow {
+        flex: 1 0 auto;
+      }
+      
+      /* Fix Enquiry page text color */
+      .glass-card label,
+      .glass-card input,
+      .glass-card textarea,
+      .glass-card select,
+      .glass-card option {
+        color: #222 !important;
+      }
+      
+      .glass-card textarea::placeholder,
+      .glass-card input::placeholder {
+        color: #666 !important;
       }
     `;
     document.head.appendChild(style);

@@ -22,7 +22,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A3A2A]/80 via-[#0A3A2A]/50 to-[#0A3A2A]/70 z-10" />
         <img
           src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt="Luxury Thailand experience"
+          alt={language === 'ar' ? 'تجربة تايلاند الفاخرة' : 'Luxury Thailand experience'}
           className="w-full h-full object-cover"
         />
       </div>

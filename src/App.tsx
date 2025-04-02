@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Facilities from "./pages/Facilities";
 import Enquiry from "./pages/Enquiry";
+import Contact from "./pages/Contact";
 import AboutUs from "./pages/AboutUs";
 import Founder from "./pages/Founder";
 import Services from "./pages/Services";
@@ -107,6 +108,30 @@ const App = () => {
       .glass-card input::placeholder {
         color: #666 !important;
       }
+      
+      /* Ensure form elements are visible */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="date"],
+      input[type="number"],
+      input,
+      textarea,
+      select {
+        background-color: white !important;
+        color: black !important;
+      }
+      
+      /* Make submit button visible */
+      button[type="submit"] {
+        background-color: #0D503C !important;
+        color: white !important;
+      }
+      
+      button[type="submit"]:hover {
+        background-color: #0a3f30 !important;
+        color: white !important;
+      }
     `;
     document.head.appendChild(style);
     
@@ -135,6 +160,7 @@ const App = () => {
                     <Route path="/founder" element={<Founder />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/enquiry" element={<Enquiry />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/terms-conditions" element={<TermsConditions />} />

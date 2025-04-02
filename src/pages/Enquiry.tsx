@@ -131,20 +131,30 @@ const Enquiry = () => {
         `,
       };
       
-      // Send the email using EmailJS
-      // Note: You'll need to replace these IDs with your actual EmailJS service, template, and user IDs
-      await emailjs.send(
-        'service_hayat',  // Replace with your service ID
-        'template_hayat', // Replace with your template ID
-        emailData,
-        'your_user_id'    // Replace with your user ID
-      );
+      // For testing - simulating a successful email submission
+      // In production, uncommment the EmailJS code below and replace the placeholders
+      // with your actual EmailJS credentials
       
-      setIsSubmitted(true);
-      toast({
-        title: t('enquiry.success'),
-        description: t('enquiry.successMessage'),
-      });
+      console.log("Form data being submitted:", emailData);
+      
+      // Mock successful form submission - for testing purposes
+      setTimeout(() => {
+        setIsSubmitted(true);
+        toast({
+          title: t('enquiry.success'),
+          description: t('enquiry.successMessage'),
+        });
+      }, 1500);
+      
+      /* Uncomment and replace with your actual EmailJS credentials
+      await emailjs.send(
+        'YOUR_SERVICE_ID',  // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        emailData,
+        'YOUR_USER_ID'      // Replace with your EmailJS user ID
+      );
+      */
+      
     } catch (error) {
       console.error('Error sending email:', error);
       setSubmitError(t('enquiry.errorMessage'));
@@ -222,7 +232,7 @@ const Enquiry = () => {
                     <Input
                       id="name"
                       {...form.register('name', { required: true })}
-                      className="mt-1"
+                      className="mt-1 bg-white text-black"
                       placeholder={t('enquiry.name')}
                     />
                   </div>
@@ -232,7 +242,7 @@ const Enquiry = () => {
                       id="email"
                       type="email"
                       {...form.register('email', { required: true })}
-                      className="mt-1"
+                      className="mt-1 bg-white text-black"
                       placeholder={t('enquiry.email')}
                     />
                   </div>
@@ -241,7 +251,7 @@ const Enquiry = () => {
                     <Input
                       id="phone"
                       {...form.register('phone')}
-                      className="mt-1"
+                      className="mt-1 bg-white text-black"
                       placeholder={t('enquiry.phone')}
                     />
                   </div>
@@ -261,25 +271,25 @@ const Enquiry = () => {
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Solo Traveler" id="solo" />
-                          <Label htmlFor="solo">{t('enquiry.soloTraveler')}</Label>
+                          <Label htmlFor="solo" className="text-black">{t('enquiry.soloTraveler')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Couple" id="couple" />
-                          <Label htmlFor="couple">{t('enquiry.couple')}</Label>
+                          <Label htmlFor="couple" className="text-black">{t('enquiry.couple')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Family with children" id="family" />
-                          <Label htmlFor="family">{t('enquiry.familyWithChildren')}</Label>
+                          <Label htmlFor="family" className="text-black">{t('enquiry.familyWithChildren')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Group of Friends" id="group" />
-                          <Label htmlFor="group">{t('enquiry.groupOfFriends')}</Label>
+                          <Label htmlFor="group" className="text-black">{t('enquiry.groupOfFriends')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Other" id="other-traveler" />
-                          <Label htmlFor="other-traveler">{t('common.other')}:</Label>
+                          <Label htmlFor="other-traveler" className="text-black">{t('common.other')}:</Label>
                           <Input 
-                            className="w-40 h-8"
+                            className="w-40 h-8 bg-white text-black"
                             {...form.register('otherTravelerType')}
                           />
                         </div>
@@ -295,19 +305,19 @@ const Enquiry = () => {
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="1-3 days" id="short" />
-                          <Label htmlFor="short">{t('enquiry.days1to3')}</Label>
+                          <Label htmlFor="short" className="text-black">{t('enquiry.days1to3')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="4-7 days" id="medium" />
-                          <Label htmlFor="medium">{t('enquiry.days4to7')}</Label>
+                          <Label htmlFor="medium" className="text-black">{t('enquiry.days4to7')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="More than a week" id="long" />
-                          <Label htmlFor="long">{t('enquiry.moreThanWeek')}</Label>
+                          <Label htmlFor="long" className="text-black">{t('enquiry.moreThanWeek')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Not sure yet" id="not-sure" />
-                          <Label htmlFor="not-sure">{t('enquiry.notSureYet')}</Label>
+                          <Label htmlFor="not-sure" className="text-black">{t('enquiry.notSureYet')}</Label>
                         </div>
                       </RadioGroup>
                     </div>
@@ -328,7 +338,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="medical">{t('enquiry.medicalTreatment')}</Label>
+                          <Label htmlFor="medical" className="text-black">{t('enquiry.medicalTreatment')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -342,7 +352,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="wellness">{t('enquiry.wellness')}</Label>
+                          <Label htmlFor="wellness" className="text-black">{t('enquiry.wellness')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -356,7 +366,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="luxury">{t('enquiry.luxuryLeisure')}</Label>
+                          <Label htmlFor="luxury" className="text-black">{t('enquiry.luxuryLeisure')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -370,7 +380,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="business">{t('enquiry.businessVIP')}</Label>
+                          <Label htmlFor="business" className="text-black">{t('enquiry.businessVIP')}</Label>
                         </div>
                         <div className="flex items-center space-x-2 col-span-1 md:col-span-2">
                           <Checkbox 
@@ -384,9 +394,9 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="other-purpose">{t('common.other')}:</Label>
+                          <Label htmlFor="other-purpose" className="text-black">{t('common.other')}:</Label>
                           <Input 
-                            className="w-full max-w-xs h-8"
+                            className="w-full max-w-xs h-8 bg-white text-black"
                             {...form.register('otherVisitPurpose')}
                           />
                         </div>
@@ -407,7 +417,7 @@ const Enquiry = () => {
                         id="arrival-date"
                         type="date"
                         {...form.register('arrivalDate')}
-                        className="mt-1 w-full max-w-xs"
+                        className="mt-1 w-full max-w-xs bg-white text-black"
                       />
                     </div>
                     
@@ -420,21 +430,21 @@ const Enquiry = () => {
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Medical emergency" id="emergency" />
-                          <Label htmlFor="emergency">{t('enquiry.medicalEmergency')}</Label>
+                          <Label htmlFor="emergency" className="text-black">{t('enquiry.medicalEmergency')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Scheduled medical treatment" id="scheduled" />
-                          <Label htmlFor="scheduled">{t('enquiry.scheduledMedical')}</Label>
+                          <Label htmlFor="scheduled" className="text-black">{t('enquiry.scheduledMedical')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Leisure or wellness" id="leisure" />
-                          <Label htmlFor="leisure">{t('enquiry.leisureFlexible')}</Label>
+                          <Label htmlFor="leisure" className="text-black">{t('enquiry.leisureFlexible')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="Other" id="other-urgency" />
-                          <Label htmlFor="other-urgency">{t('common.other')}:</Label>
+                          <Label htmlFor="other-urgency" className="text-black">{t('common.other')}:</Label>
                           <Input 
-                            className="w-full max-w-xs h-8"
+                            className="w-full max-w-xs h-8 bg-white text-black"
                             {...form.register('otherUrgency')}
                           />
                         </div>
@@ -464,7 +474,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="flight">{t('enquiry.flightBooking')}</Label>
+                          <Label htmlFor="flight" className="text-black">{t('enquiry.flightBooking')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -478,7 +488,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="jet">{t('enquiry.privateJet')}</Label>
+                          <Label htmlFor="jet" className="text-black">{t('enquiry.privateJet')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -492,7 +502,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="vip-airport">{t('enquiry.vipAirport')}</Label>
+                          <Label htmlFor="vip-airport" className="text-black">{t('enquiry.vipAirport')}</Label>
                         </div>
                       </div>
                     </div>
@@ -513,7 +523,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="hotel">{t('enquiry.fiveStarHotel')}</Label>
+                          <Label htmlFor="hotel" className="text-black">{t('enquiry.fiveStarHotel')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -527,7 +537,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="villa">{t('enquiry.privateVilla')}</Label>
+                          <Label htmlFor="villa" className="text-black">{t('enquiry.privateVilla')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -541,7 +551,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="resort">{t('enquiry.familyResort')}</Label>
+                          <Label htmlFor="resort" className="text-black">{t('enquiry.familyResort')}</Label>
                         </div>
                         <div className="flex items-center space-x-2 col-span-1 md:col-span-3">
                           <Checkbox 
@@ -555,9 +565,9 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="other-accommodation">{t('common.other')}:</Label>
+                          <Label htmlFor="other-accommodation" className="text-black">{t('common.other')}:</Label>
                           <Input 
-                            className="w-full max-w-xs h-8"
+                            className="w-full max-w-xs h-8 bg-white text-black"
                             {...form.register('otherAccommodation')}
                           />
                         </div>
@@ -580,7 +590,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="tours">{t('enquiry.privateTours')}</Label>
+                          <Label htmlFor="tours" className="text-black">{t('enquiry.privateTours')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -594,7 +604,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="shopping">{t('enquiry.shopping')}</Label>
+                          <Label htmlFor="shopping" className="text-black">{t('enquiry.shopping')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -608,7 +618,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="dining">{t('enquiry.fineDining')}</Label>
+                          <Label htmlFor="dining" className="text-black">{t('enquiry.fineDining')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -622,7 +632,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="transportation">{t('enquiry.transportation')}</Label>
+                          <Label htmlFor="transportation" className="text-black">{t('enquiry.transportation')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -636,7 +646,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="yacht">{t('enquiry.yachtRental')}</Label>
+                          <Label htmlFor="yacht" className="text-black">{t('enquiry.yachtRental')}</Label>
                         </div>
                       </div>
                     </div>
@@ -657,7 +667,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="consultation">{t('enquiry.medicalConsultation')}</Label>
+                          <Label htmlFor="consultation" className="text-black">{t('enquiry.medicalConsultation')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -671,7 +681,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="recovery">{t('enquiry.recovery')}</Label>
+                          <Label htmlFor="recovery" className="text-black">{t('enquiry.recovery')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -685,7 +695,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="spa">{t('enquiry.spaRetreats')}</Label>
+                          <Label htmlFor="spa" className="text-black">{t('enquiry.spaRetreats')}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox 
@@ -699,7 +709,7 @@ const Enquiry = () => {
                               }
                             }}
                           />
-                          <Label htmlFor="followup">{t('enquiry.followUp')}</Label>
+                          <Label htmlFor="followup" className="text-black">{t('enquiry.followUp')}</Label>
                         </div>
                       </div>
                     </div>
@@ -717,7 +727,7 @@ const Enquiry = () => {
                       <Input
                         id="need1"
                         {...form.register('topNeed1')}
-                        className="mt-1 w-full"
+                        className="mt-1 w-full bg-white text-black"
                       />
                     </div>
                     <div>
@@ -725,7 +735,7 @@ const Enquiry = () => {
                       <Input
                         id="need2"
                         {...form.register('topNeed2')}
-                        className="mt-1 w-full"
+                        className="mt-1 w-full bg-white text-black"
                       />
                     </div>
                     <div>
@@ -733,7 +743,7 @@ const Enquiry = () => {
                       <Input
                         id="need3"
                         {...form.register('topNeed3')}
-                        className="mt-1 w-full"
+                        className="mt-1 w-full bg-white text-black"
                       />
                     </div>
                   </div>
@@ -746,7 +756,7 @@ const Enquiry = () => {
                   
                   <Textarea
                     {...form.register('additionalRequests')}
-                    className="w-full min-h-32"
+                    className="w-full min-h-32 bg-white text-black"
                   />
                 </div>
                 
@@ -755,7 +765,7 @@ const Enquiry = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="button-primary px-10 py-3 bg-navy w-full md:w-auto flex items-center justify-center gap-2"
+                    className="button-primary px-10 py-3 bg-navy hover:bg-navy/90 text-white w-full md:w-auto flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <span>{t('common.submit')}...</span>

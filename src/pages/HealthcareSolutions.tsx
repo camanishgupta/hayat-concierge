@@ -111,6 +111,10 @@ const HealthcareSolutions = () => {
                     : 'Our network includes world-class, highly trained specialists and leading hospitals renowned for their expertise and advanced medical technologies. You can receive top-tier treatment at affordable prices compared to other countries, ensuring exceptional care tailored to your needs.'}
                 </p>
                 
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'نظرة عامة على تكاليف العلاج التقريبية' : 'Below is an overview of approximate treatment costs'}
+                </h3>
+                
                 <p className="italic text-sm mt-4">
                   {isRTL 
                     ? 'يرجى ملاحظة أن أسعار العلاج المذكورة هي أرقام تقريبية مصدرها Bookimed، وهي منصة موثوقة للسياحة الطبية. سيتم تحديد التكاليف الفعلية من قبل المتخصصين الطبيين الشركاء لدينا بناءً على احتياجاتك وظروفك الفردية.'

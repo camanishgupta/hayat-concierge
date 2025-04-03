@@ -94,7 +94,7 @@ const WellnessJourney = () => {
               
               <div className="prose max-w-none text-charcoal">
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'مواقع الاستجمام' : '1. Retreat Locations'}
+                  {isRTL ? '1. مواقع الاستجمام' : '1. Retreat Locations'}
                 </h3>
                 <p>
                   {isRTL 
@@ -103,7 +103,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'برامج العافية' : '2. Wellness Programs'}
+                  {isRTL ? '2. برامج العافية' : '2. Wellness Programs'}
                 </h3>
                 <p>
                   {isRTL 
@@ -112,7 +112,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'العلاجات والخدمات' : '3. Treatment & Services'}
+                  {isRTL ? '3. العلاجات والخدمات' : '3. Treatment & Services'}
                 </h3>
                 <p>
                   {isRTL 
@@ -121,7 +121,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'التخصيص والتصميم الشخصي' : '4. Personalization & Customization'}
+                  {isRTL ? '4. التخصيص والتصميم الشخصي' : '4. Personalization & Customization'}
                 </h3>
                 <p>
                   {isRTL 
@@ -130,7 +130,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'المميزات الصديقة للمسلمين' : '5. Muslim-Friendly Features'}
+                  {isRTL ? '5. المميزات الصديقة للمسلمين' : '5. Muslim-Friendly Features'}
                 </h3>
                 <p>
                   {isRTL 
@@ -139,7 +139,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'الممارسات المستدامة والصديقة للبيئة' : '6. Sustainable and Eco-Friendly Practices'}
+                  {isRTL ? '6. الممارسات المستدامة والصديقة للبيئة' : '6. Sustainable and Eco-Friendly Practices'}
                 </h3>
                 <p>
                   {isRTL 
@@ -148,7 +148,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'المميزات والمرافق الحصرية' : '7. Exclusive Features & Amenities'}
+                  {isRTL ? '7. المميزات والمرافق الحصرية' : '7. Exclusive Features & Amenities'}
                 </h3>
                 <p>
                   {isRTL 
@@ -157,7 +157,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'شهادات الضيوف وقصص النجاح' : '8. Guest Testimonials & Success Stories'}
+                  {isRTL ? '8. شهادات الضيوف وقصص النجاح' : '8. Guest Testimonials & Success Stories'}
                 </h3>
                 <p>
                   {isRTL 
@@ -166,7 +166,7 @@ const WellnessJourney = () => {
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'كيفية الحجز والخطوات التالية' : '9. How to Book and Next Steps'}
+                  {isRTL ? '9. كيفية الحجز والخطوات التالية' : '9. How to Book and Next Steps'}
                 </h3>
                 <p>
                   {isRTL 

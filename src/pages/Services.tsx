@@ -35,7 +35,7 @@ const Services = () => {
             <p className="text-charcoal text-lg leading-relaxed">
               {isRTL 
                 ? 'في حياة كونسيرج، لا نقدم حزمًا قياسية - نحن نخلق تجارب شخصية مصممة حول احتياجاتك الفريدة. سواء كنت تبحث عن رعاية طبية عالمية المستوى، أو منتجع صحي فاخر، أو تجربة سفر لا تُنسى، نحن نهتم بكل التفاصيل بنهج مخصص.' 
-                : 'At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach.'}
+                : 'At Hayat Concierge, we don\'t offer standard packages—we create personalized experiences designed around your unique needs. Whether you\'re seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach.'}
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/6593d901-e5f7-4c5d-8f2f-235d1c865e4b.png" 
+                  src="/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png" 
                   alt="Medical Tourism" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -123,7 +123,7 @@ const Services = () => {
                 <p className="text-charcoal mb-6">
                   {isRTL 
                     ? 'استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد. نقدم برامج مخصصة في أفضل منتجعات العافية في تايلاند، مع خدمات مثل:' 
-                    : 'Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation. We offer customized programs in Thailand's top wellness resorts, with services like:'}
+                    : 'Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation. We offer customized programs in Thailand\'s top wellness resorts, with services like:'}
                 </p>
                 <ul className="space-y-4">
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
@@ -160,7 +160,7 @@ const Services = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <img 
-                  src="/lovable-uploads/1bac456a-2bf2-46d3-8823-d4f14c0c02a0.png" 
+                  src="/lovable-uploads/1af3b165-80a5-41c1-ba75-89c13ba80646.png" 
                   alt="Wellness Retreats" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -179,7 +179,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/adf64b15-b776-4030-9855-3d0f791afb7a.png" 
+                  src="/lovable-uploads/8ae617ca-f183-45bb-9b17-6bece82fc15d.png" 
                   alt="Luxury Accommodations" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />

@@ -41,7 +41,7 @@ const LuxuryExperience = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <img 
-                src="/lovable-uploads/adf64b15-b776-4030-9855-3d0f791afb7a.png" 
+                src="/lovable-uploads/8ae617ca-f183-45bb-9b17-6bece82fc15d.png" 
                 alt="Luxury Experience" 
                 className="rounded-xl shadow-xl w-full h-auto mb-8"
               />
@@ -111,7 +111,7 @@ const LuxuryExperience = () => {
                     <p className={isRTL ? 'text-right' : ''}>
                       {isRTL 
                         ? 'أجنحة وغرف VIP في أفضل الفنادق في بانكوك، مع خدمة الكونسيرج على مدار الساعة، ومرافق فاخرة، وإطلالات مذهلة على المدينة.' 
-                        : 'VIP suites and rooms in Bangkok's finest hotels, with 24-hour concierge service, luxurious amenities, and stunning city views.'}
+                        : 'VIP suites and rooms in Bangkok\'s finest hotels, with 24-hour concierge service, luxurious amenities, and stunning city views.'}
                     </p>
                   </div>
                   
@@ -152,7 +152,7 @@ const LuxuryExperience = () => {
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <Utensils className={`text-gold flex-shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} mt-1`} size={18} />
                     <div>
-                      <strong>{isRTL ? 'تجارب طعام فاخرة:' : 'Fine Dining Experiences:'}</strong> {isRTL ? 'حجوزات في أفضل المطاعم في تايلاند، وترتيب وجبات خاصة مع طهاة خاصين، وخيارات طعام حلال ممتازة.' : 'Reservations at Thailand's best restaurants, arrangement of private meals with personal chefs, and excellent halal dining options.'}
+                      <strong>{isRTL ? 'تجارب طعام فاخرة:' : 'Fine Dining Experiences:'}</strong> {isRTL ? 'حجوزات في أفضل المطاعم في تايلاند، وترتيب وجبات خاصة مع طهاة خاصين، وخيارات طعام حلال ممتازة.' : 'Reservations at Thailand\'s best restaurants, arrangement of private meals with personal chefs, and excellent halal dining options.'}
                     </div>
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>

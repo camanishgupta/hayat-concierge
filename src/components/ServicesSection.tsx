@@ -16,7 +16,7 @@ const ServicesSection = () => {
         ? "نربطك بالمستشفيات والأخصائيين الرائدين في بانكوك، مما يضمن رحلة طبية سلسة من الاستشارة إلى التعافي."
         : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
       icon: <Stethoscope size={24} />,
-      imageSrc: "/lovable-uploads/6593d901-e5f7-4c5d-8f2f-235d1c865e4b.png",
+      imageSrc: "/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png",
       link: "/healthcare-solutions"
     },
     {
@@ -25,7 +25,7 @@ const ServicesSection = () => {
         ? "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
         : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
       icon: <Heart size={24} />,
-      imageSrc: "/lovable-uploads/1bac456a-2bf2-46d3-8823-d4f14c0c02a0.png",
+      imageSrc: "/lovable-uploads/1af3b165-80a5-41c1-ba75-89c13ba80646.png",
       link: "/wellness-journey"
     },
     {
@@ -34,7 +34,7 @@ const ServicesSection = () => {
         ? "استمتع بتايلاند في فخامة لا مثيل لها مع فنادقنا الفاخرة المختارة بعناية والفيلات الخاصة، مع وسائل راحة مخصصة."
         : "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities.",
       icon: <Building2 size={24} />,
-      imageSrc: "/lovable-uploads/adf64b15-b776-4030-9855-3d0f791afb7a.png",
+      imageSrc: "/lovable-uploads/8ae617ca-f183-45bb-9b17-6bece82fc15d.png",
       link: "/luxury-experience"
     }
   ];
@@ -47,8 +47,8 @@ const ServicesSection = () => {
         </h2>
         <p className="subheading mx-auto text-offwhite/80">
           {isRTL 
-            ? "اكتشف خدماتنا المميزة المصممة لتوفير تجربة لا مثيل لها في تايلاند، مع التركيز على الصحة والعافية والإقامات الفاخرة."
-            : "Discover our premium services designed to provide an unparalleled experience in Thailand, focused on health, wellness, and luxurious accommodations."}
+            ? "في حياة كونسيرج، لا نقدم حزمًا قياسية - نحن نخلق تجارب شخصية مصممة حول احتياجاتك الفريدة. سواء كنت تبحث عن رعاية طبية عالمية المستوى، أو منتجع صحي فاخر، أو تجربة سفر لا تُنسى، نحن نهتم بكل التفاصيل بنهج مخصص."
+            : "At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach."}
         </p>
       </div>
       

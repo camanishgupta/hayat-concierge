@@ -41,7 +41,7 @@ const HealthcareSolutions = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <img 
-                src="/lovable-uploads/6593d901-e5f7-4c5d-8f2f-235d1c865e4b.png" 
+                src="/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png" 
                 alt="Medical Tourism" 
                 className="rounded-xl shadow-xl w-full h-auto mb-8"
               />
@@ -96,7 +96,7 @@ const HealthcareSolutions = () => {
                 <p>
                   {isRTL 
                     ? 'في حياة كونسيرج، نقدم خدمات طبية متكاملة مصممة خصيصًا لاحتياجاتك الفريدة. نحن نتعاون مع أفضل المستشفيات والأطباء في بانكوك لتقديم تجربة طبية سلسة من البداية إلى النهاية.' 
-                    : 'At Hayat Concierge, we provide end-to-end medical services tailored to your unique needs. We collaborate with Bangkok's top hospitals and physicians to deliver a seamless medical experience from start to finish.'}
+                    : 'At Hayat Concierge, we provide end-to-end medical services tailored to your unique needs. We collaborate with Bangkok\'s top hospitals and physicians to deliver a seamless medical experience from start to finish.'}
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
@@ -147,7 +147,7 @@ const HealthcareSolutions = () => {
                     <strong>{isRTL ? 'استشارة أولية:' : 'Initial Consultation:'}</strong> {isRTL ? 'تقييم احتياجاتك الطبية، ومناقشة الخيارات المتاحة، وإعداد خطة مخصصة.' : 'Assessing your medical needs, discussing available options, and preparing a tailored plan.'}
                   </li>
                   <li>
-                    <strong>{isRTL ? 'تنسيق المواعيد:' : 'Appointment Coordination:'}</strong> {isRTL ? 'حجز المواعيد مع أفضل الأطباء والمستشفيات في تايلاند.' : 'Booking appointments with Thailand's best doctors and hospitals.'}
+                    <strong>{isRTL ? 'تنسيق المواعيد:' : 'Appointment Coordination:'}</strong> {isRTL ? 'حجز المواعيد مع أفضل الأطباء والمستشفيات في تايلاند.' : 'Booking appointments with Thailand\'s best doctors and hospitals.'}
                   </li>
                   <li>
                     <strong>{isRTL ? 'خدمات الترجمة:' : 'Translation Services:'}</strong> {isRTL ? 'مترجمين محترفين يتحدثون العربية لضمان التواصل الفعال مع الطاقم الطبي.' : 'Professional Arabic-speaking interpreters to ensure effective communication with medical staff.'}

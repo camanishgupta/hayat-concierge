@@ -1,114 +1,77 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
-import { Phone, Mail, MapPin, Send } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const isRTL = language === 'ar';
 
   return (
-    <section 
-      id="contact" 
-      ref={sectionRef} 
-      className="section-container bg-white"
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-        <div 
-          className={cn(
-            "lg:col-span-2 opacity-0 transform translate-y-8 transition-all duration-700",
-            { "opacity-100 translate-y-0": isVisible }
-          )}
-        >
-          <span className="inline-block py-1 px-3 bg-navy/10 text-navy rounded-full text-sm font-medium mb-6">
-            {t('nav.contactUs')}
-          </span>
-          <h2 className="heading-lg mb-6 hero-text-gradient">
-            {t('enquiry.title')}
+    <section id="contact" className="section-container bg-cream">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className={`lg:pr-16 ${isRTL ? 'order-2 lg:order-2' : 'order-1 lg:order-1'}`}>
+          <h2 className="heading-lg mb-6 text-navy">
+            {t('contactUs.title')}
           </h2>
           <p className="text-muted-foreground mb-8">
-            {t('enquiry.formSubtitle')}
+            {t('contactUs.subtitle')}
           </p>
           
           <div className="space-y-6">
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center mr-4">
-                <Phone size={18} className="text-navy" />
+            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+              <div className="bg-navy/5 p-3 rounded-full">
+                <Phone className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">{t('enquiry.phone')}</p>
-                <a href="tel:+6623456789" className="text-muted-foreground hover:text-navy transition-colors">
-                  +66 2 345 6789
-                </a>
+                <h3 className="font-medium">{t('contactUs.phoneTitle')}</h3>
+                <p className="text-muted-foreground">+66 2 345 6789</p>
+                <p className="text-muted-foreground">{t('contactUs.phoneAvailability')}</p>
               </div>
             </div>
             
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center mr-4">
-                <Mail size={18} className="text-navy" />
+            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+              <div className="bg-navy/5 p-3 rounded-full">
+                <Mail className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">{t('enquiry.email')}</p>
-                <a href="mailto:hayat01ourahmoun@gmail.com" className="text-muted-foreground hover:text-navy transition-colors">
-                  hayat01ourahmoun@gmail.com
-                </a>
+                <h3 className="font-medium">{t('contactUs.emailTitle')}</h3>
+                <p className="text-muted-foreground">contact@hayatconcierge.com</p>
+                <p className="text-muted-foreground">{t('contactUs.emailResponse')}</p>
               </div>
             </div>
             
-            <div className="flex items-start">
-              <div className="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center mr-4">
-                <MapPin size={18} className="text-navy" />
+            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+              <div className="bg-navy/5 p-3 rounded-full">
+                <MapPin className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <p className="font-medium text-navy">{language === 'ar' ? 'العنوان' : 'Address'}</p>
-                <address className="text-muted-foreground not-italic">
-                  {language === 'ar' ? '١٢٣ شارع سوخومفيت' : '123 Sukhumvit Road'}<br />
-                  {language === 'ar' ? 'بانكوك، تايلاند ١٠١١٠' : 'Bangkok, Thailand 10110'}
-                </address>
+                <h3 className="font-medium">{t('contactUs.addressTitle')}</h3>
+                <p className="text-muted-foreground">Sukhumvit Road, Bangkok</p>
+                <p className="text-muted-foreground">Thailand 10110</p>
               </div>
             </div>
           </div>
+          
+          <div className="mt-8">
+            <Link
+              to="/enquiry"
+              className="button-primary"
+            >
+              {t('contactUs.submitInquiry')}
+            </Link>
+          </div>
         </div>
         
-        <div 
-          className={cn(
-            "lg:col-span-3 opacity-0 transform translate-y-8 transition-all duration-700 delay-300",
-            { "opacity-100 translate-y-0": isVisible }
-          )}
-        >
-          <div className="glass-card p-8 text-center">
-            <h3 className="heading-md mb-6 text-navy">{t('enquiry.formTitle')}</h3>
-            <p className="text-muted-foreground mb-8">
-              {t('enquiry.formSubtitle')}
-            </p>
-            
-            <Link to="/enquiry" className="button-primary bg-navy w-full md:w-auto flex items-center justify-center gap-2 mx-auto px-10">
-              {t('enquiry.submitInquiry')}
-              <Send size={16} />
-            </Link>
+        <div className={`${isRTL ? 'order-1 lg:order-1' : 'order-2 lg:order-2'}`}>
+          <div className="relative">
+            <img
+              src="/lovable-uploads/adf64b15-b776-4030-9855-3d0f791afb7a.png"
+              alt="Contact"
+              className="rounded-xl shadow-xl w-full h-auto"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent rounded-xl"></div>
           </div>
         </div>
       </div>

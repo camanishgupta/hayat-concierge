@@ -247,7 +247,7 @@ const Services = () => {
               ? 'اتصل بنا اليوم لمناقشة كيف يمكننا تصميم خدماتنا المميزة وفقًا لاحتياجاتك وتفضيلاتك المحددة.' 
               : 'Contact us today to discuss how we can tailor our premium services to your specific needs and preferences.'}
           </p>
-          <Link to="/contact" className="button-primary inline-block">
+          <Link to="/enquiry" className="button-primary inline-block">
             {isRTL ? 'تواصل معنا' : 'Get in Touch'}
           </Link>
         </div>

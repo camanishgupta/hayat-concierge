@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Leaf, ArrowLeft, Sun, Moon } from 'lucide-react';
+import { Heart, Leaf, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const WellnessJourney = () => {
@@ -176,7 +176,7 @@ const WellnessJourney = () => {
               </div>
               
               <div className="mt-12">
-                <Link to="/contact" className="button-primary">
+                <Link to="/enquiry" className="button-primary">
                   {isRTL ? 'احجز منتجعك الآن' : 'Book Your Retreat Now'}
                 </Link>
               </div>

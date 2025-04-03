@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Settings, ChevronDown } from 'lucide-react';
@@ -144,10 +145,10 @@ const Navbar = () => {
           
           <LanguageSwitcher variant="text" className="mx-2" />
           
-          <a href="tel:+6623456789" className="button-primary flex items-center gap-1 text-sm">
+          <Link to="/enquiry" className="button-primary flex items-center gap-1 text-sm">
             <Phone className="w-4 h-4" />
             <span>{t('nav.contactUs')}</span>
-          </a>
+          </Link>
         </nav>
 
         <div className="md:hidden flex items-center gap-4">
@@ -203,10 +204,10 @@ const Navbar = () => {
                 Admin
               </Link>
             )}
-            <a href="tel:+6623456789" className="button-primary flex items-center justify-center gap-1 mt-2 text-sm">
+            <Link to="/enquiry" className="button-primary flex items-center justify-center gap-1 mt-2 text-sm">
               <Phone className="w-4 h-4" />
               <span>{t('nav.contactUs')}</span>
-            </a>
+            </Link>
           </nav>
         </div>
       )}

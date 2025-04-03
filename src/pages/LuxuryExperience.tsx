@@ -89,96 +89,81 @@ const LuxuryExperience = () => {
             
             <div>
               <h2 className="heading-lg mb-6 text-teal">
-                {isRTL ? 'خدمات الإقامة والسفر الفاخرة' : 'Luxury Accommodation & Travel Services'}
+                {isRTL ? 'الترفيه والإقامة' : 'Leisure & Accommodations'}
               </h2>
               
               <div className="prose max-w-none text-charcoal">
                 <p>
                   {isRTL 
-                    ? 'في حياة كونسيرج، نحول رحلتك إلى تايلاند إلى تجربة استثنائية تتجاوز توقعاتك. نحن نختار بعناية الإقامات الفاخرة ونصمم كل جانب من جوانب رحلتك لتلبية أعلى معايير الراحة والفخامة والخصوصية.' 
-                    : 'At Hayat Concierge, we transform your journey to Thailand into an exceptional experience that exceeds expectations. We carefully select luxury accommodations and design every aspect of your trip to meet the highest standards of comfort, luxury, and privacy.'}
+                    ? 'استمتع بأعلى مستويات الفخامة في تايلاند، مع تجربة سفر مصممة خصيصًا لتناسب تفضيلاتك الفريدة واحتياجاتك ومدة إقامتك. سواء كنت مسافرًا مع عائلتك، أو تستمتع بعطلة رومانسية، أو تنطلق في رحلة خاصة، فإننا نضمن أن تكون رحلتك سلسة ولا تُنسى. سيتم تخصيص رحلتك بناءً على احتياجات مجموعتك، مما يضمن أقصى درجات الراحة والأناقة طوال فترة إقامتك.'
+                    : 'Experience the epitome of luxury in Thailand, with a tailored travel experience designed to suit your unique preferences, needs, and length of stay. Whether you\'re traveling with your family, enjoying a romantic getaway, or embarking on a private retreat, we ensure your journey is seamless and unforgettable. Your trip will be customized based on your group\'s needs, ensuring the utmost comfort and elegance throughout your stay.'}
                 </p>
                 
-                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'خيارات الإقامة الفاخرة:' : 'Luxury Accommodation Options:'}
-                </h3>
+                <p className="mt-4">
+                  {isRTL 
+                    ? 'في بانكوك، انغمس في الثقافة النابضة بالحياة وتجارب الفخامة التي تقدمها المدينة، من وجهات التسوق المرموقة إلى المواقع الثقافية الحصرية. فيما يلي بعض التجارب التي لا بد من رؤيتها والقيام بها لضيوفنا المميزين:'
+                    : 'In Bangkok, immerse yourself in the vibrant culture and luxury experiences the city offers, from prestigious shopping destinations to exclusive cultural sites. Here are a few must-see and must-do experiences for our discerning guests:'}
+                </p>
                 
-                <div className="space-y-6 mb-8">
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <h4 className={`font-semibold text-teal ${isRTL ? 'text-right' : ''}`}>
-                      {isRTL ? 'فنادق خمس نجوم' : 'Five-Star Hotels'}
-                    </h4>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'أجنحة وغرف VIP في أفضل الفنادق في بانكوك، مع خدمة الكونسيرج على مدار الساعة، ومرافق فاخرة، وإطلالات مذهلة على المدينة.' 
-                        : 'VIP suites and rooms in Bangkok\'s finest hotels, with 24-hour concierge service, luxurious amenities, and stunning city views.'}
-                    </p>
-                  </div>
-                  
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <h4 className={`font-semibold text-teal ${isRTL ? 'text-right' : ''}`}>
-                      {isRTL ? 'فيلات خاصة' : 'Private Villas'}
-                    </h4>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'فيلات حصرية مع مسابح خاصة وطاقم كامل، توفر الخصوصية المطلقة والراحة لك ولعائلتك. مثالية للإقامات الطويلة أو العائلات الكبيرة.' 
-                        : 'Exclusive villas with private pools and full staff, offering absolute privacy and comfort for you and your family. Perfect for extended stays or larger families.'}
-                    </p>
-                  </div>
-                  
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <h4 className={`font-semibold text-teal ${isRTL ? 'text-right' : ''}`}>
-                      {isRTL ? 'منتجعات فاخرة' : 'Luxury Resorts'}
-                    </h4>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'منتجعات على مستوى عالمي بمرافق استثنائية، تجمع بين الراحة الفاخرة والطبيعة الخلابة، مما يخلق ملاذًا للاسترخاء والتجديد.' 
-                        : 'World-class resorts with exceptional facilities, combining luxurious comfort and stunning nature, creating a haven for relaxation and renewal.'}
-                    </p>
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'خدماتنا الفاخرة تشمل:' : 'Our Luxury Services Include:'}
-                </h3>
-                
-                <ul className="space-y-4">
-                  <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <Car className={`text-gold flex-shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} mt-1`} size={18} />
-                    <div>
-                      <strong>{isRTL ? 'نقل VIP:' : 'VIP Transportation:'}</strong> {isRTL ? 'سيارات فاخرة مع سائقين محترفين متاحة على مدار الساعة، وخدمة استقبال كبار الشخصيات في المطار.' : 'Luxury vehicles with professional drivers available 24/7, and VIP airport meet-and-greet service.'}
-                    </div>
+                <ul className={`space-y-4 mt-6 ${isRTL ? 'rtl-list' : ''}`}>
+                  <li>
+                    <strong>{isRTL ? 'القصر الكبير ومعبد وات فرا كيو:' : 'The Grand Palace & Wat Phra Kaew:'}</strong> {isRTL ? 'استكشف القصر الملكي الشهير، موطن بوذا الزمرد المقدس في تايلاند، رمز حقيقي للتراث الثقافي.' : 'Explore the iconic Royal Palace, home to Thailand\'s sacred Emerald Buddha, a true symbol of cultural heritage.'}
                   </li>
-                  <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <Utensils className={`text-gold flex-shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} mt-1`} size={18} />
-                    <div>
-                      <strong>{isRTL ? 'تجارب طعام فاخرة:' : 'Fine Dining Experiences:'}</strong> {isRTL ? 'حجوزات في أفضل المطاعم في تايلاند، وترتيب وجبات خاصة مع طهاة خاصين، وخيارات طعام حلال ممتازة.' : 'Reservations at Thailand\'s best restaurants, arrangement of private meals with personal chefs, and excellent halal dining options.'}
-                    </div>
+                  <li>
+                    <strong>{isRTL ? 'وات أرون (معبد الفجر):' : 'Wat Arun (Temple of Dawn):'}</strong> {isRTL ? 'أعجب بالمعبد المذهل على ضفة النهر، الذي يوفر مناظر خلابة، خاصة عند غروب الشمس.' : 'Admire the stunning riverside temple, offering breathtaking views, especially at sunset.'}
                   </li>
-                  <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <ShoppingBag className={`text-gold flex-shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} mt-1`} size={18} />
-                    <div>
-                      <strong>{isRTL ? 'خدمات التسوق الشخصية:' : 'Personal Shopping Services:'}</strong> {isRTL ? 'مرافقون للتسوق الخاص، والوصول إلى المصممين والعلامات التجارية الحصرية، وخدمات الشراء المسبق والتسليم.' : 'Private shopping companions, access to exclusive designers and brands, and pre-purchase and delivery services.'}
-                    </div>
+                  <li>
+                    <strong>{isRTL ? 'رحلة بحرية في نهر تشاو فرايا:' : 'Chao Phraya River Cruise:'}</strong> {isRTL ? 'رحلة خاصة فاخرة بالقارب على طول النهر، توفر مناظر خلابة لأفق بانكوك ومعالمها الشهيرة.' : 'A private, luxury boat ride along the river, offering picturesque views of Bangkok\'s skyline and iconic landmarks.'}
                   </li>
-                  <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <Building2 className={`text-gold flex-shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} mt-1`} size={18} />
-                    <div>
-                      <strong>{isRTL ? 'جولات ثقافية خاصة:' : 'Private Cultural Tours:'}</strong> {isRTL ? 'وصول حصري إلى المواقع الثقافية والتاريخية مع مرشدين خبراء يتحدثون العربية، وتجارب ثقافية خاصة.' : 'Exclusive access to cultural and historical sites with expert Arabic-speaking guides, and private cultural experiences.'}
-                    </div>
+                  <li>
+                    <strong>{isRTL ? 'مركز آيكونسيام التجاري:' : 'ICONSIAM Mall:'}</strong> {isRTL ? 'ملاذ للتسوق الفاخر، يضم بوتيكات راقية وعلامات تجارية عالمية وخيارات مطاعم عالمية المستوى، مثالي لقضاء فترة ما بعد الظهر في الترف.' : 'A luxury shopping haven, featuring high-end boutiques, international designer brands, and world-class dining options, perfect for an afternoon of indulgence.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? 'مزار إيراوان:' : 'Erawan Shrine:'}</strong> {isRTL ? 'زر هذا الموقع الروحي الشهير، المبجل لأجوائه الهادئة وعروض الرقص التايلاندي التقليدية.' : 'Visit this famous spiritual site, revered for its serene atmosphere and traditional Thai dance performances.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? 'سكاي بار في برج ليبوا:' : 'Sky Bar at Lebua State Tower:'}</strong> {isRTL ? 'استمتع بتجربة كوكتيل متميزة مع إطلالات خلابة على المدينة في أحد أعلى البارات الموجودة على السطح في العالم.' : 'Enjoy a premium cocktail experience with stunning views of the city at one of the world\'s highest rooftop bars.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? 'سيام باراجون:' : 'Siam Paragon:'}</strong> {isRTL ? 'تسوق في أحد أكبر مراكز التسوق الفاخرة في آسيا، الذي يقدم علامات تجارية حصرية ومجوهرات راقية وخيارات مطاعم من الدرجة الأولى.' : 'Experience shopping at one of Asia\'s largest luxury malls, offering exclusive brands, high-end jewelry, and top-tier dining options.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? 'مركز بانكوك للفنون والثقافة:' : 'Bangkok Art & Culture Centre (BACC):'}</strong> {isRTL ? 'استكشف معارض الفن المعاصر والفعاليات الثقافية في بيئة أنيقة وحديثة.' : 'Explore contemporary art exhibitions and cultural events in an elegant, modern setting.'}
                   </li>
                 </ul>
                 
-                <p className="mt-8">
+                <p className="mt-6">
                   {isRTL 
-                    ? 'كل تجربة سفر مع حياة كونسيرج مصممة بعناية لتلبية رغباتك واحتياجاتك المحددة. نحن نهتم بكل التفاصيل، من لحظة وصولك إلى مغادرتك، مما يضمن إقامة لا تُنسى تتجاوز توقعاتك.' 
-                    : 'Every travel experience with Hayat Concierge is carefully tailored to meet your specific desires and needs. We take care of every detail, from the moment of your arrival until your departure, ensuring an unforgettable stay that exceeds your expectations.'}
+                    ? 'أقم في أماكن إقامة فاخرة تلبي أعلى المعايير، بما في ذلك الفنادق ذات الخمس نجوم أو الفيلات الخاصة أو المنتجعات الحصرية، وكل منها يوفر راحة استثنائية وخصوصية وخدمة متميزة. ستشمل إقامتك وسائل راحة مصممة خصيصًا لتلبية احتياجات عملائنا من الشرق الأوسط، من المأكولات الحلال إلى الخدمات المناسبة للعائلات.'
+                    : 'Stay in luxury accommodations that cater to the highest standards, including 5-star hotels, private villas, or exclusive resorts, each offering exceptional comfort, privacy, and service. Your stay will include bespoke amenities designed to meet the needs of our Middle Eastern clientele, from halal dining to family-friendly services.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'تمديد اختياري إلى مقاطعات أخرى' : 'Optional Extension to Other Provinces'}
+                </h3>
+                
+                <ul className={`space-y-4 ${isRTL ? 'rtl-list' : ''}`}>
+                  <li>
+                    <strong>{isRTL ? '➡️ بوكيت:' : '➡️ Phuket:'}</strong> {isRTL ? 'استمتع بجولات اليخوت الخاصة، انغمس في التنقل بين الجزر، أو استرخِ في منتجعات فاخرة على شاطئ البحر.' : 'Enjoy private yacht tours, indulge in island hopping, or relax at luxury beachfront resorts.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? '➡️ كوه ساموي:' : '➡️ Koh Samui:'}</strong> {isRTL ? 'استرخِ في منتجعات العافية أو احجز فيلات خاصة مطلة على البحر للحصول على ملاذ هادئ وخاص.' : 'Unwind in wellness retreats or book exclusive beachfront private villas for a serene and private escape.'}
+                  </li>
+                  <li>
+                    <strong>{isRTL ? '➡️ تشيانغ ماي:' : '➡️ Chiang Mai:'}</strong> {isRTL ? 'استكشف الكنوز الثقافية، واستمتع بتجارب في ملاجئ الفيلة، وأقم في منتجعات جبلية خلابة للحصول على ملاذ تايلاندي أصيل.' : 'Explore cultural treasures, enjoy experiences at elephant sanctuaries, and stay at scenic mountain resorts for an authentic Thai retreat.'}
+                  </li>
+                </ul>
+                
+                <p className="mt-6">
+                  {isRTL 
+                    ? 'يتم تخصيص كل التفاصيل لتقديم تجربة استثنائية لك ولعائلتك، من لحظة وصولك حتى مغادرتك.'
+                    : 'Every detail is personalized to offer you and your family an exceptional experience, from the moment you arrive to your departure.'}
                 </p>
               </div>
               
               <div className="mt-12">
                 <Link to="/contact" className="button-primary">
-                  {isRTL ? 'تصميم إقامتك الفاخرة' : 'Design Your Luxury Stay'}
+                  {isRTL ? 'صمم إقامتك الفاخرة' : 'Plan Your Luxury Experience'}
                 </Link>
               </div>
             </div>

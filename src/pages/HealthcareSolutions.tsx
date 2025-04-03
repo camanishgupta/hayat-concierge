@@ -89,14 +89,32 @@ const HealthcareSolutions = () => {
             
             <div>
               <h2 className="heading-lg mb-6 text-teal">
-                {isRTL ? 'خدماتنا الطبية الشاملة' : 'Our Comprehensive Medical Services'}
+                {isRTL ? 'خدمات السياحة الطبية' : 'Medical Tourism Services'}
               </h2>
               
               <div className="prose max-w-none text-charcoal">
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'تنسيق الرعاية الصحية الشاملة' : 'Comprehensive Healthcare Coordination'}
+                </h3>
                 <p>
                   {isRTL 
-                    ? 'في حياة كونسيرج، نقدم خدمات طبية متكاملة مصممة خصيصًا لاحتياجاتك الفريدة. نحن نتعاون مع أفضل المستشفيات والأطباء في بانكوك لتقديم تجربة طبية سلسة من البداية إلى النهاية.' 
-                    : 'At Hayat Concierge, we provide end-to-end medical services tailored to your unique needs. We collaborate with Bangkok\'s top hospitals and physicians to deliver a seamless medical experience from start to finish.'}
+                    ? 'في حياة كونسيرج، نفهم أن الاحتياجات الطبية تختلف على نطاق واسع. بالإضافة إلى خدماتنا المتخصصة في الإجراءات التجميلية، والعناية بالأسنان، وعلاجات العظام والخصوبة، فنحن ملتزمون بالمساعدة في أي متطلبات طبية أخرى قد تكون لديك. دورنا هو أن نكون حلقة الوصل الحيوية بينك وبين أفضل المستشفيات والعيادات في بانكوك، مما يضمن تنسيق كل جانب من جوانب رحلتك الصحية بسلاسة. نحن نعمل بشكل وثيق مع المتخصصين الطبيين للتوافق مع نصائحهم وتوصياتهم، مما يوفر لك دعمًا شخصيًا مصممًا وفقًا لاحتياجاتك الصحية الفريدة.'
+                    : 'At Hayat Concierge, we understand that medical needs vary widely. Beyond our specialized services in Aesthetic Procedures, Dental Care, Orthopedic and Fertility Treatments, we are dedicated to assisting with any other medical requirements you may have. Our role is to serve as the vital link between you and Bangkok\'s top-tier hospitals and clinics, ensuring that every aspect of your healthcare journey is seamlessly coordinated. We work closely with medical professionals to align with their advice and recommendations, providing you with personalized support tailored to your unique health needs.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'رعاية عالمية المستوى بأسعار معقولة' : 'World-Class Care at Affordable Prices'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'تتضمن شبكتنا متخصصين عالميين مدربين تدريباً عالياً ومستشفيات رائدة معروفة بخبراتها وتقنياتها الطبية المتقدمة. يمكنك الحصول على علاج من الدرجة الأولى بأسعار معقولة مقارنة بالدول الأخرى، مما يضمن رعاية استثنائية مصممة حسب احتياجاتك.'
+                    : 'Our network includes world-class, highly trained specialists and leading hospitals renowned for their expertise and advanced medical technologies. You can receive top-tier treatment at affordable prices compared to other countries, ensuring exceptional care tailored to your needs.'}
+                </p>
+                
+                <p className="italic text-sm mt-4">
+                  {isRTL 
+                    ? 'يرجى ملاحظة أن أسعار العلاج المذكورة هي أرقام تقريبية مصدرها Bookimed، وهي منصة موثوقة للسياحة الطبية. سيتم تحديد التكاليف الفعلية من قبل المتخصصين الطبيين الشركاء لدينا بناءً على احتياجاتك وظروفك الفردية.'
+                    : 'Please note that the treatment prices mentioned are approximate figures sourced from Bookimed, a trusted medical tourism platform. Actual costs will be determined by our partnered medical professionals based on your individual needs and circumstances.'}
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">

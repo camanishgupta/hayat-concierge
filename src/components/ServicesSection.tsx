@@ -43,7 +43,7 @@ const ServicesSection = () => {
     <section id="services" className="section-container bg-emerald text-offwhite">
       <div className="text-center mb-16">
         <h2 className="heading-lg mb-4 text-gold">
-          {isRTL ? "خدمات كونسيرج الفاخرة" : "Luxury Concierge Services"}
+          {isRTL ? "خدمات كونسيرج الفاخرة" : "Hayat Concierge Services"}
         </h2>
         <p className="subheading mx-auto text-offwhite/80">
           {isRTL 

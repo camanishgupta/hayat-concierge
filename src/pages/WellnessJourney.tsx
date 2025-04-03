@@ -41,7 +41,7 @@ const WellnessJourney = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <img 
-                src="/lovable-uploads/1bac456a-2bf2-46d3-8823-d4f14c0c02a0.png" 
+                src="/lovable-uploads/1af3b165-80a5-41c1-ba75-89c13ba80646.png" 
                 alt="Wellness Retreats" 
                 className="rounded-xl shadow-xl w-full h-auto mb-8"
               />
@@ -89,93 +89,95 @@ const WellnessJourney = () => {
             
             <div>
               <h2 className="heading-lg mb-6 text-teal">
-                {isRTL ? 'برامج العافية المخصصة' : 'Customized Wellness Programs'}
+                {isRTL ? 'رحلة العافية الخاصة بك' : 'Your Wellness Escape'}
               </h2>
               
               <div className="prose max-w-none text-charcoal">
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'مواقع الاستجمام' : '1. Retreat Locations'}
+                </h3>
                 <p>
                   {isRTL 
-                    ? 'في حياة كونسيرج، نصمم تجارب عافية فاخرة تلبي احتياجاتك وأهدافك المحددة. من منتجعات التخلص من السموم إلى برامج تجديد الشباب، كل تجربة مصممة بعناية لتحقيق التوازن المثالي بين الجسم والعقل والروح.' 
-                    : 'At Hayat Concierge, we design luxury wellness experiences that address your specific needs and goals. From detox retreats to rejuvenation programs, each experience is carefully crafted to achieve the perfect balance of body, mind, and spirit.'}
+                    ? 'استمتع بالهدوء في منتجعات العافية المختارة بعناية في قلب بانكوك. انغمس في برامج مصممة خصيصًا، وعلاجات السبا المجددة، وهدوء فاخر - مثالي للتخلص من السموم، وتخفيف التوتر، أو للهروب الواعي. وسط طاقة عاصمة تايلاند النابضة بالحياة، ستجد توازنك المثالي. واحة الهدوء الخاصة بك في انتظارك.'
+                    : 'Experience serenity at our handpicked wellness retreats in the heart of Bangkok. Indulge in tailored programs, rejuvenating spa therapies, and luxurious tranquility—perfect for detox, stress relief, or a mindful escape. Amidst the energy of Thailand\'s vibrant capital, find your perfect balance. Your oasis of calm awaits.'}
                 </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'أنواع برامجنا:' : 'Our Program Types:'}
+                  {isRTL ? 'برامج العافية' : '2. Wellness Programs'}
                 </h3>
-                
-                <div className="space-y-6 mb-8">
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} mb-2`}>
-                      <Sun className="text-gold flex-shrink-0 mx-2" size={20} />
-                      <h4 className="font-semibold text-teal">
-                        {isRTL ? 'برامج التخلص من السموم والتنظيف' : 'Detox & Cleansing Programs'}
-                      </h4>
-                    </div>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'برامج شاملة لتنقية الجسم والعقل، مع مزيج من التغذية الخاصة، العلاجات التطهيرية، وتقنيات الاسترخاء. مثالية لمن يرغبون في إعادة ضبط نمط حياتهم وتحسين الصحة العامة.' 
-                        : 'Comprehensive programs to purify body and mind, with a mix of specialized nutrition, cleansing therapies, and relaxation techniques. Ideal for those looking to reset their lifestyle and improve overall health.'}
-                    </p>
-                  </div>
-                  
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} mb-2`}>
-                      <Heart className="text-gold flex-shrink-0 mx-2" size={20} />
-                      <h4 className="font-semibold text-teal">
-                        {isRTL ? 'برامج مكافحة الشيخوخة والتجديد' : 'Anti-aging & Rejuvenation Programs'}
-                      </h4>
-                    </div>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'علاجات متطورة لتجديد الشباب تجمع بين العلوم الحديثة والحكمة التقليدية. تتضمن هذه البرامج علاجات متخصصة للوجه والجسم، ومكملات حيوية، وعلاجات تجديد الخلايا.' 
-                        : 'Advanced rejuvenation treatments combining modern science and traditional wisdom. These programs include specialized facial and body treatments, vital supplements, and cellular renewal therapies.'}
-                    </p>
-                  </div>
-                  
-                  <div className={`bg-white/80 p-5 rounded-lg shadow-sm ${isRTL ? 'rtl-card' : ''}`}>
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} mb-2`}>
-                      <Moon className="text-gold flex-shrink-0 mx-2" size={20} />
-                      <h4 className="font-semibold text-teal">
-                        {isRTL ? 'برامج تخفيف التوتر والاسترخاء' : 'Stress Relief & Relaxation Programs'}
-                      </h4>
-                    </div>
-                    <p className={isRTL ? 'text-right' : ''}>
-                      {isRTL 
-                        ? 'تجارب مصممة لاستعادة التوازن والسلام الداخلي. تشمل جلسات تدليك متخصصة، وتمارين تأمل، وعلاجات الطاقة، مما يساعد على تخفيف التوتر وتعزيز النوم العميق.' 
-                        : 'Experiences designed to restore balance and inner peace. Includes specialized massage sessions, meditation practices, and energy treatments, helping reduce stress and promote deep sleep.'}
-                    </p>
-                  </div>
-                </div>
+                <p>
+                  {isRTL 
+                    ? 'تم تصميم برامج العافية لدينا بعناية لمساعدتك على تحقيق أهدافك المحددة، سواء كان ذلك لتطهير جسمك، أو إدارة الوزن، أو تقليل التوتر، أو تجديد بشرتك بعلاجات مكافحة الشيخوخة الفاخرة.'
+                    : 'Our wellness programs are thoughtfully designed to help you achieve your specific goals, whether it\'s detoxing your body, managing weight, reducing stress, or rejuvenating your skin with luxurious anti-aging treatments.'}
+                </p>
                 
                 <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
-                  {isRTL ? 'تجربة حياة كونسيرج للعافية تشمل:' : 'The Hayat Concierge Wellness Experience Includes:'}
+                  {isRTL ? 'العلاجات والخدمات' : '3. Treatment & Services'}
                 </h3>
+                <p>
+                  {isRTL 
+                    ? 'استمتع بمجموعة من العلاجات المميزة، مثل علاجات السبا بالأعشاب التايلاندية، وتدليك الحجر الساخن، وجلسات اللياقة البدنية المخصصة، وممارسات الشفاء الشمولية المصممة حسب احتياجاتك.'
+                    : 'Indulge in a range of signature treatments, such as Thai herbal spa therapies, hot stone massages, personalized fitness sessions, and holistic healing practices tailored to your needs.'}
+                </p>
                 
-                <ul className={`space-y-4 ${isRTL ? 'rtl-list' : ''}`}>
-                  <li>
-                    <strong>{isRTL ? 'استشارة شخصية:' : 'Personal Consultation:'}</strong> {isRTL ? 'تقييم شامل لاحتياجاتك وأهدافك الصحية لإنشاء برنامج مخصص.' : 'Comprehensive assessment of your health needs and goals to create a personalized program.'}
-                  </li>
-                  <li>
-                    <strong>{isRTL ? 'إقامة ممتازة:' : 'Premium Accommodation:'}</strong> {isRTL ? 'اختيار أفضل المنتجعات والمرافق الصحية المناسبة لبرنامجك.' : 'Selection of the finest resorts and wellness facilities suited to your program.'}
-                  </li>
-                  <li>
-                    <strong>{isRTL ? 'خيارات الطعام المخصصة:' : 'Customized Dining Options:'}</strong> {isRTL ? 'قوائم طعام حلال ومغذية مصممة لتكمل برنامج العافية الخاص بك.' : 'Halal and nutritious menus designed to complement your wellness program.'}
-                  </li>
-                  <li>
-                    <strong>{isRTL ? 'مرافق خاصة:' : 'Private Facilities:'}</strong> {isRTL ? 'ضمان الخصوصية واحترام الاحتياجات الثقافية والدينية.' : 'Ensuring privacy and respect for cultural and religious needs.'}
-                  </li>
-                  <li>
-                    <strong>{isRTL ? 'النقل الفاخر:' : 'Luxury Transportation:'}</strong> {isRTL ? 'انتقالات سلسة من وإلى المطار والمنتجع.' : 'Seamless transfers to and from airport and resort.'}
-                  </li>
-                  <li>
-                    <strong>{isRTL ? 'متابعة ما بعد البرنامج:' : 'Post-Program Follow-up:'}</strong> {isRTL ? 'توصيات واستشارات للحفاظ على فوائد البرنامج بعد عودتك إلى الوطن.' : 'Recommendations and consultations to maintain program benefits after your return home.'}
-                  </li>
-                </ul>
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'التخصيص والتصميم الشخصي' : '4. Personalization & Customization'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'كل منتجع مصمم خصيصًا ليناسب أهدافك الصحية. سيتعاون فريقنا ذو الخبرة معك لإنشاء خطة مصممة تتوافق مع أهدافك للصحة والاسترخاء والتجديد.'
+                    : 'Every retreat is customized to fit your wellness objectives. Our experienced team will collaborate with you to create a tailored plan that aligns with your goals for health, relaxation, and rejuvenation.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'المميزات الصديقة للمسلمين' : '5. Muslim-Friendly Features'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'تم تصميم منتجعاتنا الصديقة للمسلمين مع وضع راحتك وخصوصيتك في الاعتبار، حيث تقدم خيارات طعام حلال، وغرف للصلاة، ومساحات خاصة للتأمل والاسترخاء.'
+                    : 'Our Muslim-friendly retreats are designed with your comfort and privacy in mind, featuring halal dining options, prayer rooms, and private spaces for reflection and relaxation.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'الممارسات المستدامة والصديقة للبيئة' : '6. Sustainable and Eco-Friendly Practices'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'تتبع منتجعاتنا ممارسات صديقة للبيئة، وتقدم طعامًا عضويًا، وأماكن إقامة مستدامة، وتجارب تغمرك في جمال الطبيعة مع دعم الرفاهية البيئية.'
+                    : 'Our retreats follow eco-conscious practices, offering organic food, sustainable accommodations, and experiences that immerse you in the beauty of nature while supporting environmental well-being.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'المميزات والمرافق الحصرية' : '7. Exclusive Features & Amenities'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'استمتع بمرافق حصرية مثل الفيلات الخاصة، والطهاة الشخصيين، وجلسات اليوغا الفردية مع مدربين معتمدين لتعزيز تجربة العافية الخاصة بك.'
+                    : 'Enjoy exclusive amenities like private villas, personalized chefs, and one-on-one yoga sessions with certified instructors to enhance your wellness experience.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'شهادات الضيوف وقصص النجاح' : '8. Guest Testimonials & Success Stories'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'اقرأ القصص الملهمة للضيوف الذين قاموا بتحويل صحتهم ووجدوا طاقة متجددة من خلال منتجعاتنا.'
+                    : 'Read the inspiring stories of guests who have transformed their health and found renewed energy through our retreats.'}
+                </p>
+                
+                <h3 className="text-xl font-semibold mt-8 mb-4 text-teal">
+                  {isRTL ? 'كيفية الحجز والخطوات التالية' : '9. How to Book and Next Steps'}
+                </h3>
+                <p>
+                  {isRTL 
+                    ? 'هل أنت مستعد لبدء رحلة العافية الخاصة بك؟ قم بجدولة استشارة مع خبرائنا اليوم ودعنا نساعدك في تصميم المنتجع المثالي.'
+                    : 'Ready to start your wellness journey? Schedule a consultation with our experts today and let us help you design the perfect retreat.'}
+                </p>
               </div>
               
               <div className="mt-12">
                 <Link to="/contact" className="button-primary">
-                  {isRTL ? 'تصميم رحلة العافية الخاصة بك' : 'Design Your Wellness Journey'}
+                  {isRTL ? 'احجز منتجعك الآن' : 'Book Your Retreat Now'}
                 </Link>
               </div>
             </div>

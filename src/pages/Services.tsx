@@ -55,7 +55,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png" 
+                  src="/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png" 
                   alt="Medical Tourism" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />

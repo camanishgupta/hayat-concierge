@@ -16,7 +16,7 @@ const ServicesSection = () => {
         ? "نربطك بالمستشفيات والأخصائيين الرائدين في بانكوك، مما يضمن رحلة طبية سلسة من الاستشارة إلى التعافي."
         : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
       icon: <Stethoscope size={24} />,
-      imageSrc: "/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png",
+      imageSrc: "/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png",
       link: "/healthcare-solutions"
     },
     {

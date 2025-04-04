@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Stethoscope, ArrowLeft } from 'lucide-react';
+import { Stethoscope, ArrowLeft, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Card, CardContent } from "@/components/ui/card";
 
 const HealthcareSolutions = () => {
   const { language } = useLanguage();
@@ -41,21 +42,65 @@ const HealthcareSolutions = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <img 
-                src="/lovable-uploads/813040be-3a64-41ef-85f3-5ceca673ce65.png" 
-                alt="Medical Healthcare" 
+                src="/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png" 
+                alt="Medical Tourism in Thailand" 
                 className="rounded-xl shadow-xl w-full h-auto mb-8"
               />
               
-              <div className="bg-emerald/10 p-6 rounded-lg mb-8">
+              <div className="bg-white p-6 rounded-lg mb-8 shadow-md">
                 <h3 className="text-xl font-semibold text-teal mb-4">
                   {isRTL ? 'نظرة عامة على التكاليف التقريبية للعلاج' : 'Overview of approximate treatment costs'}
                 </h3>
-                <p className="text-sm italic mb-4">
+                <p className="text-sm italic mb-4 text-charcoal">
                   {isRTL 
                     ? 'يرجى ملاحظة أن أسعار العلاج المذكورة هي أرقام تقريبية مصدرها Bookimed، وهي منصة موثوقة للسياحة الطبية. سيتم تحديد التكاليف الفعلية من قبل المهنيين الطبيين الشركاء لدينا بناءً على احتياجاتك وظروفك الفردية.' 
                     : 'Please note that the treatment prices mentioned are approximate figures sourced from Bookimed, a trusted medical tourism platform. Actual costs will be determined by our partnered medical professionals based on your individual needs and circumstances.'}
                 </p>
-                {/* Treatment costs could be added here as needed */}
+                <a 
+                  href="https://us-uk.bookimed.com/article/medical-tourism-in-thailand/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={`text-teal hover:text-gold transition-colors flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  {isRTL ? 'مصدر معلومات التكلفة: Bookimed' : 'Cost information source: Bookimed'}
+                  <ExternalLink className={`${isRTL ? 'ml-2' : 'ml-2'} w-4 h-4`} />
+                </a>
+              </div>
+
+              {/* Medical Service Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <Card className="bg-white text-charcoal shadow-md">
+                  <CardContent className="p-4">
+                    <img src="/lovable-uploads/4d2e5619-ebba-4ca2-9a33-97d95e97c16d.png" alt="Aesthetic Procedures" className="w-full h-48 object-cover rounded-md mb-3" />
+                    <h4 className="font-semibold text-teal">
+                      {isRTL ? 'الإجراءات التجميلية' : 'Aesthetic Procedures'}
+                    </h4>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white text-charcoal shadow-md">
+                  <CardContent className="p-4">
+                    <img src="/lovable-uploads/8248f807-6d1f-4c0d-862a-6e6a599acda9.png" alt="Dental Care" className="w-full h-48 object-cover rounded-md mb-3" />
+                    <h4 className="font-semibold text-teal">
+                      {isRTL ? 'رعاية الأسنان' : 'Dental Care'}
+                    </h4>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white text-charcoal shadow-md">
+                  <CardContent className="p-4">
+                    <img src="/lovable-uploads/728e0993-6177-41af-bafc-905440d60d87.png" alt="Health Check" className="w-full h-48 object-cover rounded-md mb-3" />
+                    <h4 className="font-semibold text-teal">
+                      {isRTL ? 'الفحص الصحي' : 'Health Check'}
+                    </h4>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white text-charcoal shadow-md">
+                  <CardContent className="p-4">
+                    <img src="/lovable-uploads/1f508817-53eb-4f23-a764-34eea803fa93.png" alt="Fertility Treatments" className="w-full h-48 object-cover rounded-md mb-3" />
+                    <h4 className="font-semibold text-teal">
+                      {isRTL ? 'علاجات الخصوبة' : 'Fertility Treatments'}
+                    </h4>
+                  </CardContent>
+                </Card>
               </div>
             </div>
             
@@ -79,6 +124,34 @@ const HealthcareSolutions = () => {
                     ? 'تشمل شبكتنا متخصصين مدربين على أعلى مستوى عالمي ومستشفيات رائدة معروفة بخبرتها وتقنياتها الطبية المتقدمة. يمكنك الحصول على علاج من الدرجة الأولى بأسعار معقولة مقارنة بالدول الأخرى، مما يضمن رعاية استثنائية مصممة حسب احتياجاتك.'
                     : 'Our network includes world-class, highly trained specialists and leading hospitals renowned for their expertise and advanced medical technologies. You can receive top-tier treatment at affordable prices compared to other countries, ensuring exceptional care tailored to your needs.'}
                 </p>
+
+                <Card className="bg-white p-6 rounded-lg shadow-md mt-8">
+                  <CardContent className="p-0">
+                    <h3 className="text-lg font-semibold mb-4 text-teal">
+                      {isRTL ? 'خدماتنا الطبية تشمل:' : 'Our Medical Services Include:'}
+                    </h3>
+                    <ul className="space-y-2 list-disc pl-5 text-charcoal">
+                      <li>
+                        {isRTL ? 'الإجراءات التجميلية' : 'Aesthetic Procedures'}
+                      </li>
+                      <li>
+                        {isRTL ? 'رعاية الأسنان' : 'Dental Care'}
+                      </li>
+                      <li>
+                        {isRTL ? 'علاجات العظام' : 'Orthopedic Treatments'}
+                      </li>
+                      <li>
+                        {isRTL ? 'علاجات الخصوبة' : 'Fertility Treatments'}
+                      </li>
+                      <li>
+                        {isRTL ? 'الفحوصات الصحية الشاملة' : 'Comprehensive Health Check-ups'}
+                      </li>
+                      <li>
+                        {isRTL ? 'العلاج الطبي المتخصص' : 'Specialized Medical Treatment'}
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
               
               <div className="mt-12">

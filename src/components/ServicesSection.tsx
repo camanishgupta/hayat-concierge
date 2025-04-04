@@ -16,7 +16,7 @@ const ServicesSection = () => {
         ? "نربطك بالمستشفيات والأخصائيين الرائدين في بانكوك، مما يضمن رحلة طبية سلسة من الاستشارة إلى التعافي."
         : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
       icon: <Stethoscope size={24} />,
-      imageSrc: "/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png",
+      imageSrc: "/lovable-uploads/d8498f7c-1210-45b9-afd8-d8ff816223a8.png",
       link: "/healthcare-solutions"
     },
     {
@@ -25,7 +25,7 @@ const ServicesSection = () => {
         ? "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
         : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
       icon: <Heart size={24} />,
-      imageSrc: "/lovable-uploads/88d41144-e7e7-4a2f-9175-c01c8eadfdfa.png",
+      imageSrc: "/lovable-uploads/ec9be84a-4419-47a9-8dd4-629792800ca7.png",
       link: "/wellness-journey"
     },
     {
@@ -34,7 +34,7 @@ const ServicesSection = () => {
         ? "استمتع بتايلاند في فخامة لا مثيل لها مع فنادقنا الفاخرة المختارة بعناية والفيلات الخاصة، مع وسائل راحة مخصصة."
         : "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities.",
       icon: <Building2 size={24} />,
-      imageSrc: "/lovable-uploads/8ae617ca-f183-45bb-9b17-6bece82fc15d.png",
+      imageSrc: "/lovable-uploads/d2409855-1669-4389-9789-011feb333ca6.png",
       link: "/luxury-experience"
     }
   ];

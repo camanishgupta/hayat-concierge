@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import HeroCarousel from './HeroCarousel';
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,17 +16,15 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Function to scroll to top when navigating
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A3A2A]/80 via-[#0A3A2A]/50 to-[#0A3A2A]/70 z-10" />
-        <img
-          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt={language === 'ar' ? 'تجربة تايلاند الفاخرة' : 'Luxury Thailand experience'}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* Carousel background */}
+      <HeroCarousel />
 
       <div className="container mx-auto px-6 py-32 relative z-10">
         <div className="max-w-3xl">
@@ -53,11 +52,19 @@ const HeroSection = () => {
             <div 
               className={`mt-8 flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4 transition-all duration-1000 delay-600 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
             >
-              <a href="#contact" className="button-primary border-2 border-transparent bg-gold hover:bg-gold/90 text-[#0A3A2A] hover:text-[#0A3A2A] flex items-center justify-center sm:justify-start gap-2">
+              <a 
+                href="#contact" 
+                className="button-primary border-2 border-transparent bg-gold hover:bg-gold/90 text-[#0A3A2A] hover:text-[#0A3A2A] flex items-center justify-center sm:justify-start gap-2"
+                onClick={scrollToTop}
+              >
                 {t('home.hero.button')}
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="#services" className="button-secondary border-2 border-white text-white hover:bg-white/10 flex items-center justify-center sm:justify-start gap-2">
+              <a 
+                href="#services" 
+                className="button-secondary border-2 border-white text-white hover:bg-white/10 flex items-center justify-center sm:justify-start gap-2"
+                onClick={scrollToTop}
+              >
                 {t('home.hero.explore')}
               </a>
             </div>

@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -204,9 +205,9 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute z-20 h-8 w-8 rounded-full bg-white/50 hover:bg-white/80",
         orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
+          ? "left-4 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -233,9 +234,9 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute z-20 h-8 w-8 rounded-full bg-white/50 hover:bg-white/80",
         orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
+          ? "right-4 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -250,6 +251,32 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+// New component for dot indicators
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { count: number; selectedIndex: number; onClick?: (index: number) => void }
+>(({ className, count, selectedIndex, onClick, ...props }, ref) => {
+  return (
+    <div 
+      ref={ref}
+      className={cn("absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2", className)}
+      {...props}
+    >
+      {Array.from({ length: count }).map((_, i) => (
+        <button
+          key={i}
+          className={cn(
+            "h-2 w-2 rounded-full transition-colors",
+            i === selectedIndex ? "bg-white" : "bg-white/50"
+          )}
+          onClick={() => onClick?.(i)}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -257,4 +284,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots
 }

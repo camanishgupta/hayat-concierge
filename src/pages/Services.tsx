@@ -55,7 +55,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/d6ef3629-928b-48e7-8d95-11057f5472b4.png" 
+                  src="/lovable-uploads/c2a5eee5-a591-4abd-a19b-70f463e74556.png" 
                   alt="Medical Tourism" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -101,7 +101,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/healthcare-solutions" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'استكشاف حلول الرعاية الصحية' : 'Explore Healthcare Solutions'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>
@@ -152,7 +152,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/wellness-journey" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'اكتشف رحلة العافية الخاصة بك' : 'Discover Your Wellness Journey'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>
@@ -160,7 +160,7 @@ const Services = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <img 
-                  src="/lovable-uploads/946c90a6-743d-4a98-8b03-27f458279b56.png" 
+                  src="/lovable-uploads/35fd8c2e-3b5d-4e47-9216-e5e210033d40.png" 
                   alt="Wellness Retreats" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -179,7 +179,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/e4eac86e-51a5-4ecd-9925-2e179664c415.png" 
+                  src="/lovable-uploads/218fbae2-0f54-4b7b-a2a8-6a2cca069629.png" 
                   alt="Luxury Accommodations" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -225,7 +225,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/luxury-experience" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'خطط لتجربتك الفاخرة' : 'Plan Your Luxury Experience'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>

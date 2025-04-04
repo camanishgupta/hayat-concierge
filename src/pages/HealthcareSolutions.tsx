@@ -42,7 +42,7 @@ const HealthcareSolutions = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <img 
-                src="/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png" 
+                src="/lovable-uploads/c2a5eee5-a591-4abd-a19b-70f463e74556.png" 
                 alt="Medical Tourism in Thailand" 
                 className="rounded-xl shadow-xl w-full h-auto mb-8"
               />

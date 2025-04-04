@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const isRTL = language === 'ar';
 
   return (
@@ -13,10 +13,12 @@ const ContactSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className={`lg:pr-16 ${isRTL ? 'order-2 lg:order-2' : 'order-1 lg:order-1'}`}>
           <h2 className="heading-lg mb-6 text-navy">
-            {t('contactUs.title')}
+            {isRTL ? 'تواصل معنا' : 'Contact Us'}
           </h2>
           <p className="text-muted-foreground mb-8">
-            {t('contactUs.subtitle')}
+            {isRTL 
+              ? 'فريقنا متعدد اللغات متاح لمساعدة العملاء من الشرق الأوسط في تخطيط سياحة طبية متميزة وتجارب عافية فاخرة في تايلاند.'
+              : 'Our multilingual team is available to assist Middle Eastern clients in planning premium medical tourism and luxury wellness experiences in Thailand.'}
           </p>
           
           <div className="space-y-6">
@@ -25,9 +27,9 @@ const ContactSection = () => {
                 <Phone className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <h3 className="font-medium">{t('contactUs.phoneTitle')}</h3>
+                <h3 className="font-medium">{isRTL ? 'الهاتف' : 'Phone'}</h3>
                 <p className="text-muted-foreground">+66 2 345 6789</p>
-                <p className="text-muted-foreground">{t('contactUs.phoneAvailability')}</p>
+                <p className="text-muted-foreground">{isRTL ? 'متاح على مدار 24/7' : 'Available 24/7'}</p>
               </div>
             </div>
             
@@ -36,9 +38,9 @@ const ContactSection = () => {
                 <Mail className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <h3 className="font-medium">{t('contactUs.emailTitle')}</h3>
+                <h3 className="font-medium">{isRTL ? 'البريد الإلكتروني' : 'Email'}</h3>
                 <p className="text-muted-foreground">contact@hayatconcierge.com</p>
-                <p className="text-muted-foreground">{t('contactUs.emailResponse')}</p>
+                <p className="text-muted-foreground">{isRTL ? 'الرد خلال 24 ساعة' : 'Response within 24 hours'}</p>
               </div>
             </div>
             
@@ -47,7 +49,7 @@ const ContactSection = () => {
                 <MapPin className="w-5 h-5 text-navy" />
               </div>
               <div>
-                <h3 className="font-medium">{t('contactUs.addressTitle')}</h3>
+                <h3 className="font-medium">{isRTL ? 'العنوان' : 'Address'}</h3>
                 <p className="text-muted-foreground">Sukhumvit Road, Bangkok</p>
                 <p className="text-muted-foreground">Thailand 10110</p>
               </div>
@@ -59,7 +61,7 @@ const ContactSection = () => {
               to="/enquiry"
               className="button-primary"
             >
-              {t('contactUs.submitInquiry')}
+              {isRTL ? 'تقديم استفسار' : 'Submit Inquiry'}
             </Link>
           </div>
         </div>

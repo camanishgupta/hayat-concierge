@@ -17,7 +17,7 @@ const ServicesSection = () => {
         : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
       icon: <Stethoscope size={24} />,
       imageSrc: "/lovable-uploads/d6ef3629-928b-48e7-8d95-11057f5472b4.png",
-      link: "/healthcare-solutions"
+      link: "/enquiry"
     },
     {
       title: isRTL ? "منتجعات العافية والتجديد" : "Wellness & Rejuvenation Retreats",
@@ -25,8 +25,8 @@ const ServicesSection = () => {
         ? "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
         : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
       icon: <Heart size={24} />,
-      imageSrc: "/lovable-uploads/5a2120b0-f231-435f-ab36-4cb3d2a9ab2a.png", 
-      link: "/wellness-journey"
+      imageSrc: "/lovable-uploads/946c90a6-743d-4a98-8b03-27f458279b56.png", 
+      link: "/enquiry"
     },
     {
       title: isRTL ? "الإقامات الحصرية والسفر المصمم" : "Exclusive Stays & Bespoke Travel",
@@ -35,7 +35,7 @@ const ServicesSection = () => {
         : "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities.",
       icon: <Building2 size={24} />,
       imageSrc: "/lovable-uploads/e4eac86e-51a5-4ecd-9925-2e179664c415.png",
-      link: "/luxury-experience"
+      link: "/enquiry"
     }
   ];
 

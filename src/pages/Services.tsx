@@ -101,7 +101,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/healthcare-solutions" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'استكشاف حلول الرعاية الصحية' : 'Explore Healthcare Solutions'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>
@@ -152,7 +152,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/wellness-journey" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'اكتشف رحلة العافية الخاصة بك' : 'Discover Your Wellness Journey'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>
@@ -160,7 +160,7 @@ const Services = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <img 
-                  src="/lovable-uploads/5a2120b0-f231-435f-ab36-4cb3d2a9ab2a.png" 
+                  src="/lovable-uploads/946c90a6-743d-4a98-8b03-27f458279b56.png" 
                   alt="Wellness Retreats" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -225,7 +225,7 @@ const Services = () => {
                   </li>
                 </ul>
                 <div className="mt-8">
-                  <Link to="/luxury-experience" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Link to="/enquiry" className={`button-secondary inline-flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                     {isRTL ? 'خطط لتجربتك الفاخرة' : 'Plan Your Luxury Experience'}
                     <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} w-4 h-4`} />
                   </Link>

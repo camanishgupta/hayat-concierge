@@ -55,7 +55,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/c8cec218-0d7f-4e15-b077-77205a5792b4.png" 
+                  src="/lovable-uploads/d8498f7c-1210-45b9-afd8-d8ff816223a8.png" 
                   alt="Medical Tourism" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -69,7 +69,7 @@ const Services = () => {
                 <ul className="space-y-4">
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'متطلبات العلاج المحددة الخاصة بك (طب الأسنان، الخصوبة، التجميل، العظام، وما بعدها).' 
                         : 'Your specific treatment requirements (dental, fertility, aesthetics, orthopedics, and beyond).'}
@@ -77,7 +77,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'مدة الإقامة، الميزانية، ومستوى التخصيص المطلوب.' 
                         : 'Length of stay, budget, and level of personalization needed.'}
@@ -85,7 +85,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'الإقامة، النقل، والدعم لأفراد العائلة المرافقين.' 
                         : 'Accommodation, transportation, and support for accompanying family members.'}
@@ -93,7 +93,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'رعاية ما بعد العلاج والمتابعة الطبية على المدى الطويل.' 
                         : 'Post-treatment care and long-term medical follow-up.'}
@@ -128,7 +128,7 @@ const Services = () => {
                 <ul className="space-y-4">
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'برامج التخلص من السموم، تخفيف التوتر، إدارة الوزن، وعلاجات مكافحة الشيخوخة.' 
                         : 'Detox, stress relief, weight management, and anti-aging treatments.'}
@@ -136,7 +136,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'تجارب العافية المناسبة للمسلمين مع تناول الطعام الحلال والخصوصية.' 
                         : 'Muslim-friendly wellness experiences with halal dining and privacy.'}
@@ -144,7 +144,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'تخطيط منتجع مخصص بناءً على أهدافك وتفضيلاتك.' 
                         : 'Personalized retreat planning based on your goals and preferences.'}
@@ -160,7 +160,7 @@ const Services = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <img 
-                  src="/lovable-uploads/1af3b165-80a5-41c1-ba75-89c13ba80646.png" 
+                  src="/lovable-uploads/ec9be84a-4419-47a9-8dd4-629792800ca7.png" 
                   alt="Wellness Retreats" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -179,7 +179,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/8ae617ca-f183-45bb-9b17-6bece82fc15d.png" 
+                  src="/lovable-uploads/d2409855-1669-4389-9789-011feb333ca6.png" 
                   alt="Luxury Accommodations" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -193,7 +193,7 @@ const Services = () => {
                 <ul className="space-y-4">
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'أماكن إقامة فاخرة مصممة حسب تفضيلاتك.' 
                         : 'Luxury accommodations tailored to your preferences.'}
@@ -201,7 +201,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'خطط سفر مخصصة في بانكوك، مع خيار التمديد إلى المقاطعات المجاورة بناءً على تفضيلاتك واهتماماتك.' 
                         : 'Custom itineraries in Bangkok, with the option to extend to nearby provinces based on your preferences and interests.'}
@@ -209,7 +209,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'جولات خاصة بمرشدين، تجارب ثقافية، وتسوق راقي.' 
                         : 'Private guided tours, cultural experiences, and high-end shopping.'}
@@ -217,7 +217,7 @@ const Services = () => {
                   </li>
                   <li className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <span className={`text-gold ${isRTL ? 'ml-3' : 'mr-3'} text-xl`}>✔️</span>
-                    <p>
+                    <p className="text-charcoal">
                       {isRTL 
                         ? 'نقل VIP، تناول الطعام الفاخر، ومساعدين شخصيين.' 
                         : 'VIP transportation, fine dining, and personal assistants.'}

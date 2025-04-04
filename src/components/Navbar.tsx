@@ -65,6 +65,11 @@ const Navbar = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  // Function to scroll to top when navigating
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <header
       className={cn(
@@ -75,12 +80,16 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-6 flex justify-between items-center h-20">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2" onClick={scrollToTop}>
           <img src="/logo.svg" alt="Hayat Concierge" className="h-12" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/") })}>
+          <Link 
+            to="/" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/") })}
+            onClick={scrollToTop}
+          >
             {t('nav.home')}
           </Link>
           
@@ -100,6 +109,7 @@ const Navbar = () => {
                             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             { "bg-accent": isActive("/about-us") }
                           )}
+                          onClick={scrollToTop}
                         >
                           <div className="text-sm font-medium text-teal">{t('nav.aboutHayat')}</div>
                         </Link>
@@ -113,6 +123,7 @@ const Navbar = () => {
                             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             { "bg-accent": isActive("/founder") }
                           )}
+                          onClick={scrollToTop}
                         >
                           <div className="text-sm font-medium text-teal">{t('nav.aboutFounder')}</div>
                         </Link>
@@ -124,20 +135,40 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
           
-          <Link to="/services" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}>
+          <Link 
+            to="/services" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}
+            onClick={scrollToTop}
+          >
             {t('nav.services')}
           </Link>
-          <Link to="/blog" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/blog") })}>
+          <Link 
+            to="/blog" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/blog") })}
+            onClick={scrollToTop}
+          >
             {t('nav.itineraries')}
           </Link>
-          <Link to="/facilities" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}>
+          <Link 
+            to="/facilities" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}
+            onClick={scrollToTop}
+          >
             {t('nav.partners')}
           </Link>
-          <Link to="/enquiry" className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/enquiry") })}>
+          <Link 
+            to="/enquiry" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/enquiry") })}
+            onClick={scrollToTop}
+          >
             {t('nav.enquiry')}
           </Link>
           {showAdmin && (
-            <Link to="/admin" className={cn("nav-link flex items-center text-teal", { "after:scale-x-100 text-gold": isActive("/admin") })}>
+            <Link 
+              to="/admin" 
+              className={cn("nav-link flex items-center text-teal", { "after:scale-x-100 text-gold": isActive("/admin") })}
+              onClick={scrollToTop}
+            >
               <Settings className="w-4 h-4 mr-1" />
               Admin
             </Link>
@@ -145,7 +176,7 @@ const Navbar = () => {
           
           <LanguageSwitcher variant="text" className="mx-2" />
           
-          <Link to="/enquiry" className="button-primary flex items-center gap-1 text-sm">
+          <Link to="/enquiry" className="button-primary flex items-center gap-1 text-sm" onClick={scrollToTop}>
             <Phone className="w-4 h-4" />
             <span>{t('nav.contactUs')}</span>
           </Link>
@@ -167,7 +198,11 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden px-6 py-4 bg-white border-t border-gold/10 animate-fade-in">
           <nav className="flex flex-col space-y-4">
-            <Link to="/" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/") })}>
+            <Link 
+              to="/" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/") })}
+              onClick={scrollToTop}
+            >
               {t('nav.home')}
             </Link>
             
@@ -177,34 +212,66 @@ const Navbar = () => {
                 <ChevronDown className="w-4 h-4" />
               </div>
               <div className="pl-4 flex flex-col space-y-2">
-                <Link to="/about-us" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about-us") })}>
+                <Link 
+                  to="/about-us" 
+                  className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about-us") })}
+                  onClick={scrollToTop}
+                >
                   {t('nav.aboutHayat')}
                 </Link>
-                <Link to="/founder" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/founder") })}>
+                <Link 
+                  to="/founder" 
+                  className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/founder") })}
+                  onClick={scrollToTop}
+                >
                   {t('nav.aboutFounder')}
                 </Link>
               </div>
             </div>
             
-            <Link to="/services" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}>
+            <Link 
+              to="/services" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}
+              onClick={scrollToTop}
+            >
               {t('nav.services')}
             </Link>
-            <Link to="/blog" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/blog") })}>
+            <Link 
+              to="/blog" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/blog") })}
+              onClick={scrollToTop}
+            >
               {t('nav.itineraries')}
             </Link>
-            <Link to="/facilities" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}>
+            <Link 
+              to="/facilities" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}
+              onClick={scrollToTop}
+            >
               {t('nav.partners')}
             </Link>
-            <Link to="/enquiry" className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/enquiry") })}>
+            <Link 
+              to="/enquiry" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/enquiry") })}
+              onClick={scrollToTop}
+            >
               {t('nav.enquiry')}
             </Link>
             {showAdmin && (
-              <Link to="/admin" className={cn("py-2 font-medium text-teal flex items-center", { "text-gold": isActive("/admin") })}>
+              <Link 
+                to="/admin" 
+                className={cn("py-2 font-medium text-teal flex items-center", { "text-gold": isActive("/admin") })}
+                onClick={scrollToTop}
+              >
                 <Settings className="w-4 h-4 mr-1" />
                 Admin
               </Link>
             )}
-            <Link to="/enquiry" className="button-primary flex items-center justify-center gap-1 mt-2 text-sm">
+            <Link 
+              to="/enquiry" 
+              className="button-primary flex items-center justify-center gap-1 mt-2 text-sm"
+              onClick={scrollToTop}
+            >
               <Phone className="w-4 h-4" />
               <span>{t('nav.contactUs')}</span>
             </Link>

@@ -39,6 +39,11 @@ const ServicesSection = () => {
     }
   ];
 
+  // Function to scroll to top when navigating
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <section id="services" className="section-container bg-emerald text-offwhite">
       <div className="text-center mb-16">
@@ -54,7 +59,12 @@ const ServicesSection = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <Link to={service.link} key={index} className="block hover:no-underline">
+          <Link 
+            to={service.link} 
+            key={index} 
+            className="block hover:no-underline"
+            onClick={scrollToTop}
+          >
             <ServiceCard
               title={service.title}
               description={service.description}

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Building2, Stethoscope, ArrowRight } from 'lucide-react';
+import { Heart, Building2, Stethoscope, ArrowRight, CheckCircle, PhoneCall } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -55,7 +55,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/d8498f7c-1210-45b9-afd8-d8ff816223a8.png" 
+                  src="/lovable-uploads/d6ef3629-928b-48e7-8d95-11057f5472b4.png" 
                   alt="Medical Tourism" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -160,7 +160,7 @@ const Services = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <img 
-                  src="/lovable-uploads/ec9be84a-4419-47a9-8dd4-629792800ca7.png" 
+                  src="/lovable-uploads/5a2120b0-f231-435f-ab36-4cb3d2a9ab2a.png" 
                   alt="Wellness Retreats" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -179,7 +179,7 @@ const Services = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/lovable-uploads/d2409855-1669-4389-9789-011feb333ca6.png" 
+                  src="/lovable-uploads/e4eac86e-51a5-4ecd-9925-2e179664c415.png" 
                   alt="Luxury Accommodations" 
                   className="rounded-xl shadow-xl w-full h-auto"
                 />
@@ -231,6 +231,89 @@ const Services = () => {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="heading-lg text-center mb-10 text-teal">
+              {isRTL ? 'لماذا تختار حياة كونسيرج؟' : 'Why Choose Hayat Concierge?'}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className={`${isRTL ? 'ml-4' : 'mr-4'} text-gold`}>
+                  <CheckCircle size={24} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-charcoal">
+                    {isRTL ? 'خدمة شخصية' : 'Personalized service'}
+                  </h3>
+                  <p className="text-charcoal/80">
+                    {isRTL ? 'نعدل كل التفاصيل حسب احتياجاتك الخاصة.' : 'We adapt every detail to your specific needs.'}
+                  </p>
+                </div>
+              </div>
+              
+              <div className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className={`${isRTL ? 'ml-4' : 'mr-4'} text-gold`}>
+                  <CheckCircle size={24} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-charcoal">
+                    {isRTL ? 'التنسيق السلس' : 'Seamless coordination'}
+                  </h3>
+                  <p className="text-charcoal/80">
+                    {isRTL ? 'من الوصول إلى المغادرة، نحن نتولى كل شيء.' : 'From arrival to departure, we handle everything.'}
+                  </p>
+                </div>
+              </div>
+              
+              <div className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className={`${isRTL ? 'ml-4' : 'mr-4'} text-gold`}>
+                  <CheckCircle size={24} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-charcoal">
+                    {isRTL ? 'الخصوصية والراحة' : 'Privacy & comfort'}
+                  </h3>
+                  <p className="text-charcoal/80">
+                    {isRTL ? 'خدمات راقية تراعي التفضيلات الثقافية.' : 'High-end services catering to cultural preferences.'}
+                  </p>
+                </div>
+              </div>
+              
+              <div className={`flex ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className={`${isRTL ? 'ml-4' : 'mr-4'} text-gold`}>
+                  <CheckCircle size={24} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-charcoal">
+                    {isRTL ? 'شراكات خبيرة' : 'Expert partnerships'}
+                  </h3>
+                  <p className="text-charcoal/80">
+                    {isRTL ? 'تعاون مع أفضل المستشفيات ومراكز العافية والفنادق الفاخرة.' : 'Collaborations with top hospitals, wellness centers, and luxury hotels.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 p-6 bg-emerald/10 rounded-xl text-center">
+              <div className="flex justify-center mb-4 text-gold">
+                <PhoneCall size={32} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-teal">
+                {isRTL ? 'دعنا نصمم تجربتك معًا' : 'Let\'s Design Your Experience Together'}
+              </h3>
+              <p className="text-charcoal mb-6">
+                {isRTL ? 'اتصل بنا للحصول على استشارة فردية لإنشاء رحلتك المثالية.' : 'Contact us for a one-on-one consultation to create your perfect journey.'}
+              </p>
+              <Link to="/enquiry" className="button-primary inline-block">
+                {isRTL ? 'تواصل معنا' : 'Contact Us'}
+              </Link>
             </div>
           </div>
         </div>

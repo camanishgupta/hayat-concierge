@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
         <p className="subheading mx-auto text-white/70">
           {isRTL 
             ? 'اكتشف كيف قمنا بتحويل تجارب عملائنا في تايلاند من خلال خدمات الكونسيرج الممتازة لدينا.'
-            : 'Discover how we've transformed our clients' experiences in Thailand with our premium concierge services.'}
+            : 'Discover how we\'ve transformed our clients\' experiences in Thailand with our premium concierge services.'}
         </p>
       </div>
       

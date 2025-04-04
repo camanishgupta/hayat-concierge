@@ -25,7 +25,7 @@ const ServicesSection = () => {
         ? "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
         : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
       icon: <Heart size={24} />,
-      imageSrc: "/lovable-uploads/1af3b165-80a5-41c1-ba75-89c13ba80646.png",
+      imageSrc: "/lovable-uploads/88d41144-e7e7-4a2f-9175-c01c8eadfdfa.png",
       link: "/wellness-journey"
     },
     {

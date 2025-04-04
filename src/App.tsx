@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -30,7 +29,6 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Add CSS to handle RTL layout adjustments
     const style = document.createElement('style');
     style.textContent = `
       .rtl {
@@ -79,14 +77,12 @@ const App = () => {
         margin-right: 0.25rem;
       }
       
-      /* Fix footer positioning */
       footer {
         position: relative;
         width: 100%;
         clear: both;
       }
       
-      /* Ensure content takes full width and footer stays at bottom */
       .flex.flex-col.min-h-screen {
         min-height: 100vh;
         display: flex;
@@ -97,7 +93,6 @@ const App = () => {
         flex: 1 0 auto;
       }
       
-      /* Fix Enquiry page text color */
       .glass-card label,
       .glass-card input,
       .glass-card textarea,
@@ -111,7 +106,6 @@ const App = () => {
         color: #666 !important;
       }
       
-      /* Ensure form elements are visible */
       input[type="text"],
       input[type="email"],
       input[type="tel"],
@@ -124,7 +118,6 @@ const App = () => {
         color: black !important;
       }
       
-      /* Make submit button visible */
       button[type="submit"] {
         background-color: #0D503C !important;
         color: white !important;
@@ -165,8 +158,8 @@ const App = () => {
                     <Route path="/wellness-journey" element={<WellnessJourney />} />
                     <Route path="/luxury-experience" element={<LuxuryExperience />} />
                     <Route path="/enquiry" element={<Enquiry />} />
-                    {/* Redirect contact to enquiry */}
                     <Route path="/contact" element={<Navigate to="/enquiry" replace />} />
+                    <Route path="/contact-us" element={<Navigate to="/enquiry" replace />} />
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/terms-conditions" element={<TermsConditions />} />

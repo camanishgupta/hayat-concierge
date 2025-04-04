@@ -10,21 +10,21 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="section-container bg-cream">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className={`lg:pr-16 ${isRTL ? 'order-2 lg:order-2' : 'order-1 lg:order-1'}`}>
-          <h2 className="heading-lg mb-6 text-navy">
+      <div className="max-w-3xl mx-auto">
+        <div>
+          <h2 className="heading-lg mb-6 text-navy text-center">
             {isRTL ? 'تواصل معنا' : 'Contact Us'}
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-8 text-center">
             {isRTL 
               ? 'فريقنا متعدد اللغات متاح لمساعدة العملاء من الشرق الأوسط في تخطيط سياحة طبية متميزة وتجارب عافية فاخرة في تايلاند.'
               : 'Our multilingual team is available to assist Middle Eastern clients in planning premium medical tourism and luxury wellness experiences in Thailand.'}
           </p>
           
-          <div className="space-y-6">
-            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-              <div className="bg-navy/5 p-3 rounded-full">
-                <Phone className="w-5 h-5 text-navy" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
+            <div className={`flex flex-col items-center text-center gap-4`}>
+              <div className="bg-navy/5 p-4 rounded-full">
+                <Phone className="w-6 h-6 text-navy" />
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'الهاتف' : 'Phone'}</h3>
@@ -33,9 +33,9 @@ const ContactSection = () => {
               </div>
             </div>
             
-            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-              <div className="bg-navy/5 p-3 rounded-full">
-                <Mail className="w-5 h-5 text-navy" />
+            <div className={`flex flex-col items-center text-center gap-4`}>
+              <div className="bg-navy/5 p-4 rounded-full">
+                <Mail className="w-6 h-6 text-navy" />
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'البريد الإلكتروني' : 'Email'}</h3>
@@ -44,9 +44,9 @@ const ContactSection = () => {
               </div>
             </div>
             
-            <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-              <div className="bg-navy/5 p-3 rounded-full">
-                <MapPin className="w-5 h-5 text-navy" />
+            <div className={`flex flex-col items-center text-center gap-4`}>
+              <div className="bg-navy/5 p-4 rounded-full">
+                <MapPin className="w-6 h-6 text-navy" />
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'العنوان' : 'Address'}</h3>
@@ -56,24 +56,13 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <div className="mt-8">
+          <div className="flex justify-center mt-8">
             <Link
               to="/enquiry"
               className="button-primary"
             >
               {isRTL ? 'تقديم استفسار' : 'Submit Inquiry'}
             </Link>
-          </div>
-        </div>
-        
-        <div className={`${isRTL ? 'order-1 lg:order-1' : 'order-2 lg:order-2'}`}>
-          <div className="relative">
-            <img
-              src="/lovable-uploads/adf64b15-b776-4030-9855-3d0f791afb7a.png"
-              alt="Contact"
-              className="rounded-xl shadow-xl w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent rounded-xl"></div>
           </div>
         </div>
       </div>

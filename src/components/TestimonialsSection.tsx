@@ -2,10 +2,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import TestimonialCard from './TestimonialCard';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const TestimonialsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const isRTL = language === 'ar';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,11 +38,15 @@ const TestimonialsSection = () => {
     >
       <div className="text-center mb-16">
         <span className="inline-block py-1 px-3 bg-gold/20 text-gold rounded-full text-sm font-medium mb-6">
-          Client Experiences
+          {isRTL ? 'تجارب العملاء' : 'Client Experiences'}
         </span>
-        <h2 className="heading-lg mb-4 text-gold">What Our Clients Say</h2>
+        <h2 className="heading-lg mb-4 text-gold">
+          {isRTL ? 'ما يقوله عملاؤنا' : 'What Our Clients Say'}
+        </h2>
         <p className="subheading mx-auto text-white/70">
-          Discover how we've transformed our clients' experiences in Thailand with our premium concierge services.
+          {isRTL 
+            ? 'اكتشف كيف قمنا بتحويل تجارب عملائنا في تايلاند من خلال خدمات الكونسيرج الممتازة لدينا.'
+            : 'Discover how we've transformed our clients' experiences in Thailand with our premium concierge services.'}
         </p>
       </div>
       

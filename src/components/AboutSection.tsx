@@ -35,20 +35,20 @@ const AboutSection = () => {
       ref={sectionRef} 
       className="section-container bg-white"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-3xl mx-auto">
         <div 
           className={cn(
-            "opacity-0 transform translate-x-8 transition-all duration-1000",
-            { "opacity-100 translate-x-0": isVisible }
+            "opacity-0 transform translate-y-8 transition-all duration-1000",
+            { "opacity-100 translate-y-0": isVisible }
           )}
         >
           <span className="inline-block py-1 px-3 bg-sand text-navy rounded-full text-sm font-medium mb-6">
             {t('home.about.subtitle')}
           </span>
-          <h2 className="heading-lg mb-6 hero-text-gradient">
+          <h2 className="heading-lg mb-6 hero-text-gradient text-center">
             {t('home.about.title')}
           </h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-6 text-center">
             {t('home.about.description')}
           </p>
           
@@ -68,37 +68,11 @@ const AboutSection = () => {
             ))}
           </div>
           
-          <a href="#contact" className="button-primary inline-flex items-center gap-2">
-            {t('home.about.cta')}
-            <ArrowRight size={16} />
-          </a>
-        </div>
-        
-        <div 
-          className={cn(
-            "relative opacity-0 transform translate-x-8 transition-all duration-1000 delay-300",
-            { "opacity-100 translate-x-0": isVisible }
-          )}
-        >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-              alt="Luxury experience in Thailand" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute -bottom-8 -left-8 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-            <img 
-              src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1036&q=80" 
-              alt="Thai Spa experience" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute top-24 -right-10 w-32 h-32 bg-gold/10 rounded-full backdrop-blur-md flex items-center justify-center p-4 text-center shadow-lg border border-gold/20">
-            <p className="font-serif text-navy">
-              <span className="block text-2xl font-bold">10+</span>
-              <span className="text-xs">{t('home.about.feature3')}</span>
-            </p>
+          <div className="flex justify-center mt-12">
+            <a href="#contact" className="button-primary inline-flex items-center gap-2">
+              {t('home.about.cta')}
+              <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </div>

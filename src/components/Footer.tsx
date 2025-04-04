@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
@@ -19,17 +19,6 @@ const Footer = () => {
                 ? 'جسرك الحصري للسياحة الطبية الفاخرة والتجارب الصحية في تايلاند، مصممة خصيصًا للعملاء من الشرق الأوسط الباحثين عن التميز.'
                 : 'Your exclusive bridge to Thailand\'s luxury medical tourism and wellness experiences, specially tailored for Middle Eastern clients seeking excellence.'}
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a href="https://instagram.com" aria-label="Instagram" className="text-offwhite/70 hover:text-gold transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://facebook.com" aria-label="Facebook" className="text-offwhite/70 hover:text-gold transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://twitter.com" aria-label="Twitter" className="text-offwhite/70 hover:text-gold transition-colors">
-                <Twitter size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}

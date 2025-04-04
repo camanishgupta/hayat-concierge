@@ -2,7 +2,6 @@
 import React from 'react';
 import { Heart, Building2, Stethoscope } from 'lucide-react';
 import ServiceCard from './ServiceCard';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
@@ -39,11 +38,6 @@ const ServicesSection = () => {
     }
   ];
 
-  // Function to scroll to top when navigating
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
     <section id="services" className="section-container bg-emerald text-offwhite">
       <div className="text-center mb-16">
@@ -59,20 +53,15 @@ const ServicesSection = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <Link 
-            to={service.link} 
-            key={index} 
-            className="block hover:no-underline"
-            onClick={scrollToTop}
-          >
-            <ServiceCard
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              imageSrc={service.imageSrc}
-              delay={index * 100}
-            />
-          </Link>
+          <ServiceCard
+            key={index}
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+            imageSrc={service.imageSrc}
+            delay={index * 100}
+            link={service.link}
+          />
         ))}
       </div>
     </section>

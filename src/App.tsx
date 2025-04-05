@@ -22,7 +22,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContentProvider } from "./contexts/ContentContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const queryClient = new QueryClient();
 

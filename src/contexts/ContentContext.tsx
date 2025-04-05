@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { CMSContent, ContentItem, ContentImage, Partner, PageType } from "@/types/cms";
+import { CMSContent, ContentItem, ContentImage, Partner, PageType, ContentSection } from "@/types/cms";
 import { defaultContent } from "@/lib/defaultContent";
 import { toast } from "@/components/ui/use-toast";
 

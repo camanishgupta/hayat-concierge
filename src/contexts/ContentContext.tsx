@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useEffect } from "react";
-import { CMSContent, ContentItem, ContentImage, Partner, PageType } from "@/types/cms";
+import { CMSContent, ContentItem, ContentImage, Partner, PageType, ContentSection } from "@/types/cms";
 import { useContentState } from "@/hooks/useContentState";
 import { contentHelpers } from "@/utils/contentHelpers";
 
@@ -17,7 +17,7 @@ interface ContentContextType {
   addPartner: (partner: Partner) => void;
   removePartner: (index: number) => void;
   getContentByPage: (page: PageType) => {
-    sections: ContentItem[][];
+    sections: ContentSection[];
     images: ContentImage[];
   };
   exportContent: () => void;

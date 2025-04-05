@@ -59,7 +59,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="bg-offwhite min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[#0A3A2A]/10 geometric-pattern-bg"></div>
@@ -151,8 +151,8 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Luxury Thai Experience" 
+                  src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1168&q=80" 
+                  alt="Middle Eastern Family" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -174,8 +174,8 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Thai medical facilities" 
+                  src="https://images.unsplash.com/photo-1500021804447-2ca2eaaaabeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Bridge connecting two places" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -301,7 +301,7 @@ const AboutUs = () => {
               <h2 className="heading-lg mb-6">
                 The Heart of Luxury & Medical Excellence
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-black mb-6">
                 Bangkok is Thailand's epicenter of luxury, world-class healthcare, and seamless international connectivity, offering a unique blend of sophistication and hospitality.
               </p>
               
@@ -310,19 +310,19 @@ const AboutUs = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p>Home to internationally accredited hospitals and medical facilities</p>
+                    <p className="text-black">Home to internationally accredited hospitals and medical facilities</p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p>Luxury accommodations with world-class amenities</p>
+                    <p className="text-black">Luxury accommodations with world-class amenities</p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p>Rich cultural experiences with Middle Eastern sensibilities</p>
+                    <p className="text-black">Rich cultural experiences with Middle Eastern sensibilities</p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p>Central location with easy access to wellness retreats</p>
+                    <p className="text-black">Central location with easy access to wellness retreats</p>
                   </li>
                 </ul>
               </div>
@@ -336,15 +336,15 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1508009603885-50cf7c8dd0d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80" 
-                  alt="Bangkok skyline" 
+                  src="https://images.unsplash.com/photo-1582560475038-6c0b5aca0978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1036&q=80" 
+                  alt="Bangkok luxury hotel" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -right-8 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1582560475038-6c0b5aca0978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1036&q=80" 
-                  alt="Bangkok luxury hotel" 
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+                  alt="Bangkok skyline" 
                   className="w-full h-full object-cover"
                 />
               </div>

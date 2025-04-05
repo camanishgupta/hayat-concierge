@@ -1,15 +1,46 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Heart, Leaf, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const WellnessJourney = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const { language } = useLanguage();
   const isRTL = language === 'ar';
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const wellnessExperiences = [
+    {
+      title: isRTL ? 'منتجعات العافية الفاخرة' : 'Luxury Wellness Retreats',
+      description: isRTL 
+        ? 'استمتع بإقامة في أرقى منتجعات العافية في تايلاند، مع برامج مخصصة تجمع بين العلاجات التقليدية والحديثة.'
+        : 'Experience stays at Thailand\'s finest wellness retreats, with customized programs combining traditional and modern treatments.',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    },
+    {
+      title: isRTL ? 'برامج الديتوكس الحلال' : 'Halal-Friendly Detox Programs',
+      description: isRTL 
+        ? 'برامج تنقية الجسم المصممة خصيصًا وفق المعايير الحلال، تتضمن نظامًا غذائيًا نباتيًا وعلاجات طبيعية.'
+        : 'Custom-designed detox programs adhering to halal standards, featuring plant-based nutrition and natural therapies.',
+      image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    },
+    {
+      title: isRTL ? 'علاجات السبا الفاخرة' : 'Luxury Spa Treatments',
+      description: isRTL 
+        ? 'جلسات علاجية فاخرة مستوحاة من تقاليد الشفاء التايلاندية القديمة، مع مراعاة الخصوصية والتقاليد الإسلامية.'
+        : 'Luxurious therapeutic sessions inspired by ancient Thai healing traditions, with complete privacy and respect for Islamic traditions.',
+      image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80'
+    },
+  ];
+
   return (
-    <div className="bg-offwhite pt-20">
+    <div className="min-h-screen bg-offwhite">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden bg-teal">
         <div className="absolute inset-0 geometric-pattern-bg opacity-30"></div>
@@ -123,7 +154,7 @@ const WellnessJourney = () => {
                     <div className="md:w-1/2 md:order-2">
                       <p className="text-charcoal">
                         {isRTL 
-                          ? 'تم تصميم برامج العافية لدينا بعناية لمساعدتك على تحقيق أهدافك المحددة، سواء كان ذلك لتطهير جسمك، أو إدارة الوزن، أو تقليل التوتر، أو تجديد بشرتك بعلاجات مكافحة الشيخوخة الفاخرة.'
+                          ? 'تم تصميم برامج العافية لدينا بعناية لمساعدتك على تحقيق أهدافك المحددة، سواء كان ذلك لتطهي�� جسمك، أو إدارة الوزن، أو تقليل التوتر، أو تجديد بشرتك بعلاجات مكافحة الشيخوخة الفاخرة.'
                           : 'Our wellness programs are thoughtfully designed to help you achieve your specific goals, whether it\'s detoxing your body, managing weight, reducing stress, or rejuvenating your skin with luxurious anti-aging treatments.'}
                       </p>
                     </div>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
@@ -31,13 +31,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/founder" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
-                  {language === 'ar' ? 'المؤسس' : 'Founder'}
+                <Link to="/services" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'الخدمات' : 'Services'}
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
-                  {language === 'ar' ? 'الرحلات' : 'Itineraries'}
+                <Link to="/about-us" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'عن الشركة' : 'About Us'}
+                </Link>
+              </li>
+              <li>
+                <Link to="/founder" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'المؤسس' : 'Founder'}
                 </Link>
               </li>
               <li>
@@ -46,14 +51,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#services" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
-                  {language === 'ar' ? 'الخدمات' : 'Services'}
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
-                  {language === 'ar' ? 'من نحن' : 'About Us'}
-                </a>
+                <Link to="/enquiry" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'استعلام' : 'Enquiry'}
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,19 +84,22 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="text-gold mt-1 flex-shrink-0" />
-                <span className="text-offwhite/70 text-sm">
-                  {language === 'ar' 
-                    ? '١٢٣ شارع سوخومفيت، بانكوك، تايلاند ١٠١١٠' 
-                    : '123 Sukhumvit Road, Bangkok, Thailand 10110'}
-                </span>
+                <span className="text-offwhite/70 text-sm">Dubai, UAE</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-gold flex-shrink-0" />
-                <a href="tel:+6623456789" className="text-offwhite/70 hover:text-offwhite text-sm">+66 2 345 6789</a>
+                <div className="text-offwhite/70 text-sm">
+                  <div>+66 81 606 5796</div>
+                  <div>WhatsApp: +33 6 63 45 62 56</div>
+                </div>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="text-gold flex-shrink-0" />
-                <a href="mailto:contact@hayatconcierge.com" className="text-offwhite/70 hover:text-offwhite text-sm">contact@hayatconcierge.com</a>
+                <a href="mailto:info@hayatconcierge.com" className="text-offwhite/70 hover:text-offwhite text-sm">info@hayatconcierge.com</a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Globe size={18} className="text-gold flex-shrink-0" />
+                <a href="https://www.hayatconcierge.com" target="_blank" rel="noopener noreferrer" className="text-offwhite/70 hover:text-offwhite text-sm">www.hayatconcierge.com</a>
               </li>
             </ul>
           </div>

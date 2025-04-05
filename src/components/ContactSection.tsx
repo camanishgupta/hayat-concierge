@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
@@ -28,8 +28,8 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'الهاتف' : 'Phone'}</h3>
-                <p className="text-muted-foreground">+66 2 345 6789</p>
-                <p className="text-muted-foreground">{isRTL ? 'متاح على مدار 24/7' : 'Available 24/7'}</p>
+                <p className="text-muted-foreground">+66 81 606 5796</p>
+                <p className="text-muted-foreground">WhatsApp: +33 6 63 45 62 56</p>
               </div>
             </div>
             
@@ -39,8 +39,8 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'البريد الإلكتروني' : 'Email'}</h3>
-                <p className="text-muted-foreground">contact@hayatconcierge.com</p>
-                <p className="text-muted-foreground">{isRTL ? 'الرد خلال 24 ساعة' : 'Response within 24 hours'}</p>
+                <p className="text-muted-foreground">info@hayatconcierge.com</p>
+                <p className="text-muted-foreground">www.hayatconcierge.com</p>
               </div>
             </div>
             
@@ -50,8 +50,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-medium">{isRTL ? 'العنوان' : 'Address'}</h3>
-                <p className="text-muted-foreground">Sukhumvit Road, Bangkok</p>
-                <p className="text-muted-foreground">Thailand 10110</p>
+                <p className="text-muted-foreground">Dubai, UAE</p>
               </div>
             </div>
           </div>

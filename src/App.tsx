@@ -4,8 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
 import Facilities from "./pages/Facilities";
 import Enquiry from "./pages/Enquiry";
 import AboutUs from "./pages/AboutUs";
@@ -148,8 +146,6 @@ const App = () => {
                 <main className="flex-grow pt-20">
                   <Routes>
                     <Route path="/" element={<Index />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:id" element={<BlogPost />} />
                     <Route path="/facilities" element={<Facilities />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/founder" element={<Founder />} />

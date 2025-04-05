@@ -93,6 +93,14 @@ const Navbar = () => {
             {t('nav.home')}
           </Link>
           
+          <Link 
+            to="/services" 
+            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}
+            onClick={scrollToTop}
+          >
+            {t('nav.services')}
+          </Link>
+          
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -135,20 +143,6 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
           
-          <Link 
-            to="/services" 
-            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/services") })}
-            onClick={scrollToTop}
-          >
-            {t('nav.services')}
-          </Link>
-          <Link 
-            to="/blog" 
-            className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/blog") })}
-            onClick={scrollToTop}
-          >
-            {t('nav.itineraries')}
-          </Link>
           <Link 
             to="/facilities" 
             className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}
@@ -206,6 +200,14 @@ const Navbar = () => {
               {t('nav.home')}
             </Link>
             
+            <Link 
+              to="/services" 
+              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}
+              onClick={scrollToTop}
+            >
+              {t('nav.services')}
+            </Link>
+            
             <div className="flex flex-col space-y-2">
               <div className="flex items-center justify-between py-2 font-medium text-teal cursor-pointer">
                 <span>{t('nav.aboutUs')}</span>
@@ -229,20 +231,6 @@ const Navbar = () => {
               </div>
             </div>
             
-            <Link 
-              to="/services" 
-              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/services") })}
-              onClick={scrollToTop}
-            >
-              {t('nav.services')}
-            </Link>
-            <Link 
-              to="/blog" 
-              className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/blog") })}
-              onClick={scrollToTop}
-            >
-              {t('nav.itineraries')}
-            </Link>
             <Link 
               to="/facilities" 
               className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}

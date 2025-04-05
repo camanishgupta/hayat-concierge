@@ -23,6 +23,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ContentProvider } from './contexts/ContentContext';
 import { setupAPIMiddleware } from './api/api-middleware';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
@@ -33,25 +35,31 @@ function App() {
   return (
     <LanguageProvider>
       <ContentProvider>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
-          <Route path="/luxury-experience" element={<LuxuryExperience />} />
-          <Route path="/wellness-journey" element={<WellnessJourney />} />
-          <Route path="/facilities" element={<Facilities />} />
-          <Route path="/founder" element={<Founder />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/enquiry" element={<Enquiry />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
+              <Route path="/luxury-experience" element={<LuxuryExperience />} />
+              <Route path="/wellness-journey" element={<WellnessJourney />} />
+              <Route path="/facilities" element={<Facilities />} />
+              <Route path="/founder" element={<Founder />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/enquiry" element={<Enquiry />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
         <Toaster />
       </ContentProvider>
     </LanguageProvider>

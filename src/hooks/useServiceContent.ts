@@ -26,7 +26,9 @@ export const useServiceContent = () => {
   
   // Helper function to get image URL with fallback
   const getImageUrl = (id: string, fallbackUrl: string): string => {
-    return servicesContent.images.find(img => img.id === id)?.url || fallbackUrl;
+    const image = servicesContent.images.find(img => img.id === id);
+    if (image) return image.url;
+    return fallbackUrl;
   };
   
   return {

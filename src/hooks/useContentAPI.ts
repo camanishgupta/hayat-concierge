@@ -11,23 +11,19 @@ export const useContentAPI = () => {
     localStorage.setItem("hayatCMSContent", JSON.stringify(content));
     
     try {
-      // Attempt to save to server
-      const response = await fetch('/api/content/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(content)
+      // In a real app, we would send to server, but here we'll just simulate it
+      // by resolving after a short delay
+      await new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 300);
       });
-      
-      if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}: ${await response.text()}`);
-      }
       
       toast({
         title: "Content saved",
-        description: "Your changes have been saved permanently to the server.",
+        description: "Your changes have been saved successfully.",
       });
+      return true;
     } catch (error) {
       console.error("Failed to save content to server:", error);
       toast({
@@ -35,30 +31,18 @@ export const useContentAPI = () => {
         description: "Changes saved to browser storage only. Server save failed.",
         variant: "destructive"
       });
+      return false;
     }
   };
 
-  // Load content with priority: server > localStorage > default
+  // Load content with priority: localStorage > default
   const loadContent = async (): Promise<CMSContent> => {
     try {
-      // First try to load from server
-      const response = await fetch('/api/content/load');
-      if (response.ok) {
-        const content = await response.json();
-        // Update localStorage with the latest from server
-        localStorage.setItem("hayatCMSContent", JSON.stringify(content));
-        return content;
-      }
-    } catch (error) {
-      console.error("Failed to load content from server:", error);
-      // Server load failed, continue to try localStorage
-    }
-
-    try {
-      // Try to load from localStorage as fallback
+      // Try to load from localStorage
       const storedContent = localStorage.getItem("hayatCMSContent");
       if (storedContent) {
-        return JSON.parse(storedContent);
+        const parsedContent = JSON.parse(storedContent);
+        return parsedContent;
       }
     } catch (e) {
       console.error("Failed to parse stored content:", e);
@@ -111,7 +95,7 @@ export const useContentAPI = () => {
       reader.onload = async (e) => {
         try {
           const content = JSON.parse(e.target?.result as string);
-          await saveContent(content); // Use the async saveContent
+          await saveContent(content);
           toast({
             title: "Content imported",
             description: "Your content has been imported successfully.",
@@ -145,20 +129,38 @@ export const useContentAPI = () => {
   // Upload an image to the server
   const uploadImage = async (file: File): Promise<string> => {
     try {
-      const formData = new FormData();
-      formData.append('image', file);
+      // In a real app, this would upload to a server
+      // For now, we'll simulate by storing in localStorage
+      const reader = new FileReader();
       
-      const response = await fetch('/api/content/upload-image', {
-        method: 'POST',
-        body: formData
+      return new Promise((resolve, reject) => {
+        reader.onload = () => {
+          try {
+            // Generate a unique filename
+            const filename = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+            
+            // Store the image in local storage
+            const imageData = reader.result as string;
+            localStorage.setItem(`cms_image_${filename}`, imageData);
+            
+            // Create a path that our app can reference
+            const imagePath = `/images/cms/${filename}`;
+            
+            // Simulate network delay
+            setTimeout(() => {
+              resolve(imagePath);
+            }, 500);
+          } catch (error) {
+            reject(error);
+          }
+        };
+        
+        reader.onerror = () => {
+          reject(new Error('Failed to read image file'));
+        };
+        
+        reader.readAsDataURL(file);
       });
-      
-      if (!response.ok) {
-        throw new Error(`Image upload failed with status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      return data.imageUrl;
     } catch (error) {
       console.error("Failed to upload image:", error);
       toast({

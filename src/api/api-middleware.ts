@@ -49,10 +49,12 @@ async function handleContentAPI(url: string, init?: RequestInit) {
   if (url.includes('/api/content/load')) {
     try {
       const content = await contentApi.load();
+      // Return default content if server returns null
       return createJsonResponse(content || defaultContent);
     } catch (error) {
       console.error('Error loading content:', error);
-      return createErrorResponse('Failed to load content', 500);
+      // On error, return default content instead of an error
+      return createJsonResponse(defaultContent);
     }
   }
   

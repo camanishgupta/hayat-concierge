@@ -1,98 +1,107 @@
 
-import { ContentAPIEndpoints } from "@/types/cms";
-import { contentApi } from "./content-api";
+import { contentApi } from './content-api';
+import { defaultContent } from '@/lib/defaultContent';
 
-// This middleware intercepts fetch requests to our API endpoints
-// and redirects them to our simulated API implementation
-export const setupAPIMiddleware = () => {
+/**
+ * Sets up API middleware to intercept API requests and handle them client-side
+ * In a production app, these would be real API calls to a server
+ */
+export function setupAPIMiddleware() {
   const originalFetch = window.fetch;
   
-  window.fetch = function(input: RequestInfo | URL, init?: RequestInit) {
+  window.fetch = async function(input: RequestInfo | URL, init?: RequestInit) {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
     
-    // Handle content save endpoint
-    if (url === ContentAPIEndpoints.save) {
-      return handleSaveContent(init);
+    // Handle content API endpoints
+    if (url.includes('/api/content/')) {
+      return handleContentAPI(url, init);
     }
     
-    // Handle content load endpoint
-    if (url === ContentAPIEndpoints.load) {
-      return handleLoadContent();
-    }
-    
-    // Handle image upload endpoint
-    if (url === ContentAPIEndpoints.uploadImage) {
-      return handleImageUpload(init);
-    }
-    
-    // Pass through all other requests to the original fetch
+    // For all other requests, use the original fetch
     return originalFetch(input, init);
   };
+}
+
+/**
+ * Handle content API requests
+ */
+async function handleContentAPI(url: string, init?: RequestInit) {
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 200));
   
-  const handleSaveContent = async (init?: RequestInit): Promise<Response> => {
+  // Handle save content API
+  if (url.includes('/api/content/save') && init?.method === 'POST') {
     try {
-      if (!init?.body) {
-        return createErrorResponse("No content provided");
+      const content = init.body ? JSON.parse(init.body.toString()) : null;
+      if (!content) {
+        return createErrorResponse('No content provided', 400);
       }
       
-      const content = JSON.parse(init.body.toString());
       await contentApi.save(content);
-      
-      return createResponse({ success: true });
+      return createJsonResponse({ success: true });
     } catch (error) {
-      console.error("API Middleware - Save Content Error:", error);
-      return createErrorResponse("Failed to save content");
+      console.error('Error saving content:', error);
+      return createErrorResponse('Failed to save content', 500);
     }
-  };
+  }
   
-  const handleLoadContent = async (): Promise<Response> => {
+  // Handle load content API
+  if (url.includes('/api/content/load')) {
     try {
       const content = await contentApi.load();
-      
-      if (!content) {
-        return createErrorResponse("No content found", 404);
-      }
-      
-      return createResponse(content);
+      return createJsonResponse(content || defaultContent);
     } catch (error) {
-      console.error("API Middleware - Load Content Error:", error);
-      return createErrorResponse("Failed to load content");
+      console.error('Error loading content:', error);
+      return createErrorResponse('Failed to load content', 500);
     }
-  };
+  }
   
-  const handleImageUpload = async (init?: RequestInit): Promise<Response> => {
+  // Handle upload image API
+  if (url.includes('/api/content/upload-image') && init?.method === 'POST') {
     try {
-      if (!init?.body || !(init.body instanceof FormData)) {
-        return createErrorResponse("No image provided or invalid format");
+      if (!init.body || !(init.body instanceof FormData)) {
+        return createErrorResponse('No image provided', 400);
       }
       
       const formData = init.body as FormData;
-      const imageFile = formData.get('image') as File;
+      const file = formData.get('image') as File;
       
-      if (!imageFile) {
-        return createErrorResponse("No image file found in request");
+      if (!file) {
+        return createErrorResponse('No image file found', 400);
       }
       
-      const imageUrl = await contentApi.uploadImage(imageFile);
-      
-      return createResponse({ imageUrl });
+      const imageUrl = await contentApi.uploadImage(file);
+      return createJsonResponse({ imageUrl });
     } catch (error) {
-      console.error("API Middleware - Image Upload Error:", error);
-      return createErrorResponse("Failed to upload image");
+      console.error('Error uploading image:', error);
+      return createErrorResponse('Failed to upload image', 500);
     }
-  };
+  }
   
-  const createResponse = (data: any): Response => {
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  };
-  
-  const createErrorResponse = (message: string, status = 400): Response => {
-    return new Response(JSON.stringify({ error: message }), {
-      status: status,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  };
-};
+  // If the API endpoint is not recognized
+  return createErrorResponse('API endpoint not found', 404);
+}
+
+/**
+ * Create a Response object with JSON data
+ */
+function createJsonResponse(data: any, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}
+
+/**
+ * Create an error Response object
+ */
+function createErrorResponse(message: string, status = 500) {
+  return new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}

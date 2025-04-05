@@ -17,17 +17,31 @@ export const useDetailedServiceContent = (servicePage: PageType) => {
   
   // Helper function to get content with fallback
   const getContent = (id: string, fallbackEn: string, fallbackAr: string): string => {
+    // First try to get from specific content item
     const content = getContentItem(id);
     if (content) {
       if (isRTL && content.arContent) return content.arContent;
       if (content.content) return content.content;
     }
+    
+    // If no specific item, look through all page sections for this service page
+    for (const section of pageContent.sections) {
+      for (const item of section.items) {
+        if (item.id === id) {
+          if (isRTL && item.arContent) return item.arContent;
+          if (item.content) return item.content;
+        }
+      }
+    }
+    
     return isRTL ? fallbackAr : fallbackEn;
   };
   
   // Helper function to get image URL with fallback
   const getImageUrl = (id: string, fallbackUrl: string): string => {
-    return pageContent.images.find(img => img.id === id)?.url || fallbackUrl;
+    const image = pageContent.images.find(img => img.id === id)?.url;
+    if (image) return image;
+    return fallbackUrl;
   };
   
   return {

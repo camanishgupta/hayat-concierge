@@ -4,53 +4,61 @@ import { Heart, Building2, Stethoscope } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContent } from '@/contexts/ContentContext';
-import { useContentItem } from '@/hooks/useContentItem';
 import { useServiceContent } from '@/hooks/useServiceContent';
 
 const ServicesSection = () => {
   const { language } = useLanguage();
   const isRTL = language === 'ar';
-  const { getContentByPage } = useContent();
   const { getContent, getImageUrl } = useServiceContent();
   
-  // Get services page content
-  const servicesContent = getContentByPage('services');
-  
   // Main content
-  const servicesTitle = useContentItem('services-title') || (isRTL ? "خدمات كونسيرج الفاخرة" : "Hayat Concierge Services");
-  const servicesDescription = useContentItem('services-description') || (isRTL 
-    ? "في حياة كونسيرج، لا نقدم حزمًا قياسية - نحن نخلق تجارب شخصية مصممة حول احتياجاتك الفريدة. سواء كنت تبحث عن رعاية طبية عالمية المستوى، أو منتجع صحي فاخر، أو تجربة سفر لا تُنسى، نحن نهتم بكل التفاصيل بنهج مخصص."
-    : "At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach.");
+  const servicesTitle = getContent(
+    'services-title', 
+    "Hayat Concierge Services", 
+    "خدمات كونسيرج الفاخرة"
+  );
+  
+  const servicesDescription = getContent(
+    'services-description', 
+    "At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach.",
+    "في حياة كونسيرج، لا نقدم حزمًا قياسية - نحن نخلق تجارب شخصية مصممة حول احتياجاتك الفريدة. سواء كنت تبحث عن رعاية طبية عالمية المستوى، أو منتجع صحي فاخر، أو تجربة سفر لا تُنسى، نحن نهتم بكل التفاصيل بنهج مخصص."
+  );
   
   // Service 1
-  const service1Title = getContent('service1-title', 
+  const service1Title = getContent(
+    'service1-title', 
     "Medical Concierge & Healthcare Coordination",
     "الخدمات الطبية وتنسيق الرعاية الصحية"
   );
   
-  const service1Description = getContent('service1-description', 
+  const service1Description = getContent(
+    'service1-description', 
     "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
     "نربطك بالمستشفيات والأخصائيين الرائدين في بانكوك، مما يضمن رحلة طبية سلسة من الاستشارة إلى التعافي."
   );
   
   // Service 2
-  const service2Title = getContent('service2-title', 
+  const service2Title = getContent(
+    'service2-title', 
     "Wellness & Rejuvenation Retreats",
     "منتجعات العافية والتجديد"
   );
   
-  const service2Description = getContent('service2-description', 
+  const service2Description = getContent(
+    'service2-description', 
     "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
     "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
   );
     
   // Service 3
-  const service3Title = getContent('service3-title', 
+  const service3Title = getContent(
+    'service3-title', 
     "Exclusive Stays & Bespoke Travel",
     "الإقامات الحصرية والسفر المصمم"
   );
   
-  const service3Description = getContent('service3-description', 
+  const service3Description = getContent(
+    'service3-description', 
     "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities.",
     "استمتع بتايلاند في فخامة لا مثيل لها مع فنادقنا الفاخرة المختارة بعناية والفيلات الخاصة، مع وسائل راحة مخصصة."
   );

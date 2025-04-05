@@ -18,11 +18,10 @@ export const useServiceContent = () => {
   const getContent = (id: string, fallbackEn: string, fallbackAr: string): string => {
     // Check if this ID exists specifically in the services page content
     for (const section of servicesContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (isRTL && item.arContent) return item.arContent;
-          if (item.content) return item.content;
-        }
+      const item = section.items.find(item => item.id === id);
+      if (item) {
+        if (isRTL && item.arContent) return item.arContent;
+        if (item.content) return item.content;
       }
     }
     
@@ -36,11 +35,10 @@ export const useServiceContent = () => {
     // If still not found, check for items in the 'all' page type
     const allContent = getContentByPage('all');
     for (const section of allContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (isRTL && item.arContent) return item.arContent;
-          if (item.content) return item.content;
-        }
+      const item = section.items.find(item => item.id === id);
+      if (item) {
+        if (isRTL && item.arContent) return item.arContent;
+        if (item.content) return item.content;
       }
     }
     

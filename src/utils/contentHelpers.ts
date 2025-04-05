@@ -204,9 +204,21 @@ export const contentHelpers = {
       };
     }
 
+    // Filter sections where the section's page matches the requested page
+    // or where the section has 'all' as its page
+    // or where section doesn't have a page specified
+    const filteredSections = content.sections.filter(s => 
+      !s.page || s.page === 'all' || s.page === page
+    );
+
+    // Filter images the same way
+    const filteredImages = content.images.filter(i => 
+      !i.page || i.page === 'all' || i.page === page
+    );
+
     return {
-      sections: content.sections.filter(s => !s.page || s.page === page || s.page === 'all'),
-      images: content.images.filter(i => !i.page || i.page === page || i.page === 'all')
+      sections: filteredSections,
+      images: filteredImages
     };
   }
 };

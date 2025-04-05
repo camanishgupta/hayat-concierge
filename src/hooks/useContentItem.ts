@@ -1,3 +1,4 @@
+
 import { useContent } from "@/contexts/ContentContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { PageType } from "@/types/cms";
@@ -24,13 +25,12 @@ export const useContentItem = (id: string, page?: PageType): string => {
     const pageContent = getContentByPage(page);
     
     for (const section of pageContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (language === 'ar' && item.arContent) {
-            return item.arContent;
-          }
-          return item.content || "";
+      const foundItem = section.items.find(item => item.id === id);
+      if (foundItem) {
+        if (language === 'ar' && foundItem.arContent) {
+          return foundItem.arContent;
         }
+        return foundItem.content || "";
       }
     }
   }

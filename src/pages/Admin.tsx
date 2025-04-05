@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useRef } from 'react';
 import { useContent } from '@/contexts/ContentContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -27,7 +26,9 @@ const Admin = () => {
     addContentImage,
     removeContentImage,
     exportContent,
-    importContent
+    importContent,
+    uploadImage,
+    isLoading
   } = useContent();
   
   const [password, setPassword] = useState("");
@@ -41,6 +42,8 @@ const Admin = () => {
   const { language } = useLanguage();
   const [currentPage, setCurrentPage] = useState<PageType>('all');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageFileInputRef = useRef<HTMLInputElement>(null);
+  const [imageUploading, setImageUploading] = useState(false);
   
   const [newPartner, setNewPartner] = useState({
     name: '',
@@ -63,7 +66,6 @@ const Admin = () => {
     page: 'all'
   });
 
-  // This is a simple authentication - in a real app, you would want something more secure
   const authenticate = () => {
     if (password === "hayatadmin") { // Simple password for demo
       setAuthenticated(true);
@@ -198,6 +200,34 @@ const Admin = () => {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    setImageUploading(true);
+    try {
+      const imageUrl = await uploadImage(file);
+      setNewImage(prev => ({ ...prev, url: imageUrl }));
+      toast({
+        title: "Image uploaded",
+        description: "Image has been uploaded successfully.",
+      });
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      toast({
+        variant: "destructive",
+        title: "Upload failed",
+        description: "Failed to upload image. Please try again.",
+      });
+    } finally {
+      setImageUploading(false);
+      // Reset the input
+      if (imageFileInputRef.current) {
+        imageFileInputRef.current.value = "";
+      }
+    }
+  };
+
   const pageOptions = [
     { value: 'all', label: 'All Pages' },
     { value: 'home', label: 'Home' },
@@ -208,7 +238,6 @@ const Admin = () => {
     { value: 'partners', label: 'Partners' }
   ];
 
-  // Filter content by page
   const filteredSections = currentPage === 'all' 
     ? content.sections 
     : content.sections.filter(s => !s.page || s.page === currentPage || s.page === 'all');
@@ -217,7 +246,24 @@ const Admin = () => {
     ? content.images
     : content.images.filter(i => !i.page || i.page === currentPage || i.page === 'all');
 
-  // Simple login screen
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-cream flex items-center justify-center p-6">
+        <Card className="w-full max-w-md mx-auto">
+          <CardHeader>
+            <CardTitle className="text-center text-navy">Hayat Concierge CMS</CardTitle>
+            <CardDescription className="text-center">
+              Loading content, please wait...
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center py-8">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   if (!authenticated) {
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center p-6">
@@ -292,7 +338,6 @@ const Admin = () => {
           </AlertDescription>
         </Alert>
 
-        {/* Page Filter */}
         <div className="mb-6">
           <Label htmlFor="pageFilter" className="mb-2 block">Filter Content By Page</Label>
           <Select 
@@ -344,7 +389,6 @@ const Admin = () => {
             </TabsTrigger>
           </TabsList>
 
-          {/* Content Tab */}
           <TabsContent value="content">
             <div className="space-y-6">
               {filteredSections.length > 0 ? (
@@ -432,7 +476,6 @@ const Admin = () => {
             </div>
           </TabsContent>
 
-          {/* Images Tab */}
           <TabsContent value="images" className="space-y-6">
             {filteredImages.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -488,7 +531,6 @@ const Admin = () => {
             )}
           </TabsContent>
 
-          {/* Partners Tab */}
           <TabsContent value="partners" className="space-y-6">
             {content.partners.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -582,7 +624,6 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
-          {/* Add Content Tab */}
           <TabsContent value="add-content" className="space-y-6">
             <Card>
               <CardHeader>
@@ -664,7 +705,6 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
-          {/* Add Image Tab */}
           <TabsContent value="add-image" className="space-y-6">
             <Card>
               <CardHeader>
@@ -709,12 +749,37 @@ const Admin = () => {
                   </div>
                   <div>
                     <Label htmlFor="imageUrl">Image URL</Label>
-                    <Input
-                      id="imageUrl"
-                      value={newImage.url}
-                      onChange={(e) => setNewImage({...newImage, url: e.target.value})}
-                      placeholder="https://example.com/image.jpg"
-                    />
+                    <div className="flex gap-2 items-center">
+                      <Input
+                        id="imageUrl"
+                        value={newImage.url}
+                        onChange={(e) => setNewImage({...newImage, url: e.target.value})}
+                        placeholder="https://example.com/image.jpg"
+                      />
+                      <Button 
+                        type="button" 
+                        variant="outline"
+                        onClick={() => imageFileInputRef.current?.click()}
+                        disabled={imageUploading}
+                        className="whitespace-nowrap"
+                      >
+                        {imageUploading ? (
+                          <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-navy"></div>
+                            Uploading...
+                          </div>
+                        ) : (
+                          "Upload File"
+                        )}
+                      </Button>
+                      <input
+                        type="file"
+                        ref={imageFileInputRef}
+                        onChange={handleImageUpload}
+                        className="hidden"
+                        accept="image/*"
+                      />
+                    </div>
                   </div>
                   <div>
                     <Label className="mb-2 block">Preview</Label>
@@ -742,7 +807,6 @@ const Admin = () => {
         </Tabs>
       </div>
 
-      {/* Edit modal for text content */}
       {editingItem && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50">
           <Card className="w-full max-w-3xl">
@@ -786,7 +850,6 @@ const Admin = () => {
         </div>
       )}
 
-      {/* Edit modal for images */}
       {editingImage && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50">
           <Card className="w-full max-w-2xl">
@@ -806,12 +869,23 @@ const Admin = () => {
                 
                 <div>
                   <Label htmlFor="newImageUrl">New Image URL:</Label>
-                  <Input
-                    id="newImageUrl"
-                    value={newImageUrl}
-                    onChange={(e) => setNewImageUrl(e.target.value)}
-                    placeholder="Enter new image URL..."
-                  />
+                  <div className="flex gap-2">
+                    <Input
+                      id="newImageUrl"
+                      value={newImageUrl}
+                      onChange={(e) => setNewImageUrl(e.target.value)}
+                      placeholder="Enter new image URL..."
+                    />
+                    <Button 
+                      type="button" 
+                      variant="outline"
+                      onClick={() => imageFileInputRef.current?.click()}
+                      disabled={imageUploading}
+                      className="whitespace-nowrap"
+                    >
+                      {imageUploading ? "Uploading..." : "Upload File"}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CardContent>

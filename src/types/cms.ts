@@ -39,3 +39,10 @@ export interface CMSContent {
 
 // Page types to help organize content
 export type PageType = 'home' | 'about' | 'services' | 'founder' | 'partners' | 'facilities' | 'all';
+
+// API endpoints for content - in a real app these would point to server endpoints
+export const ContentAPIEndpoints = {
+  save: '/api/content/save',
+  load: '/api/content/load',
+  uploadImage: '/api/content/upload-image'
+};

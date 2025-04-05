@@ -22,17 +22,31 @@ interface ContentContextType {
   };
   exportContent: () => void;
   importContent: (file: File) => Promise<void>;
+  uploadImage: (file: File) => Promise<string>;
+  isLoading: boolean;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [content, setContent] = useState<CMSContent>(defaultContent);
-  const { saveContent, loadContent, exportContent, importContent } = useContentAPI();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { saveContent, loadContent, exportContent, importContent, uploadImage } = useContentAPI();
 
   useEffect(() => {
-    const contentData = loadContent();
-    setContent(contentData);
+    const loadInitialContent = async () => {
+      setIsLoading(true);
+      try {
+        const contentData = await loadContent();
+        setContent(contentData);
+      } catch (error) {
+        console.error("Failed to load initial content:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialContent();
   }, []);
 
   const getContentItem = (id: string): ContentItem | undefined => {
@@ -213,8 +227,9 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     });
   };
 
-  const resetToDefault = () => {
+  const resetToDefault = async () => {
     setContent(defaultContent);
+    await saveContent(defaultContent);
     localStorage.removeItem("hayatCMSContent");
     toast({
       title: "Content reset",
@@ -251,7 +266,9 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       removePartner,
       getContentByPage,
       exportContent,
-      importContent
+      importContent,
+      uploadImage,
+      isLoading
     }}>
       {children}
     </ContentContext.Provider>

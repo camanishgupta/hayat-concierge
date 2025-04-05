@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { MapPin, Heart, Shield, Globe, Users, Briefcase, CheckCircle2, Building, Stethoscope } from 'lucide-react';
 import { useContentItem } from '@/hooks/useContentItem';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutUs = () => {
   const [activeSection, setActiveSection] = useState<string>('about');
@@ -12,6 +13,8 @@ const AboutUs = () => {
     why: null,
     bangkok: null,
   });
+  const { language } = useLanguage();
+  const isArabic = language === 'ar';
 
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({
     about: false,
@@ -65,8 +68,12 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-[#0A3A2A]/10 geometric-pattern-bg"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <h1 className="heading-xl mb-6 hero-text-gradient">About Hayat Concierge</h1>
-            <p className="subheading text-xl mb-8">Based in Bangkok, Hayat Concierge redefines luxury travel, wellness, and medical tourism in Thailand, offering an exclusive, tailored experience for Middle Eastern clients.</p>
+            <h1 className="heading-xl mb-6 hero-text-gradient">{isArabic ? 'عن حياة كونسيرج' : 'About Hayat Concierge'}</h1>
+            <p className="subheading text-xl mb-8">
+              {isArabic 
+                ? 'تقوم حياة كونسيرج في بانكوك بإعادة تعريف السفر الفاخر والعافية والسياحة الطبية في تايلاند، مقدمة تجربة حصرية ومخصصة للعملاء من الشرق الأوسط.'
+                : 'Based in Bangkok, Hayat Concierge redefines luxury travel, wellness, and medical tourism in Thailand, offering an exclusive, tailored experience for Middle Eastern clients.'}
+            </p>
           </div>
         </div>
       </section>
@@ -82,7 +89,7 @@ const AboutUs = () => {
                 activeSection === 'about' ? "bg-gold/20 text-gold font-medium" : "text-offwhite hover:bg-gold/10"
               )}
             >
-              About Hayat
+              {isArabic ? 'عن حياة' : 'About Hayat'}
             </button>
             <button 
               onClick={() => handleNavigate('mission')}
@@ -91,7 +98,7 @@ const AboutUs = () => {
                 activeSection === 'mission' ? "bg-gold/20 text-gold font-medium" : "text-offwhite hover:bg-gold/10"
               )}
             >
-              Our Mission
+              {isArabic ? 'مهمتنا' : 'Our Mission'}
             </button>
             <button 
               onClick={() => handleNavigate('why')}
@@ -100,7 +107,7 @@ const AboutUs = () => {
                 activeSection === 'why' ? "bg-gold/20 text-gold font-medium" : "text-offwhite hover:bg-gold/10"
               )}
             >
-              Why Choose Us
+              {isArabic ? 'لماذا تختارنا' : 'Why Choose Us'}
             </button>
             <button 
               onClick={() => handleNavigate('bangkok')}
@@ -109,7 +116,7 @@ const AboutUs = () => {
                 activeSection === 'bangkok' ? "bg-gold/20 text-gold font-medium" : "text-offwhite hover:bg-gold/10"
               )}
             >
-              Why Bangkok
+              {isArabic ? 'لماذا بانكوك' : 'Why Bangkok'}
             </button>
           </div>
         </div>
@@ -130,16 +137,20 @@ const AboutUs = () => {
               )}
             >
               <span className="inline-block py-1 px-3 bg-gold/20 text-gold border border-gold/30 rounded-full text-sm font-medium mb-6">
-                A Unique Dedication
+                {isArabic ? 'تفاني فريد' : 'A Unique Dedication'}
               </span>
               <h2 className="heading-lg mb-6">
-                100% Dedicated to Middle Eastern Travelers
+                {isArabic ? '100٪ مخصصة للمسافرين من الشرق الأوسط' : '100% Dedicated to Middle Eastern Travelers'}
               </h2>
-              <p className="text-muted-foreground mb-6">
-                Unlike most concierges that serve global clients, Hayat Concierge is 100% dedicated to Middle Eastern travelers. Our cultural familiarity, trust, discretion, and the professionalism of our team ensure a level of care, and excellence that exceeds expectations.
+              <p className="text-black mb-6">
+                {isArabic 
+                  ? 'على عكس معظم خدمات الكونسيرج التي تخدم العملاء العالميين، حياة كونسيرج مخصصة 100٪ للمسافرين من الشرق الأوسط. تضمن معرفتنا الثقافية والثقة والتقدير والاحترافية لفريقنا مستوى من الرعاية والتميز يتجاوز التوقعات.'
+                  : 'Unlike most concierges that serve global clients, Hayat Concierge is 100% dedicated to Middle Eastern travelers. Our cultural familiarity, trust, discretion, and the professionalism of our team ensure a level of care, and excellence that exceeds expectations.'}
               </p>
-              <p className="text-muted-foreground">
-                With us, your journey to Thailand will always be effortless and extraordinary.
+              <p className="text-black">
+                {isArabic
+                  ? 'معنا، ستكون رحلتك إلى تايلاند دائمًا سهلة واستثنائية.'
+                  : 'With us, your journey to Thailand will always be effortless and extraordinary.'}
               </p>
             </div>
             
@@ -151,7 +162,7 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1168&q=80" 
+                  src="/lovable-uploads/d2409855-1669-4389-9789-011feb333ca6.png" 
                   alt="Middle Eastern Family" 
                   className="w-full h-full object-cover"
                 />
@@ -174,7 +185,7 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1500021804447-2ca2eaaaabeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  src="/lovable-uploads/ec9be84a-4419-47a9-8dd4-629792800ca7.png" 
                   alt="Bridge connecting two places" 
                   className="w-full h-full object-cover"
                 />
@@ -188,27 +199,45 @@ const AboutUs = () => {
               )}
             >
               <span className="inline-block py-1 px-3 bg-gold/20 text-gold border border-gold/30 rounded-full text-sm font-medium mb-6">
-                Our Mission
+                {isArabic ? 'مهمتنا' : 'Our Mission'}
               </span>
               <h2 className="heading-lg mb-6">
-                Your Trusted Bridge to Thailand's Finest Experiences
+                {isArabic ? 'جسرك الموثوق إلى أفضل تجارب تايلاند' : 'Your Trusted Bridge to Thailand\'s Finest Experiences'}
               </h2>
-              <p className="text-muted-foreground mb-6">
-                Whether you're visiting Thailand for medical care, a wellness retreat, or just leisure, we serve as your trusted bridge—guiding you seamlessly to the finest experiences Thailand has to offer.
+              <p className="text-black mb-6">
+                {isArabic
+                  ? 'سواء كنت تزور تايلاند للرعاية الطبية، أو للاسترخاء في منتجع صحي، أو لمجرد الترفيه، نحن نعمل كجسر موثوق - نرشدك بسلاسة إلى أفضل التجارب التي تقدمها تايلاند.'
+                  : 'Whether you\'re visiting Thailand for medical care, a wellness retreat, or just leisure, we serve as your trusted bridge—guiding you seamlessly to the finest experiences Thailand has to offer.'}
               </p>
               
               <div className="space-y-4 mb-6">
                 {[
-                  { icon: <Stethoscope size={20} />, text: "Precision Medical Care: access to Thailand's top hospitals & specialists." },
-                  { icon: <Heart size={20} />, text: "Bespoke Wellness Retreats: Halal-friendly detox programs, spas holistic healing escapes..." },
-                  { icon: <Shield size={20} />, text: "Ultimate Privacy & Exclusivity: Curated experiences with cultural sensitivity." },
-                  { icon: <Globe size={20} />, text: "Seamless Travel Design: From visa assistance and flight arrangements to luxury resort bookings, custom-tailored tours, exclusive Lifestyle experiences, and halal dining options." }
+                  { icon: <Stethoscope size={20} />, 
+                    text: isArabic 
+                      ? "رعاية طبية دقيقة: الوصول إلى أفضل المستشفيات والمتخصصين في تايلاند."
+                      : "Precision Medical Care: access to Thailand's top hospitals & specialists." 
+                  },
+                  { icon: <Heart size={20} />, 
+                    text: isArabic 
+                      ? "منتجعات صحية مخصصة: برامج إزالة السموم المناسبة للحلال، والمنتجعات الصحية..."
+                      : "Bespoke Wellness Retreats: Halal-friendly detox programs, spas holistic healing escapes..." 
+                  },
+                  { icon: <Shield size={20} />, 
+                    text: isArabic 
+                      ? "الخصوصية والحصرية المطلقة: تجارب مخصصة مع مراعاة الحساسية الثقافية."
+                      : "Ultimate Privacy & Exclusivity: Curated experiences with cultural sensitivity." 
+                  },
+                  { icon: <Globe size={20} />, 
+                    text: isArabic 
+                      ? "تصميم سفر سلس: من المساعدة في الحصول على التأشيرة وترتيبات الرحلات الجوية إلى حجوزات المنتجعات الفاخرة، والجولات المخصصة، وتجارب نمط الحياة الحصرية، وخيارات الطعام الحلال."
+                      : "Seamless Travel Design: From visa assistance and flight arrangements to luxury resort bookings, custom-tailored tours, exclusive Lifestyle experiences, and halal dining options." 
+                  }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mt-1 mr-3">
                       {item.icon}
                     </span>
-                    <p className="text-muted-foreground">{item.text}</p>
+                    <p className="text-black">{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -223,13 +252,15 @@ const AboutUs = () => {
         >
           <div className="text-center mb-12">
             <span className="inline-block py-1 px-3 bg-gold/20 text-gold border border-gold/30 rounded-full text-sm font-medium mb-4">
-              Why Choose Us
+              {isArabic ? 'لماذا تختارنا' : 'Why Choose Us'}
             </span>
             <h2 className="heading-lg mb-6">
-              Hayat Concierge Advantages
+              {isArabic ? 'مزايا حياة كونسيرج' : 'Hayat Concierge Advantages'}
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our unique combination of cultural understanding, premium connections, and tailored service ensures an unparalleled experience for our Middle Eastern clients.
+            <p className="text-black max-w-2xl mx-auto">
+              {isArabic
+                ? 'يضمن مزيجنا الفريد من الفهم الثقافي والاتصالات المتميزة والخدمة المخصصة تجربة لا مثيل لها لعملائنا من الشرق الأوسط.'
+                : 'Our unique combination of cultural understanding, premium connections, and tailored service ensures an unparalleled experience for our Middle Eastern clients.'}
             </p>
           </div>
           
@@ -242,26 +273,34 @@ const AboutUs = () => {
             {[
               {
                 icon: <Globe className="text-gold" size={28} />,
-                title: "Multicultural Insight",
-                description: "French-Algerian heritage with deep understanding of Middle Eastern and Thai cultures.",
+                title: isArabic ? "الفهم متعدد الثقافات" : "Multicultural Insight",
+                description: isArabic 
+                  ? "تراث فرنسي-جزائري مع فهم عميق للثقافات الشرق أوسطية والتايلاندية."
+                  : "French-Algerian heritage with deep understanding of Middle Eastern and Thai cultures.",
                 image: "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=564&q=80"
               },
               {
                 icon: <Stethoscope className="text-gold" size={28} />,
-                title: "Elite Medical Access",
-                description: "VIP hospital referrals, top specialists, and discreet healthcare coordination.",
+                title: isArabic ? "وصول للخدمات الطبية النخبة" : "Elite Medical Access",
+                description: isArabic 
+                  ? "إحالات VIP للمستشفيات، وأفضل المتخصصين، وتنسيق الرعاية الصحية بسرية."
+                  : "VIP hospital referrals, top specialists, and discreet healthcare coordination.",
                 image: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-4.0.3&auto=format&fit=crop&w=571&q=80"
               },
               {
                 icon: <Heart className="text-gold" size={28} />,
-                title: "Bespoke Wellness",
-                description: "Curated retreats, private spa journeys, and holistic healing escapes.",
+                title: isArabic ? "منتجعات مخصصة للعافية" : "Bespoke Wellness",
+                description: isArabic 
+                  ? "منتجعات مخصصة، رحلات سبا خاصة، ومنتجعات للشفاء الشامل."
+                  : "Curated retreats, private spa journeys, and holistic healing escapes.",
                 image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80"
               },
               {
                 icon: <Building className="text-gold" size={28} />,
-                title: "Luxury Redefined",
-                description: "From private transfers to elite resort stays, every detail is flawlessly refined.",
+                title: isArabic ? "إعادة تعريف الفخامة" : "Luxury Redefined",
+                description: isArabic 
+                  ? "من النقل الخاص إلى الإقامات في المنتجعات النخبة، كل تفصيل مصقول بلا عيوب."
+                  : "From private transfers to elite resort stays, every detail is flawlessly refined.",
                 image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80"
               }
             ].map((item, index) => (
@@ -276,7 +315,7 @@ const AboutUs = () => {
                     </div>
                     <h3 className="text-lg font-semibold text-[#0A3A2A]">{item.title}</h3>
                   </div>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <p className="text-black">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -296,33 +335,53 @@ const AboutUs = () => {
               )}
             >
               <span className="inline-block py-1 px-3 bg-gold/20 text-gold border border-gold/30 rounded-full text-sm font-medium mb-6">
-                Why Bangkok
+                {isArabic ? 'لماذا بانكوك' : 'Why Bangkok'}
               </span>
               <h2 className="heading-lg mb-6">
-                The Heart of Luxury & Medical Excellence
+                {isArabic ? 'قلب الفخامة والتميز الطبي' : 'The Heart of Luxury & Medical Excellence'}
               </h2>
               <p className="text-black mb-6">
-                Bangkok is Thailand's epicenter of luxury, world-class healthcare, and seamless international connectivity, offering a unique blend of sophistication and hospitality.
+                {isArabic
+                  ? 'بانكوك هي مركز الفخامة في تايلاند، والرعاية الصحية العالمية، والاتصال الدولي السلس، وتقدم مزيجًا فريدًا من الرقي والضيافة.'
+                  : 'Bangkok is Thailand\'s epicenter of luxury, world-class healthcare, and seamless international connectivity, offering a unique blend of sophistication and hospitality.'}
               </p>
               
               <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-                <h3 className="text-lg font-medium text-[#0A3A2A] mb-4">What makes Bangkok ideal:</h3>
+                <h3 className="text-lg font-medium text-[#0A3A2A] mb-4">
+                  {isArabic ? 'ما الذي يجعل بانكوك مثالية:' : 'What makes Bangkok ideal:'}
+                </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p className="text-black">Home to internationally accredited hospitals and medical facilities</p>
+                    <p className="text-black">
+                      {isArabic 
+                        ? 'موطن للمستشفيات والمرافق الطبية المعتمدة دوليًا'
+                        : 'Home to internationally accredited hospitals and medical facilities'}
+                    </p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p className="text-black">Luxury accommodations with world-class amenities</p>
+                    <p className="text-black">
+                      {isArabic 
+                        ? 'أماكن إقامة فاخرة مع مرافق من الطراز العالمي'
+                        : 'Luxury accommodations with world-class amenities'}
+                    </p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p className="text-black">Rich cultural experiences with Middle Eastern sensibilities</p>
+                    <p className="text-black">
+                      {isArabic 
+                        ? 'تجارب ثقافية غنية مع مراعاة الحساسيات الشرق أوسطية'
+                        : 'Rich cultural experiences with Middle Eastern sensibilities'}
+                    </p>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="text-gold mt-1 mr-3" size={18} />
-                    <p className="text-black">Central location with easy access to wellness retreats</p>
+                    <p className="text-black">
+                      {isArabic 
+                        ? 'موقع مركزي مع سهولة الوصول إلى منتجعات العافية'
+                        : 'Central location with easy access to wellness retreats'}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -336,14 +395,14 @@ const AboutUs = () => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1582560475038-6c0b5aca0978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1036&q=80" 
+                  src="/lovable-uploads/c332b151-80b5-454d-87d7-34c92eced3eb.png" 
                   alt="Bangkok luxury hotel" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -right-8 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+                  src="/lovable-uploads/d8498f7c-1210-45b9-afd8-d8ff816223a8.png" 
                   alt="Bangkok skyline" 
                   className="w-full h-full object-cover"
                 />
@@ -356,11 +415,17 @@ const AboutUs = () => {
       {/* Call to Action */}
       <section className="bg-[#0A3A2A] py-16 geometric-pattern-bg">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-serif font-semibold text-gold mb-6">Begin Your Exceptional Thai Journey</h2>
+          <h2 className="text-4xl font-serif font-semibold text-gold mb-6">
+            {isArabic ? 'ابدأ رحلتك التايلاندية الاستثنائية' : 'Begin Your Exceptional Thai Journey'}
+          </h2>
           <p className="text-offwhite/90 max-w-2xl mx-auto mb-8">
-            Let us craft a personalized experience that meets your unique preferences and exceeds your expectations.
+            {isArabic
+              ? 'دعنا نصمم تجربة مخصصة تلبي تفضيلاتك الفريدة وتتجاوز توقعاتك.'
+              : 'Let us craft a personalized experience that meets your unique preferences and exceeds your expectations.'}
           </p>
-          <a href="/contact" className="button-primary inline-block">Contact Us Today</a>
+          <a href="/contact" className="button-primary inline-block">
+            {isArabic ? 'اتصل بنا اليوم' : 'Contact Us Today'}
+          </a>
         </div>
       </section>
     </div>

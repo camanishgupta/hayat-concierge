@@ -48,7 +48,7 @@ const AboutSection = () => {
           <h2 className="heading-lg mb-6 hero-text-gradient text-center">
             {t('home.about.title')}
           </h2>
-          <p className="text-muted-foreground mb-6 text-center">
+          <p className="text-black mb-6 text-center">
             {t('home.about.description')}
           </p>
           

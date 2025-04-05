@@ -1,12 +1,17 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { CheckCircle, Star, Shield, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useDetailedServiceContent } from '@/hooks/useDetailedServiceContent';
+import CMSImage from '@/components/CMSImage';
 
 const LuxuryExperience = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { language } = useLanguage();
   const isRTL = language === 'ar';
+  const { getContent, getImageUrl } = useDetailedServiceContent('luxury-experience');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,7 +27,7 @@ const LuxuryExperience = () => {
       description: isRTL 
         ? 'نحجز لك في أفضل الفنادق والمنتجعات في تايلاند، مع ضمان الخصوصية التامة وخدمات VIP المخصصة.'
         : 'We secure bookings at Thailand\'s most prestigious hotels and resorts, with guaranteed privacy and personalized VIP services.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+      image: getImageUrl('luxury-accommodations', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'),
       features: [
         'Private villa options with dedicated staff',
         'Personalized halal dining arrangements',
@@ -35,7 +40,7 @@ const LuxuryExperience = () => {
       description: isRTL 
         ? 'أسطول من السيارات والقوارب والطائرات الفاخرة الخاصة لضمان تنقلك بأقصى درجات الراحة والخصوصية.'
         : 'A fleet of luxury cars, boats, and private jets ensure your movement with maximum comfort and privacy.',
-      image: 'https://images.unsplash.com/photo-1669058611147-1e9e5501e9e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+      image: getImageUrl('private-transportation', 'https://images.unsplash.com/photo-1669058611147-1e9e5501e9e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'),
       features: [
         'Chauffeur-driven luxury vehicles',
         'Private yacht charters',
@@ -48,7 +53,7 @@ const LuxuryExperience = () => {
       description: isRTL 
         ? 'تجارب طعام مصممة خصيصًا في أرقى المطاعم ومع أشهر الطهاة، مع ضمان توفر خيارات الطعام الحلال.'
         : 'Custom-designed dining experiences at the finest restaurants and with celebrity chefs, with guaranteed halal options.',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+      image: getImageUrl('exclusive-dining', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'),
       features: [
         'Private dining rooms with stunning views',
         'Certified halal fine dining experiences',
@@ -61,7 +66,7 @@ const LuxuryExperience = () => {
       description: isRTL 
         ? 'استكشف كنوز تايلاند الثقافية والتاريخية مع مرشدين خاصين يتحدثون العربية ويفهمون احتياجاتك الثقافية.'
         : 'Explore Thailand\'s cultural and historical treasures with private guides who speak Arabic and understand your cultural needs.',
-      image: 'https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+      image: getImageUrl('cultural-tours', 'https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'),
       features: [
         'After-hours private temple visits',
         'Exclusive access to royal palaces',
@@ -78,12 +83,12 @@ const LuxuryExperience = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <h1 className="heading-xl mb-6 hero-text-gradient">
-              {isRTL ? 'تجارب الإقامة الفاخرة' : 'Luxury Experience'}
+              {getContent('luxury-experience-title', 'Luxury Experience', 'تجارب الإقامة الفاخرة')}
             </h1>
             <p className="subheading text-xl mb-8">
-              {isRTL 
-                ? 'نقدم لك أرقى تجارب الإقامة والتنقل والترفيه في تايلاند، مع الاهتمام بأدق التفاصيل وتلبية احتياجاتك الخاصة.'
-                : 'We provide the finest accommodation, transportation, and entertainment experiences in Thailand, with attention to the smallest details and meeting your specific needs.'}
+              {getContent('luxury-experience-subtitle', 
+                'We provide the finest accommodation, transportation, and entertainment experiences in Thailand, with attention to the smallest details and meeting your specific needs.',
+                'نقدم لك أرقى تجارب الإقامة والتنقل والترفيه في تايلاند، مع الاهتمام بأدق التفاصيل وتلبية احتياجاتك الخاصة.')}
             </p>
           </div>
         </div>
@@ -101,7 +106,7 @@ const LuxuryExperience = () => {
             >
               <div className="w-full md:w-1/2 mb-8 md:mb-0 md:px-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img 
+                  <CMSImage 
                     src={experience.image} 
                     alt={experience.title}
                     className="w-full aspect-[4/3] object-cover"
@@ -136,9 +141,9 @@ const LuxuryExperience = () => {
                 </div>
                 
                 <div className="mt-6 flex justify-center md:justify-start">
-                  <a href="/enquiry" className="button-primary">
+                  <Link to="/enquiry" className="button-primary">
                     {isRTL ? 'استفسر الآن' : 'Inquire Now'}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -149,34 +154,34 @@ const LuxuryExperience = () => {
       <section className="bg-navy/5 py-16">
         <div className="container mx-auto px-6">
           <h2 className="heading-lg text-center mb-12 hero-text-gradient">
-            {isRTL ? 'لمحة عن الفخامة' : 'Glimpses of Luxury'}
+            {getContent('luxury-glimpses-title', 'Glimpses of Luxury', 'لمحة عن الفخامة')}
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="aspect-square rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+              <CMSImage 
+                src={getImageUrl('luxury-image-1', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80')} 
                 alt="Luxury hotel room"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+              <CMSImage 
+                src={getImageUrl('luxury-image-2', 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80')} 
                 alt="Luxury pool"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+              <CMSImage 
+                src={getImageUrl('luxury-image-3', 'https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80')} 
                 alt="Fine dining"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1578922746465-3a80a228f223?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" 
+              <CMSImage 
+                src={getImageUrl('luxury-image-4', 'https://images.unsplash.com/photo-1578922746465-3a80a228f223?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80')} 
                 alt="Luxury service"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />

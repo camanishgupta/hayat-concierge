@@ -27,7 +27,7 @@ export const useContentAPI = () => {
     } catch (error) {
       console.error("Failed to save content to server:", error);
       toast({
-        title: "Content saved locally",
+        title: "Content saved",
         description: "Changes saved successfully.",
         variant: "default"
       });

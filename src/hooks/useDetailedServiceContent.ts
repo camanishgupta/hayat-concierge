@@ -1,58 +1,44 @@
 
-import { useLanguage } from "@/contexts/LanguageContext";
 import { useContent } from "@/contexts/ContentContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { PageType } from "@/types/cms";
 
 /**
- * Hook to manage content for detailed service pages
- * @param servicePage The specific service page to get content for
+ * Hook to manage content for specific service detail pages
  */
-export const useDetailedServiceContent = (servicePage: PageType) => {
-  const { language } = useLanguage();
+export const useDetailedServiceContent = (pageType: PageType) => {
   const { getContentByPage, getContentItem } = useContent();
+  const { language } = useLanguage();
   const isRTL = language === 'ar';
   
-  // Get page-specific content
-  const pageContent = getContentByPage(servicePage);
+  // Get page specific content
+  const pageContent = getContentByPage(pageType);
   
   // Helper function to get content with fallback
   const getContent = (id: string, fallbackEn: string, fallbackAr: string): string => {
-    // First check if item exists in page-specific content
+    // First check if this ID exists specifically in the page content
     for (const section of pageContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (isRTL && item.arContent) return item.arContent;
-          if (item.content) return item.content;
-        }
+      const foundItem = section.items.find(item => item.id === id);
+      if (foundItem) {
+        if (isRTL && foundItem.arContent) return foundItem.arContent;
+        if (foundItem.content) return foundItem.content;
       }
     }
     
-    // If not found, look for a global content item
+    // If not found in specific page content, look for a global content item
     const globalItem = getContentItem(id);
     if (globalItem) {
       if (isRTL && globalItem.arContent) return globalItem.arContent;
       if (globalItem.content) return globalItem.content;
     }
     
-    // Look in services page content as a fallback
-    const servicesContent = getContentByPage('services');
-    for (const section of servicesContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (isRTL && item.arContent) return item.arContent;
-          if (item.content) return item.content;
-        }
-      }
-    }
-    
-    // Check for items in the 'all' page type as a last resort
+    // If still not found, check for items in the 'all' page type
     const allContent = getContentByPage('all');
     for (const section of allContent.sections) {
-      for (const item of section.items) {
-        if (item.id === id) {
-          if (isRTL && item.arContent) return item.arContent;
-          if (item.content) return item.content;
-        }
+      const foundItem = section.items.find(item => item.id === id);
+      if (foundItem) {
+        if (isRTL && foundItem.arContent) return foundItem.arContent;
+        if (foundItem.content) return foundItem.content;
       }
     }
     
@@ -66,12 +52,7 @@ export const useDetailedServiceContent = (servicePage: PageType) => {
     const pageImage = pageContent.images.find(img => img.id === id);
     if (pageImage) return pageImage.url;
     
-    // If not found, try services page images
-    const servicesImages = getContentByPage('services').images;
-    const serviceImage = servicesImages.find(img => img.id === id);
-    if (serviceImage) return serviceImage.url;
-    
-    // If still not found, try all images
+    // If not found, try all images
     const allImages = getContentByPage('all').images;
     const globalImage = allImages.find(img => img.id === id);
     if (globalImage) return globalImage.url;

@@ -3,6 +3,9 @@ import { useContent } from "@/contexts/ContentContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { PageType } from "@/types/cms";
 
+/**
+ * Hook to get a specific content item by ID, with optional page context
+ */
 export const useContentItem = (id: string, page?: PageType): string => {
   const { getContentItem, getContentByPage } = useContent();
   const { language } = useLanguage();

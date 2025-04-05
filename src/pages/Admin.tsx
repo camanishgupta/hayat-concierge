@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { useContent } from '@/contexts/ContentContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AlertCircle, Save, RotateCcw, LockKeyhole, Image, Plus, Trash } from "lucide-react";
+import { AlertCircle, Save, RotateCcw, LockKeyhole, Image, Plus, Trash, Download, Upload } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { ContentItem, ContentSection, ContentImage, PageType } from '@/types/cms';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,7 +25,9 @@ const Admin = () => {
     removePartner, 
     updateContentImage,
     addContentImage,
-    removeContentImage 
+    removeContentImage,
+    exportContent,
+    importContent
   } = useContent();
   
   const [password, setPassword] = useState("");
@@ -38,6 +40,7 @@ const Admin = () => {
   const { toast } = useToast();
   const { language } = useLanguage();
   const [currentPage, setCurrentPage] = useState<PageType>('all');
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [newPartner, setNewPartner] = useState({
     name: '',
@@ -182,12 +185,26 @@ const Admin = () => {
     }
   };
 
+  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      importContent(file)
+        .catch((error) => console.error("Import error:", error))
+        .finally(() => {
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        });
+    }
+  };
+
   const pageOptions = [
     { value: 'all', label: 'All Pages' },
     { value: 'home', label: 'Home' },
     { value: 'about', label: 'About Us' },
-    { value: 'founder', label: 'Founder' },
     { value: 'services', label: 'Services' },
+    { value: 'facilities', label: 'Facilities' },
+    { value: 'founder', label: 'Founder' },
     { value: 'partners', label: 'Partners' }
   ];
 
@@ -242,18 +259,36 @@ const Admin = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="flex justify-between items-center mb-8">
           <h1 className="heading-xl text-navy">Hayat Concierge CMS</h1>
-          <Button variant="outline" className="text-red-600" onClick={handleReset}>
-            <RotateCcw className="mr-2 h-4 w-4" />
-            Reset to Default
-          </Button>
+          
+          <div className="flex gap-4">
+            <input 
+              type="file" 
+              ref={fileInputRef}
+              onChange={handleImport} 
+              accept=".json"
+              className="hidden" 
+            />
+            <Button variant="outline" className="flex items-center gap-2" onClick={() => fileInputRef.current?.click()}>
+              <Upload className="h-4 w-4" />
+              Import Content
+            </Button>
+            <Button variant="outline" className="flex items-center gap-2" onClick={exportContent}>
+              <Download className="h-4 w-4" />
+              Export Content
+            </Button>
+            <Button variant="outline" className="text-red-600" onClick={handleReset}>
+              <RotateCcw className="mr-2 h-4 w-4" />
+              Reset to Default
+            </Button>
+          </div>
         </div>
 
         <Alert className="mb-8">
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Important Note</AlertTitle>
           <AlertDescription>
-            Changes made here will be stored in your browser's local storage. 
-            This means they will persist between sessions but will be lost if you clear your browser data.
+            Changes made here are stored in your browser's local storage. To permanently save your changes,
+            use the Export button to download a backup file, which you can later import if needed.
           </AlertDescription>
         </Alert>
 
@@ -312,145 +347,187 @@ const Admin = () => {
           {/* Content Tab */}
           <TabsContent value="content">
             <div className="space-y-6">
-              <Tabs defaultValue={filteredSections.length > 0 ? filteredSections[0].id : null}>
-                <TabsList className="mb-8 flex flex-wrap bg-transparent">
-                  {filteredSections.map((section) => (
-                    <TabsTrigger 
-                      key={section.id} 
-                      value={section.id}
-                      className="data-[state=active]:bg-navy data-[state=active]:text-white"
-                    >
-                      {section.name}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+              {filteredSections.length > 0 ? (
+                <Tabs defaultValue={filteredSections[0].id}>
+                  <TabsList className="mb-8 flex flex-wrap bg-transparent">
+                    {filteredSections.map((section) => (
+                      <TabsTrigger 
+                        key={section.id} 
+                        value={section.id}
+                        className="data-[state=active]:bg-navy data-[state=active]:text-white"
+                      >
+                        {section.name}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
 
-                {filteredSections.map((section) => (
-                  <TabsContent key={section.id} value={section.id} className="space-y-6">
-                    <div className="grid grid-cols-1 gap-6">
-                      {section.items.map((item) => (
-                        <Card key={item.id}>
-                          <CardHeader>
-                            <CardTitle className="flex justify-between items-center">
-                              <span>{item.title}</span>
-                              <div className="flex gap-2">
-                                <Button 
-                                  variant="ghost" 
-                                  onClick={() => handleEdit(item)}
-                                  className="text-navy hover:text-gold"
-                                >
-                                  Edit
-                                </Button>
-                                <Button
-                                  variant="ghost"
-                                  onClick={() => removeContentItem(item.id)}
-                                  className="text-red-600 hover:text-red-800"
-                                >
-                                  <Trash size={16} />
-                                </Button>
-                              </div>
-                            </CardTitle>
-                            <CardDescription>
-                              Last updated: {new Date(item.lastUpdated).toLocaleString()}
-                              {item.page && <span className="ml-2">| Page: {item.page}</span>}
-                            </CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              <div>
-                                <h3 className="font-medium mb-2">English:</h3>
-                                <p className="whitespace-pre-wrap">{item.content}</p>
-                              </div>
-                              <div>
-                                <h3 className="font-medium mb-2">Arabic:</h3>
-                                <p className="whitespace-pre-wrap text-right" dir="rtl">{item.arContent || "No Arabic translation available"}</p>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
+                  {filteredSections.map((section) => (
+                    <TabsContent key={section.id} value={section.id} className="space-y-6">
+                      {section.items.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-6">
+                          {section.items.map((item) => (
+                            <Card key={item.id}>
+                              <CardHeader>
+                                <CardTitle className="flex justify-between items-center">
+                                  <span>{item.title}</span>
+                                  <div className="flex gap-2">
+                                    <Button 
+                                      variant="ghost" 
+                                      onClick={() => handleEdit(item)}
+                                      className="text-navy hover:text-gold"
+                                    >
+                                      Edit
+                                    </Button>
+                                    <Button
+                                      variant="ghost"
+                                      onClick={() => removeContentItem(item.id)}
+                                      className="text-red-600 hover:text-red-800"
+                                    >
+                                      <Trash size={16} />
+                                    </Button>
+                                  </div>
+                                </CardTitle>
+                                <CardDescription>
+                                  Last updated: {new Date(item.lastUpdated).toLocaleString()}
+                                  {item.page && <span className="ml-2">| Page: {item.page}</span>}
+                                </CardDescription>
+                              </CardHeader>
+                              <CardContent>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  <div>
+                                    <h3 className="font-medium mb-2">English:</h3>
+                                    <p className="whitespace-pre-wrap">{item.content}</p>
+                                  </div>
+                                  <div>
+                                    <h3 className="font-medium mb-2">Arabic:</h3>
+                                    <p className="whitespace-pre-wrap text-right" dir="rtl">{item.arContent || "No Arabic translation available"}</p>
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </div>
+                      ) : (
+                        <Alert>
+                          <AlertCircle className="h-4 w-4" />
+                          <AlertTitle>No content items</AlertTitle>
+                          <AlertDescription>
+                            This section doesn't have any content items for the selected page.
+                            Add new content in the "Add Content" tab.
+                          </AlertDescription>
+                        </Alert>
+                      )}
+                    </TabsContent>
+                  ))}
+                </Tabs>
+              ) : (
+                <Alert>
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertTitle>No sections found</AlertTitle>
+                  <AlertDescription>
+                    No content sections were found for the selected page.
+                  </AlertDescription>
+                </Alert>
+              )}
             </div>
           </TabsContent>
 
           {/* Images Tab */}
           <TabsContent value="images" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredImages.map((image) => (
-                <Card key={image.id}>
-                  <CardHeader>
-                    <CardTitle className="flex justify-between items-center">
-                      <span>{image.name}</span>
-                      <div className="flex gap-2">
-                        <Button 
-                          variant="ghost" 
-                          onClick={() => handleEditImage(image)}
-                          className="text-navy hover:text-gold"
-                        >
-                          <Image className="mr-2 h-4 w-4" />
-                          Edit
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          onClick={() => removeContentImage(image.id)}
-                          className="text-red-600 hover:text-red-800"
-                        >
-                          <Trash size={16} />
-                        </Button>
+            {filteredImages.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredImages.map((image) => (
+                  <Card key={image.id}>
+                    <CardHeader>
+                      <CardTitle className="flex justify-between items-center">
+                        <span>{image.name}</span>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="ghost" 
+                            onClick={() => handleEditImage(image)}
+                            className="text-navy hover:text-gold"
+                          >
+                            <Image className="mr-2 h-4 w-4" />
+                            Edit
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            onClick={() => removeContentImage(image.id)}
+                            className="text-red-600 hover:text-red-800"
+                          >
+                            <Trash size={16} />
+                          </Button>
+                        </div>
+                      </CardTitle>
+                      <CardDescription>
+                        {image.description}
+                        {image.page && <span className="ml-2">| Page: {image.page}</span>}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video relative overflow-hidden rounded-md border">
+                        <img 
+                          src={image.url} 
+                          alt={image.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                    </CardTitle>
-                    <CardDescription>
-                      {image.description}
-                      {image.page && <span className="ml-2">| Page: {image.page}</span>}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="aspect-video relative overflow-hidden rounded-md border">
-                      <img 
-                        src={image.url} 
-                        alt={image.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <Alert>
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>No images found</AlertTitle>
+                <AlertDescription>
+                  No images were found for the selected page.
+                  Add new images in the "Add Image" tab.
+                </AlertDescription>
+              </Alert>
+            )}
           </TabsContent>
 
           {/* Partners Tab */}
           <TabsContent value="partners" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {content.partners.map((partner, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle className="flex justify-between items-center">
-                      <span>{partner.name}</span>
-                      <Button
-                        variant="ghost"
-                        onClick={() => removePartner(index)}
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <Trash size={16} />
-                      </Button>
-                    </CardTitle>
-                    <CardDescription>{partner.type}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-24 flex items-center justify-center bg-gray-100 rounded-md">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="max-h-20 max-w-full"
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            {content.partners.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {content.partners.map((partner, index) => (
+                  <Card key={index}>
+                    <CardHeader>
+                      <CardTitle className="flex justify-between items-center">
+                        <span>{partner.name}</span>
+                        <Button
+                          variant="ghost"
+                          onClick={() => removePartner(index)}
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          <Trash size={16} />
+                        </Button>
+                      </CardTitle>
+                      <CardDescription>{partner.type}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="h-24 flex items-center justify-center bg-gray-100 rounded-md">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="max-h-20 max-w-full"
+                        />
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <Alert>
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>No partners found</AlertTitle>
+                <AlertDescription>
+                  No partners have been added yet. Add new partners using the form below.
+                </AlertDescription>
+              </Alert>
+            )}
 
             <Card>
               <CardHeader>

@@ -3,10 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import HeroCarousel from './HeroCarousel';
+import { useContentItem } from '@/hooks/useContentItem';
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { t, language } = useLanguage();
+  
+  // Get specific content items using the useContentItem hook
+  const heroTitle = useContentItem('hero-title');
+  const heroSubtitle = useContentItem('hero-subtitle');
+  const heroButton = useContentItem('hero-button');
+  const heroExplore = useContentItem('hero-explore');
+  const heroTag = useContentItem('hero-tag');
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,7 +40,7 @@ const HeroSection = () => {
             <span 
               className={`inline-block py-1 px-3 bg-gold/20 text-gold border border-gold/30 rounded-full text-sm font-medium mb-6 opacity-0 transform translate-y-4 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
             >
-              {language === 'ar' ? 'خدمة كونسيرج فاخرة' : 'Premium Concierge Service'}
+              {heroTag || (language === 'ar' ? 'خدمة كونسيرج فاخرة' : 'Premium Concierge Service')}
             </span>
             <h1 
               className={`text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
@@ -42,12 +50,12 @@ const HeroSection = () => {
             <h2 
               className={`text-3xl md:text-4xl font-serif font-medium text-gold mt-2 mb-4 opacity-0 transform translate-y-4 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
             >
-              {t('home.hero.title')}
+              {heroTitle || t('home.hero.title')}
             </h2>
             <p 
               className={`text-lg md:text-xl text-white/90 mt-6 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
             >
-              {t('home.hero.subtitle')}
+              {heroSubtitle || t('home.hero.subtitle')}
             </p>
             <div 
               className={`mt-8 flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4 transition-all duration-1000 delay-600 ${isLoaded ? 'opacity-100 translate-y-0' : ''}`}
@@ -57,7 +65,7 @@ const HeroSection = () => {
                 className="button-primary border-2 border-transparent bg-gold hover:bg-gold/90 text-[#0A3A2A] hover:text-[#0A3A2A] flex items-center justify-center sm:justify-start gap-2"
                 onClick={scrollToTop}
               >
-                {t('home.hero.button')}
+                {heroButton || t('home.hero.button')}
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a 
@@ -65,7 +73,7 @@ const HeroSection = () => {
                 className="button-secondary border-2 border-white text-white hover:bg-white/10 flex items-center justify-center sm:justify-start gap-2"
                 onClick={scrollToTop}
               >
-                {t('home.hero.explore')}
+                {heroExplore || t('home.hero.explore')}
               </a>
             </div>
           </div>

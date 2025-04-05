@@ -1,8 +1,8 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { CMSContent, ContentItem, ContentImage, Partner, PageType, ContentSection } from "@/types/cms";
 import { defaultContent } from "@/lib/defaultContent";
 import { toast } from "@/components/ui/use-toast";
+import { useContentAPI } from "@/hooks/useContentAPI";
 
 interface ContentContextType {
   content: CMSContent;
@@ -20,23 +20,19 @@ interface ContentContextType {
     sections: ContentSection[];
     images: ContentImage[];
   };
+  exportContent: () => void;
+  importContent: (file: File) => Promise<void>;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [content, setContent] = useState<CMSContent>(defaultContent);
+  const { saveContent, loadContent, exportContent, importContent } = useContentAPI();
 
   useEffect(() => {
-    const storedContent = localStorage.getItem("hayatCMSContent");
-    if (storedContent) {
-      try {
-        setContent(JSON.parse(storedContent));
-      } catch (e) {
-        console.error("Failed to parse stored content:", e);
-        localStorage.removeItem("hayatCMSContent");
-      }
-    }
+    const contentData = loadContent();
+    setContent(contentData);
   }, []);
 
   const getContentItem = (id: string): ContentItem | undefined => {
@@ -67,7 +63,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     if (updated) {
       setContent(updatedContent);
-      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      saveContent(updatedContent);
       toast({
         title: "Content updated",
         description: "Your changes have been saved.",
@@ -94,7 +90,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       
       updatedContent.sections[sectionIndex].items.push(newItem);
       setContent(updatedContent);
-      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      saveContent(updatedContent);
       
       toast({
         title: "Item added",
@@ -122,7 +118,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     
     if (removed) {
       setContent(updatedContent);
-      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      saveContent(updatedContent);
       
       toast({
         title: "Item removed",
@@ -142,7 +138,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       };
       
       setContent(updatedContent);
-      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      saveContent(updatedContent);
       
       toast({
         title: "Image updated",
@@ -163,7 +159,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     
     updatedContent.images.push(newImage);
     setContent(updatedContent);
-    localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+    saveContent(updatedContent);
     
     toast({
       title: "Image added",
@@ -180,7 +176,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (imageIndex >= 0) {
       updatedContent.images.splice(imageIndex, 1);
       setContent(updatedContent);
-      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      saveContent(updatedContent);
       
       toast({
         title: "Image removed",
@@ -194,7 +190,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     updatedContent.partners.push(partner);
     
     setContent(updatedContent);
-    localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+    saveContent(updatedContent);
     
     toast({
       title: "Partner added",
@@ -209,7 +205,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     updatedContent.partners.splice(index, 1);
     
     setContent(updatedContent);
-    localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+    saveContent(updatedContent);
     
     toast({
       title: "Partner removed",
@@ -253,7 +249,9 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       removeContentImage,
       addPartner,
       removePartner,
-      getContentByPage
+      getContentByPage,
+      exportContent,
+      importContent
     }}>
       {children}
     </ContentContext.Provider>

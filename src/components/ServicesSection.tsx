@@ -3,37 +3,69 @@ import React from 'react';
 import { Heart, Building2, Stethoscope } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContent } from '@/contexts/ContentContext';
+import { useContentItem } from '@/hooks/useContentItem';
 
 const ServicesSection = () => {
   const { language } = useLanguage();
+  const { getContentByPage } = useContent();
   const isRTL = language === 'ar';
+  
+  // Get content based on the page
+  const servicesContent = getContentByPage('services');
+  
+  // Get specific content items
+  const servicesTitle = useContentItem('services-title');
+  const servicesDescription = useContentItem('services-description');
+  
+  // Service 1
+  const service1Title = useContentItem('service1-title');
+  const service1Description = useContentItem('service1-description');
+  
+  // Service 2
+  const service2Title = useContentItem('service2-title');
+  const service2Description = useContentItem('service2-description');
+  
+  // Service 3
+  const service3Title = useContentItem('service3-title');
+  const service3Description = useContentItem('service3-description');
+
+  // Find service images in content
+  const serviceImage1 = servicesContent.images.find(img => img.id === 'service1-image')?.url || 
+    "/lovable-uploads/c2a5eee5-a591-4abd-a19b-70f463e74556.png";
+    
+  const serviceImage2 = servicesContent.images.find(img => img.id === 'service2-image')?.url || 
+    "/lovable-uploads/35fd8c2e-3b5d-4e47-9216-e5e210033d40.png";
+    
+  const serviceImage3 = servicesContent.images.find(img => img.id === 'service3-image')?.url || 
+    "/lovable-uploads/218fbae2-0f54-4b7b-a2a8-6a2cca069629.png";
 
   const services = [
     {
-      title: isRTL ? "الخدمات الطبية وتنسيق الرعاية الصحية" : "Medical Concierge & Healthcare Coordination",
-      description: isRTL 
+      title: service1Title || (isRTL ? "الخدمات الطبية وتنسيق الرعاية الصحية" : "Medical Concierge & Healthcare Coordination"),
+      description: service1Description || (isRTL 
         ? "نربطك بالمستشفيات والأخصائيين الرائدين في بانكوك، مما يضمن رحلة طبية سلسة من الاستشارة إلى التعافي."
-        : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery.",
+        : "We connect you with leading hospitals and specialists in Bangkok, ensuring a smooth medical journey from consultation to recovery."),
       icon: <Stethoscope size={24} />,
-      imageSrc: "/lovable-uploads/c2a5eee5-a591-4abd-a19b-70f463e74556.png",
+      imageSrc: serviceImage1,
       link: "/healthcare-solutions"
     },
     {
-      title: isRTL ? "منتجعات العافية والتجديد" : "Wellness & Rejuvenation Retreats",
-      description: isRTL 
+      title: service2Title || (isRTL ? "منتجعات العافية والتجديد" : "Wellness & Rejuvenation Retreats"),
+      description: service2Description || (isRTL 
         ? "استمتع بتجارب العافية الفاخرة المصممة للاسترخاء والشفاء والتجديد في أفضل منتجعات العافية في تايلاند."
-        : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts.",
+        : "Indulge in luxury wellness retreats crafted for relaxation, healing, and rejuvenation in Thailand's top wellness resorts."),
       icon: <Heart size={24} />,
-      imageSrc: "/lovable-uploads/35fd8c2e-3b5d-4e47-9216-e5e210033d40.png", 
+      imageSrc: serviceImage2,
       link: "/wellness-journey"
     },
     {
-      title: isRTL ? "الإقامات الحصرية والسفر المصمم" : "Exclusive Stays & Bespoke Travel",
-      description: isRTL 
+      title: service3Title || (isRTL ? "الإقامات الحصرية والسفر المصمم" : "Exclusive Stays & Bespoke Travel"),
+      description: service3Description || (isRTL 
         ? "استمتع بتايلاند في فخامة لا مثيل لها مع فنادقنا الفاخرة المختارة بعناية والفيلات الخاصة، مع وسائل راحة مخصصة."
-        : "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities.",
+        : "Experience Thailand in unparalleled luxury with our handpicked premium hotels and private villas, with bespoke amenities."),
       icon: <Building2 size={24} />,
-      imageSrc: "/lovable-uploads/218fbae2-0f54-4b7b-a2a8-6a2cca069629.png",
+      imageSrc: serviceImage3,
       link: "/luxury-experience"
     }
   ];
@@ -42,12 +74,12 @@ const ServicesSection = () => {
     <section id="services" className="section-container bg-emerald text-offwhite">
       <div className="text-center mb-16">
         <h2 className="heading-lg mb-4 text-gold">
-          {isRTL ? "خدمات كونسيرج الفاخرة" : "Hayat Concierge Services"}
+          {servicesTitle || (isRTL ? "خدمات كونسيرج الفاخرة" : "Hayat Concierge Services")}
         </h2>
         <p className="subheading mx-auto text-offwhite/80">
-          {isRTL 
+          {servicesDescription || (isRTL 
             ? "في حياة كونسيرج، لا نقدم حزمًا قياسية - نحن نخلق تجارب شخصية مصممة حول احتياجاتك الفريدة. سواء كنت تبحث عن رعاية طبية عالمية المستوى، أو منتجع صحي فاخر، أو تجربة سفر لا تُنسى، نحن نهتم بكل التفاصيل بنهج مخصص."
-            : "At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach."}
+            : "At Hayat Concierge, we don't offer standard packages—we create personalized experiences designed around your unique needs. Whether you're seeking world-class medical care, a luxury wellness retreat, or an unforgettable travel experience, we take care of every detail with a customized approach.")}
         </p>
       </div>
       

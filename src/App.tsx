@@ -22,12 +22,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContentProvider } from "./contexts/ContentContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import React, { useEffect } from "react";
+import React from "react";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  useEffect(() => {
+  // Move useEffect inside the component
+  React.useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
       .rtl {

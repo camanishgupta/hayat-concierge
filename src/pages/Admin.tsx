@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useContent } from '@/contexts/ContentContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,23 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertCircle, Save, RotateCcw, LockKeyhole, Image, Plus, Trash } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { ContentItem, ContentSection, ContentImage } from '@/types/cms';
+import { ContentItem, ContentSection, ContentImage, PageType } from '@/types/cms';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Admin = () => {
-  const { content, updateContentItem, resetToDefault, addContentItem, removeContentItem, addPartner, removePartner, updateContentImage } = useContent();
+  const { 
+    content, 
+    updateContentItem, 
+    resetToDefault, 
+    addContentItem, 
+    removeContentItem, 
+    addPartner, 
+    removePartner, 
+    updateContentImage,
+    addContentImage,
+    removeContentImage 
+  } = useContent();
+  
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [editingItem, setEditingItem] = useState<ContentItem | null>(null);
@@ -25,6 +37,8 @@ const Admin = () => {
   const [newImageUrl, setNewImageUrl] = useState("");
   const { toast } = useToast();
   const { language } = useLanguage();
+  const [currentPage, setCurrentPage] = useState<PageType>('all');
+  
   const [newPartner, setNewPartner] = useState({
     name: '',
     type: 'Medical',
@@ -35,7 +49,15 @@ const Admin = () => {
     section: '',
     title: '',
     content: '',
-    arContent: ''
+    arContent: '',
+    page: 'all'
+  });
+
+  const [newImage, setNewImage] = useState({
+    name: '',
+    description: '',
+    url: 'https://via.placeholder.com/800x600?text=New+Image',
+    page: 'all'
   });
 
   // This is a simple authentication - in a real app, you would want something more secure
@@ -93,13 +115,15 @@ const Admin = () => {
         section: newContentItem.section,
         title: newContentItem.title,
         content: newContentItem.content,
-        arContent: newContentItem.arContent
+        arContent: newContentItem.arContent,
+        page: newContentItem.page as PageType
       });
       setNewContentItem({
         section: '',
         title: '',
         content: '',
-        arContent: ''
+        arContent: '',
+        page: 'all'
       });
       toast({
         title: "Content Added",
@@ -128,6 +152,53 @@ const Admin = () => {
       });
     }
   };
+
+  const handleAddImage = () => {
+    if (newImage.name && newImage.url) {
+      addContentImage({
+        name: newImage.name,
+        description: newImage.description,
+        url: newImage.url,
+        page: newImage.page as PageType
+      });
+      
+      setNewImage({
+        name: '',
+        description: '',
+        url: 'https://via.placeholder.com/800x600?text=New+Image',
+        page: 'all'
+      });
+      
+      toast({
+        title: "Image Added",
+        description: "New image has been added.",
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+      });
+    }
+  };
+
+  const pageOptions = [
+    { value: 'all', label: 'All Pages' },
+    { value: 'home', label: 'Home' },
+    { value: 'about', label: 'About Us' },
+    { value: 'founder', label: 'Founder' },
+    { value: 'services', label: 'Services' },
+    { value: 'partners', label: 'Partners' }
+  ];
+
+  // Filter content by page
+  const filteredSections = currentPage === 'all' 
+    ? content.sections 
+    : content.sections.filter(s => !s.page || s.page === currentPage || s.page === 'all');
+
+  const filteredImages = currentPage === 'all'
+    ? content.images
+    : content.images.filter(i => !i.page || i.page === currentPage || i.page === 'all');
 
   // Simple login screen
   if (!authenticated) {
@@ -186,92 +257,155 @@ const Admin = () => {
           </AlertDescription>
         </Alert>
 
-        <Tabs defaultValue={content.sections[0].id}>
+        {/* Page Filter */}
+        <div className="mb-6">
+          <Label htmlFor="pageFilter" className="mb-2 block">Filter Content By Page</Label>
+          <Select 
+            value={currentPage}
+            onValueChange={(value) => setCurrentPage(value as PageType)}
+          >
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Select page" />
+            </SelectTrigger>
+            <SelectContent>
+              {pageOptions.map(page => (
+                <SelectItem key={page.value} value={page.value}>{page.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <Tabs defaultValue="content">
           <TabsList className="mb-8 flex flex-wrap bg-transparent">
-            {content.sections.map((section) => (
-              <TabsTrigger 
-                key={section.id} 
-                value={section.id}
-                className="data-[state=active]:bg-navy data-[state=active]:text-white"
-              >
-                {section.name}
-              </TabsTrigger>
-            ))}
-            <TabsTrigger value="images" className="data-[state=active]:bg-navy data-[state=active]:text-white">
+            <TabsTrigger 
+              value="content"
+              className="data-[state=active]:bg-navy data-[state=active]:text-white"
+            >
+              Text Content
+            </TabsTrigger>
+            <TabsTrigger 
+              value="images" 
+              className="data-[state=active]:bg-navy data-[state=active]:text-white"
+            >
               Images
             </TabsTrigger>
-            <TabsTrigger value="partners" className="data-[state=active]:bg-navy data-[state=active]:text-white">
+            <TabsTrigger 
+              value="partners" 
+              className="data-[state=active]:bg-navy data-[state=active]:text-white"
+            >
               Partners
             </TabsTrigger>
-            <TabsTrigger value="add-content" className="data-[state=active]:bg-navy data-[state=active]:text-white">
+            <TabsTrigger 
+              value="add-content" 
+              className="data-[state=active]:bg-navy data-[state=active]:text-white"
+            >
               Add Content
+            </TabsTrigger>
+            <TabsTrigger 
+              value="add-image" 
+              className="data-[state=active]:bg-navy data-[state=active]:text-white"
+            >
+              Add Image
             </TabsTrigger>
           </TabsList>
 
-          {/* Content Sections */}
-          {content.sections.map((section) => (
-            <TabsContent key={section.id} value={section.id} className="space-y-6">
-              <div className="grid grid-cols-1 gap-6">
-                {section.items.map((item) => (
-                  <Card key={item.id}>
-                    <CardHeader>
-                      <CardTitle className="flex justify-between items-center">
-                        <span>{item.title}</span>
-                        <div className="flex gap-2">
-                          <Button 
-                            variant="ghost" 
-                            onClick={() => handleEdit(item)}
-                            className="text-navy hover:text-gold"
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            onClick={() => removeContentItem(item.id)}
-                            className="text-red-600 hover:text-red-800"
-                          >
-                            <Trash size={16} />
-                          </Button>
-                        </div>
-                      </CardTitle>
-                      <CardDescription>Last updated: {new Date(item.lastUpdated).toLocaleString()}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <h3 className="font-medium mb-2">English:</h3>
-                          <p className="whitespace-pre-wrap">{item.content}</p>
-                        </div>
-                        <div>
-                          <h3 className="font-medium mb-2">Arabic:</h3>
-                          <p className="whitespace-pre-wrap text-right" dir="rtl">{item.arContent || "No Arabic translation available"}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          ))}
+          {/* Content Tab */}
+          <TabsContent value="content">
+            <div className="space-y-6">
+              <Tabs defaultValue={filteredSections.length > 0 ? filteredSections[0].id : null}>
+                <TabsList className="mb-8 flex flex-wrap bg-transparent">
+                  {filteredSections.map((section) => (
+                    <TabsTrigger 
+                      key={section.id} 
+                      value={section.id}
+                      className="data-[state=active]:bg-navy data-[state=active]:text-white"
+                    >
+                      {section.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
 
-          {/* Images Section */}
+                {filteredSections.map((section) => (
+                  <TabsContent key={section.id} value={section.id} className="space-y-6">
+                    <div className="grid grid-cols-1 gap-6">
+                      {section.items.map((item) => (
+                        <Card key={item.id}>
+                          <CardHeader>
+                            <CardTitle className="flex justify-between items-center">
+                              <span>{item.title}</span>
+                              <div className="flex gap-2">
+                                <Button 
+                                  variant="ghost" 
+                                  onClick={() => handleEdit(item)}
+                                  className="text-navy hover:text-gold"
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  onClick={() => removeContentItem(item.id)}
+                                  className="text-red-600 hover:text-red-800"
+                                >
+                                  <Trash size={16} />
+                                </Button>
+                              </div>
+                            </CardTitle>
+                            <CardDescription>
+                              Last updated: {new Date(item.lastUpdated).toLocaleString()}
+                              {item.page && <span className="ml-2">| Page: {item.page}</span>}
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div>
+                                <h3 className="font-medium mb-2">English:</h3>
+                                <p className="whitespace-pre-wrap">{item.content}</p>
+                              </div>
+                              <div>
+                                <h3 className="font-medium mb-2">Arabic:</h3>
+                                <p className="whitespace-pre-wrap text-right" dir="rtl">{item.arContent || "No Arabic translation available"}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </div>
+          </TabsContent>
+
+          {/* Images Tab */}
           <TabsContent value="images" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {content.images.map((image) => (
+              {filteredImages.map((image) => (
                 <Card key={image.id}>
                   <CardHeader>
                     <CardTitle className="flex justify-between items-center">
                       <span>{image.name}</span>
-                      <Button 
-                        variant="ghost" 
-                        onClick={() => handleEditImage(image)}
-                        className="text-navy hover:text-gold"
-                      >
-                        <Image className="mr-2 h-4 w-4" />
-                        Edit
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          variant="ghost" 
+                          onClick={() => handleEditImage(image)}
+                          className="text-navy hover:text-gold"
+                        >
+                          <Image className="mr-2 h-4 w-4" />
+                          Edit
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          onClick={() => removeContentImage(image.id)}
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          <Trash size={16} />
+                        </Button>
+                      </div>
                     </CardTitle>
-                    <CardDescription>{image.description}</CardDescription>
+                    <CardDescription>
+                      {image.description}
+                      {image.page && <span className="ml-2">| Page: {image.page}</span>}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="aspect-video relative overflow-hidden rounded-md border">
@@ -287,8 +421,37 @@ const Admin = () => {
             </div>
           </TabsContent>
 
-          {/* Partners Section */}
+          {/* Partners Tab */}
           <TabsContent value="partners" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {content.partners.map((partner, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle className="flex justify-between items-center">
+                      <span>{partner.name}</span>
+                      <Button
+                        variant="ghost"
+                        onClick={() => removePartner(index)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <Trash size={16} />
+                      </Button>
+                    </CardTitle>
+                    <CardDescription>{partner.type}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-24 flex items-center justify-center bg-gray-100 rounded-md">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="max-h-20 max-w-full"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
             <Card>
               <CardHeader>
                 <CardTitle>Add New Partner</CardTitle>
@@ -340,38 +503,9 @@ const Admin = () => {
                 </Button>
               </CardFooter>
             </Card>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {content.partners.map((partner, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle className="flex justify-between items-center">
-                      <span>{partner.name}</span>
-                      <Button
-                        variant="ghost"
-                        onClick={() => removePartner(index)}
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <Trash size={16} />
-                      </Button>
-                    </CardTitle>
-                    <CardDescription>{partner.type}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-24 flex items-center justify-center bg-gray-100 rounded-md">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="max-h-20 max-w-full"
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </TabsContent>
 
-          {/* Add Content Section */}
+          {/* Add Content Tab */}
           <TabsContent value="add-content" className="space-y-6">
             <Card>
               <CardHeader>
@@ -380,6 +514,22 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-4">
+                  <div>
+                    <Label htmlFor="contentPage">Page</Label>
+                    <Select 
+                      value={newContentItem.page}
+                      onValueChange={(value) => setNewContentItem({...newContentItem, page: value})}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select page" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {pageOptions.map(page => (
+                          <SelectItem key={page.value} value={page.value}>{page.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                   <div>
                     <Label htmlFor="contentSection">Section</Label>
                     <Select 
@@ -432,6 +582,82 @@ const Admin = () => {
                 <Button className="button-primary w-full" onClick={handleAddItem}>
                   <Plus className="mr-2 h-4 w-4" />
                   Add Content Item
+                </Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
+
+          {/* Add Image Tab */}
+          <TabsContent value="add-image" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Add New Image</CardTitle>
+                <CardDescription>Upload a new image to use on the website</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 gap-4">
+                  <div>
+                    <Label htmlFor="imagePage">Page</Label>
+                    <Select 
+                      value={newImage.page}
+                      onValueChange={(value) => setNewImage({...newImage, page: value})}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select page" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {pageOptions.map(page => (
+                          <SelectItem key={page.value} value={page.value}>{page.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor="imageName">Image Name</Label>
+                    <Input
+                      id="imageName"
+                      value={newImage.name}
+                      onChange={(e) => setNewImage({...newImage, name: e.target.value})}
+                      placeholder="Enter image name"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="imageDescription">Description</Label>
+                    <Input
+                      id="imageDescription"
+                      value={newImage.description}
+                      onChange={(e) => setNewImage({...newImage, description: e.target.value})}
+                      placeholder="Enter image description"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="imageUrl">Image URL</Label>
+                    <Input
+                      id="imageUrl"
+                      value={newImage.url}
+                      onChange={(e) => setNewImage({...newImage, url: e.target.value})}
+                      placeholder="https://example.com/image.jpg"
+                    />
+                  </div>
+                  <div>
+                    <Label className="mb-2 block">Preview</Label>
+                    <div className="aspect-video relative overflow-hidden rounded-md border">
+                      <img 
+                        src={newImage.url} 
+                        alt="Preview"
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x600?text=Invalid+URL';
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button className="button-primary w-full" onClick={handleAddImage}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add Image
                 </Button>
               </CardFooter>
             </Card>

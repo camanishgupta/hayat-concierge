@@ -6,6 +6,7 @@ export interface ContentItem {
   content: string;
   arContent?: string;
   lastUpdated: string;
+  page?: string; // Adding page field to better organize content
 }
 
 export interface ContentSection {
@@ -13,6 +14,7 @@ export interface ContentSection {
   name: string;
   description: string;
   items: ContentItem[];
+  page?: string; // Adding page field to better organize sections
 }
 
 export interface ContentImage {
@@ -20,6 +22,7 @@ export interface ContentImage {
   name: string;
   description: string;
   url: string;
+  page?: string; // Adding page field to better organize images
 }
 
 export interface Partner {
@@ -33,3 +36,6 @@ export interface CMSContent {
   images: ContentImage[];
   partners: Partner[];
 }
+
+// Page types to help organize content
+export type PageType = 'home' | 'about' | 'services' | 'founder' | 'partners' | 'facilities' | 'all';

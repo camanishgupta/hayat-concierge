@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { CMSContent, ContentItem, ContentImage, Partner } from "@/types/cms";
+import { CMSContent, ContentItem, ContentImage, Partner, PageType } from "@/types/cms";
 import { defaultContent } from "@/lib/defaultContent";
 import { toast } from "@/components/ui/use-toast";
 
@@ -12,8 +12,14 @@ interface ContentContextType {
   addContentItem: (item: Partial<ContentItem>) => void;
   removeContentItem: (id: string) => void;
   updateContentImage: (id: string, newUrl: string) => void;
+  addContentImage: (image: Partial<ContentImage>) => void;
+  removeContentImage: (id: string) => void;
   addPartner: (partner: Partner) => void;
   removePartner: (index: number) => void;
+  getContentByPage: (page: PageType) => {
+    sections: ContentSection[];
+    images: ContentImage[];
+  };
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
@@ -82,6 +88,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         title: item.title || 'New Item',
         content: item.content || '',
         arContent: item.arContent || '',
+        page: item.page || 'all',
         lastUpdated: new Date().toISOString()
       };
       
@@ -144,6 +151,44 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   };
 
+  const addContentImage = (image: Partial<ContentImage>) => {
+    const updatedContent = { ...content };
+    const newImage: ContentImage = {
+      id: `image-${Date.now()}`,
+      name: image.name || 'New Image',
+      description: image.description || '',
+      url: image.url || 'https://via.placeholder.com/800x600?text=New+Image',
+      page: image.page || 'all'
+    };
+    
+    updatedContent.images.push(newImage);
+    setContent(updatedContent);
+    localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+    
+    toast({
+      title: "Image added",
+      description: "New image has been added.",
+    });
+  };
+
+  const removeContentImage = (id: string) => {
+    if (!confirm("Are you sure you want to remove this image?")) return;
+    
+    const updatedContent = { ...content };
+    const imageIndex = updatedContent.images.findIndex(img => img.id === id);
+    
+    if (imageIndex >= 0) {
+      updatedContent.images.splice(imageIndex, 1);
+      setContent(updatedContent);
+      localStorage.setItem("hayatCMSContent", JSON.stringify(updatedContent));
+      
+      toast({
+        title: "Image removed",
+        description: "The image has been removed.",
+      });
+    }
+  };
+
   const addPartner = (partner: Partner) => {
     const updatedContent = { ...content };
     updatedContent.partners.push(partner);
@@ -181,6 +226,20 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     });
   };
 
+  const getContentByPage = (page: PageType) => {
+    if (page === 'all') {
+      return {
+        sections: content.sections,
+        images: content.images
+      };
+    }
+
+    return {
+      sections: content.sections.filter(s => !s.page || s.page === page || s.page === 'all'),
+      images: content.images.filter(i => !i.page || i.page === page || i.page === 'all')
+    };
+  };
+
   return (
     <ContentContext.Provider value={{ 
       content, 
@@ -190,8 +249,11 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       addContentItem, 
       removeContentItem, 
       updateContentImage,
+      addContentImage,
+      removeContentImage,
       addPartner,
-      removePartner
+      removePartner,
+      getContentByPage
     }}>
       {children}
     </ContentContext.Provider>

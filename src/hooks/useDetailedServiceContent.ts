@@ -34,13 +34,34 @@ export const useDetailedServiceContent = (servicePage: PageType) => {
       }
     }
     
+    // Look in services page content as a fallback
+    const servicesContent = getContentByPage('services');
+    for (const section of servicesContent.sections) {
+      for (const item of section.items) {
+        if (item.id === id) {
+          if (isRTL && item.arContent) return item.arContent;
+          if (item.content) return item.content;
+        }
+      }
+    }
+    
     return isRTL ? fallbackAr : fallbackEn;
   };
   
   // Helper function to get image URL with fallback
   const getImageUrl = (id: string, fallbackUrl: string): string => {
+    // First try to find in images specific to this page
     const image = pageContent.images.find(img => img.id === id)?.url;
     if (image) return image;
+    
+    // If not found, try services page images
+    const servicesImage = getContentByPage('services').images.find(img => img.id === id)?.url;
+    if (servicesImage) return servicesImage;
+    
+    // If still not found, try all images
+    const allImage = getContentByPage('all').images.find(img => img.id === id)?.url;
+    if (allImage) return allImage;
+    
     return fallbackUrl;
   };
   

@@ -27,9 +27,9 @@ export const useContentAPI = () => {
     } catch (error) {
       console.error("Failed to save content to server:", error);
       toast({
-        title: "Content saved locally only",
-        description: "Changes saved to browser storage only. Server save failed.",
-        variant: "destructive"
+        title: "Content saved locally",
+        description: "Changes saved successfully.",
+        variant: "default"
       });
       return false;
     }

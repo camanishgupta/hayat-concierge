@@ -33,13 +33,21 @@ export const useServiceContent = () => {
       }
     }
     
+    // If still not found, return fallback
     return isRTL ? fallbackAr : fallbackEn;
   };
   
   // Helper function to get image URL with fallback
   const getImageUrl = (id: string, fallbackUrl: string): string => {
+    // First try to find in images specific to this page
     const image = servicesContent.images.find(img => img.id === id);
     if (image) return image.url;
+    
+    // If not found, try all images
+    const allImages = getContentByPage('all').images;
+    const globalImage = allImages.find(img => img.id === id);
+    if (globalImage) return globalImage.url;
+    
     return fallbackUrl;
   };
   

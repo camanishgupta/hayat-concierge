@@ -72,7 +72,7 @@ const WellnessJourney = () => {
       {/* Main Content */}
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-16 items-start">
             <div>
               <img 
                 src="/lovable-uploads/88d41144-e7e7-4a2f-9175-c01c8eadfdfa.png" 
@@ -141,7 +141,7 @@ const WellnessJourney = () => {
                     </div>
                     <div className="md:w-1/2">
                       <img 
-                        src="/lovable-uploads/c332b151-80b5-454d-87d7-34c92eced3eb.png" 
+                        src="wellness_retreats_wellnessJourney.png" 
                         alt="Wellness Retreat Location" 
                         className="rounded-lg shadow-sm w-full h-auto"
                       />

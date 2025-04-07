@@ -507,8 +507,6 @@ const Facilities = () => {
           </a>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

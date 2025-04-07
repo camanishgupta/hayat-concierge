@@ -137,41 +137,6 @@ const Founder = () => {
         </div>
       </section>
       
-      {/* Video Section */}
-      <section className="bg-emerald text-white py-16">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="heading-lg mb-6 text-gold">
-                {isRTL ? 'الإلهام وراء حياة كونسيرج' : 'The Inspiration Behind Hayat Concierge'}
-              </h2>
-              <p className="leading-relaxed mb-6 text-white/80">
-                {isRTL 
-                  ? 'كشفت تجربة شخصية مع الرعاية الطبية الاستثنائية في تايلاند عن مكانتها كوجهة رئيسية للعافية والسياحة الطبية. بإلهام من ضيافتها واحترافها، أسست حياة كونسيرج لربط العملاء من الشرق الأوسط بسلاسة مع السفر الفاخر والعافية والرعاية الصحية العالمية في تايلاند.'
-                  : 'A personal experience with Thailand\'s exceptional medical care revealed its status as a premier wellness and medical tourism destination. Inspired by its hospitality and professionalism, I founded Hayat Concierge to seamlessly connect Middle Eastern clients with Thailand\'s luxury travel, wellness, and world-class healthcare.'}
-              </p>
-              <p className="leading-relaxed text-white/80">
-                {isRTL 
-                  ? 'مع خلفيتي الفريدة، ومهاراتي متعددة اللغات، والتدريب المهني من معهد السفر، أنا مؤهلة بشكل مثالي لتنظيم تجارب سلسة ومخصصة مصممة لتلبية الاحتياجات المحددة للمسافرين من الشرق الأوسط.'
-                  : 'With my unique background, multilingual skills, and professional training from The Travel Institute, I am ideally qualified to curate seamless, personalized experiences tailored to the specific needs of Middle Eastern travelers.'}
-              </p>
-            </div>
-            <div className="relative rounded-lg overflow-hidden">
-              <iframe 
-                width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/your-video-id-here" 
-                title="Founder Story" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-                className="w-full rounded-lg aspect-video"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Call to Action */}
       <section className="bg-cream py-16">
         <div className="container mx-auto px-6 text-center">

@@ -46,14 +46,19 @@ const Footer = () => {
                   {language === 'ar' ? 'المؤسس' : 'Founder'}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/facilities" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
                   {language === 'ar' ? 'الشركاء' : 'Partners'}
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/enquiry" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
                   {language === 'ar' ? 'استعلام' : 'Enquiry'}
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'المسؤول' : 'Admin'}
                 </Link>
               </li>
             </ul>

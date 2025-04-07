@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import TestimonialCard from './TestimonialCard';
@@ -20,11 +19,11 @@ const TestimonialsSection = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => {
       observer.disconnect();
     };
@@ -49,23 +48,11 @@ const TestimonialsSection = () => {
             : 'Discover how we\'ve transformed our clients\' experiences in Thailand with our premium concierge services.'}
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <TestimonialCard 
-          id="testimonial-1" 
-          titleId="testimonial-1"
-          delay={0}
-        />
-        <TestimonialCard 
-          id="testimonial-2" 
-          titleId="testimonial-2"
-          delay={150}
-        />
-        <TestimonialCard 
-          id="testimonial-3" 
-          titleId="testimonial-3"
-          delay={300}
-        />
+        <TestimonialCard id="testimonial-1" delay={0} />
+        <TestimonialCard id="testimonial-2" delay={150} />
+        <TestimonialCard id="testimonial-3" delay={300} />
       </div>
     </section>
   );

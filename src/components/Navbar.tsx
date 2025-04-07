@@ -112,10 +112,10 @@ const Navbar = () => {
                     <li>
                       <NavigationMenuLink asChild>
                         <Link
-                          to="/about-us"
+                          to="/about"
                           className={cn(
                             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            { "bg-accent": isActive("/about-us") }
+                            { "bg-accent": isActive("/about") }
                           )}
                           onClick={scrollToTop}
                         >
@@ -143,13 +143,13 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
           
-          <Link 
+          {/* <Link 
             to="/facilities" 
             className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/facilities") })}
             onClick={scrollToTop}
           >
             {t('nav.partners')}
-          </Link>
+          </Link> */}
           <Link 
             to="/enquiry" 
             className={cn("nav-link text-teal", { "after:scale-x-100 text-gold": isActive("/enquiry") })}
@@ -157,7 +157,7 @@ const Navbar = () => {
           >
             {t('nav.enquiry')}
           </Link>
-          {showAdmin && (
+          {/* {showAdmin && (
             <Link 
               to="/admin" 
               className={cn("nav-link flex items-center text-teal", { "after:scale-x-100 text-gold": isActive("/admin") })}
@@ -166,7 +166,7 @@ const Navbar = () => {
               <Settings className="w-4 h-4 mr-1" />
               Admin
             </Link>
-          )}
+          )} */}
           
           <LanguageSwitcher variant="text" className="mx-2" />
           
@@ -215,8 +215,8 @@ const Navbar = () => {
               </div>
               <div className="pl-4 flex flex-col space-y-2">
                 <Link 
-                  to="/about-us" 
-                  className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about-us") })}
+                  to="/about" 
+                  className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/about") })}
                   onClick={scrollToTop}
                 >
                   {t('nav.aboutHayat')}
@@ -231,13 +231,13 @@ const Navbar = () => {
               </div>
             </div>
             
-            <Link 
+            {/* <Link 
               to="/facilities" 
               className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/facilities") })}
               onClick={scrollToTop}
             >
               {t('nav.partners')}
-            </Link>
+            </Link> */}
             <Link 
               to="/enquiry" 
               className={cn("py-2 font-medium text-teal", { "text-gold": isActive("/enquiry") })}
@@ -245,7 +245,7 @@ const Navbar = () => {
             >
               {t('nav.enquiry')}
             </Link>
-            {showAdmin && (
+            {/* {showAdmin && (
               <Link 
                 to="/admin" 
                 className={cn("py-2 font-medium text-teal flex items-center", { "text-gold": isActive("/admin") })}
@@ -254,7 +254,7 @@ const Navbar = () => {
                 <Settings className="w-4 h-4 mr-1" />
                 Admin
               </Link>
-            )}
+            )} */}
             <Link 
               to="/enquiry" 
               className="button-primary flex items-center justify-center gap-1 mt-2 text-sm"

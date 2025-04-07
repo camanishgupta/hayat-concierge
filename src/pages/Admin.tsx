@@ -68,7 +68,7 @@ const Admin = () => {
   });
 
   const authenticate = () => {
-    if (password === "hayatadmin") { // Simple password for demo
+    if (password === "Hayat@Admin2026") { // Simple password for demo
       setAuthenticated(true);
       toast({
         title: "Authenticated",

@@ -2,33 +2,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
-
-const partners = [
-  {
-    name: "Bangkok Hospital",
-    type: "Medical",
-    logo: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1173&q=80"
-  },
-  {
-    name: "Bumrungrad International",
-    type: "Medical",
-    logo: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1035&q=80"
-  },
-  {
-    name: "The Peninsula Bangkok",
-    type: "Accommodation",
-    logo: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=1332&q=80"
-  },
-  {
-    name: "Mandarin Oriental",
-    type: "Accommodation",
-    logo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-  }
-];
+import { useContent } from '@/contexts/ContentContext';
 
 const PartnersSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { content } = useContent();
+  
+  // Use partners from the content context instead of hardcoded data
+  const partners = content.partners;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,7 +51,7 @@ const PartnersSection = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {partners.map((partner, index) => (
           <div 
-            key={partner.name}
+            key={partner.name + index}
             className={cn(
               "glass-card p-6 flex flex-col items-center text-center opacity-0 transform translate-y-4 transition-all duration-500",
               { "opacity-100 translate-y-0": isVisible }

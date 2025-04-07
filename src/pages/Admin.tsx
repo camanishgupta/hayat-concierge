@@ -12,6 +12,7 @@ import { AlertCircle, Save, RotateCcw, LockKeyhole, Image, Plus, Trash, Download
 import { useToast } from "@/components/ui/use-toast";
 import { ContentItem, ContentSection, ContentImage, PageType } from '@/types/cms';
 import { useLanguage } from '@/contexts/LanguageContext';
+import GitHubSyncDialog from "@/components/GitHubSyncDialog"; // Add this import
 
 const Admin = () => {
   const { 
@@ -325,6 +326,7 @@ const Admin = () => {
               <Download className="h-4 w-4" />
               Export Content
             </Button>
+            <GitHubSyncDialog /> {/* Add the GitHub sync dialog component */}
             <Button variant="outline" className="text-red-600" onClick={handleReset}>
               <RotateCcw className="mr-2 h-4 w-4" />
               Reset to Default

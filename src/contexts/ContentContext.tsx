@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect } from "react";
 import { CMSContent, ContentItem, ContentImage, Partner, PageType, ContentSection } from "@/types/cms";
 import { useContentState } from "@/hooks/useContentState";
 import { contentHelpers } from "@/utils/contentHelpers";
+import { fetchContentFromGithub } from "@/utils/githubHelpers";
 
 interface ContentContextType {
   content: CMSContent;
@@ -23,6 +24,7 @@ interface ContentContextType {
   exportContent: () => void;
   importContent: (file: File) => Promise<void>;
   uploadImage: (file: File) => Promise<string>;
+  syncFromGithub: (owner: string, repo: string, branch?: string, path?: string) => Promise<boolean>;
   isLoading: boolean;
 }
 
@@ -106,6 +108,28 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     return contentHelpers.getContentByPage(content, page);
   };
 
+  // New function to sync content from GitHub
+  const syncFromGithub = async (
+    owner: string, 
+    repo: string, 
+    branch?: string, 
+    path?: string
+  ): Promise<boolean> => {
+    try {
+      const githubContent = await fetchContentFromGithub(owner, repo, branch, path);
+      
+      if (githubContent) {
+        updateContent(githubContent);
+        return true;
+      }
+      
+      return false;
+    } catch (error) {
+      console.error('Error in syncFromGithub:', error);
+      return false;
+    }
+  };
+
   return (
     <ContentContext.Provider value={{ 
       content, 
@@ -123,6 +147,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       exportContent,
       importContent,
       uploadImage,
+      syncFromGithub,
       isLoading
     }}>
       {children}

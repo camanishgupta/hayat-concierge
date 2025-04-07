@@ -235,7 +235,10 @@ const Admin = () => {
     { value: 'services', label: 'Services' },
     { value: 'facilities', label: 'Facilities' },
     { value: 'founder', label: 'Founder' },
-    { value: 'partners', label: 'Partners' }
+    { value: 'partners', label: 'Partners' },
+    { value: 'healthcare-solutions', label: 'Healthcare' },
+    { value: 'wellness-journey', label: 'Wellness' },
+    { value: 'luxury-experience', label: 'Luxury' },
   ];
 
   const filteredSections = currentPage === 'all' 

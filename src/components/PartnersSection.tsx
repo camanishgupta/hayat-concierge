@@ -7,22 +7,22 @@ const partners = [
   {
     name: "Bangkok Hospital",
     type: "Medical",
-    logo: "https://via.placeholder.com/150x80?text=Bangkok+Hospital"
+    logo: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1173&q=80"
   },
   {
     name: "Bumrungrad International",
     type: "Medical",
-    logo: "https://via.placeholder.com/150x80?text=Bumrungrad"
+    logo: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1035&q=80"
   },
   {
     name: "The Peninsula Bangkok",
     type: "Accommodation",
-    logo: "https://via.placeholder.com/150x80?text=Peninsula"
+    logo: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=1332&q=80"
   },
   {
     name: "Mandarin Oriental",
     type: "Accommodation",
-    logo: "https://via.placeholder.com/150x80?text=Mandarin+Oriental"
+    logo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
   }
 ];
 
@@ -80,7 +80,7 @@ const PartnersSection = () => {
               <img 
                 src={partner.logo} 
                 alt={partner.name} 
-                className="h-12 w-auto mx-auto object-contain"
+                className="h-24 w-auto mx-auto object-contain"
               />
             </div>
             <h3 className="font-medium text-navy">{partner.name}</h3>

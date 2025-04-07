@@ -13,12 +13,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="font-sans text-xl font-medium text-gold">{language === 'ar' ? 'حياة كونسيرج' : 'Hayat Concierge'}</h3>
+            {/* <h3 className="font-sans text-xl font-medium text-gold">{language === 'ar' ? 'حياة كونسيرج' : 'Hayat Concierge'}</h3>
             <p className="text-offwhite/80 text-sm leading-relaxed">
               {language === 'ar' 
                 ? 'جسرك الحصري للسياحة الطبية الفاخرة والتجارب الصحية في تايلاند، مصممة خصيصًا للعملاء من الشرق الأوسط الباحثين عن التميز.'
                 : 'Your exclusive bridge to Thailand\'s luxury medical tourism and wellness experiences, specially tailored for Middle Eastern clients seeking excellence.'}
-            </p>
+            </p> */}
+            <img src="/logo-footer.jpg" alt="Hayat Concierge" className="h-64 mb-4" />
           </div>
 
           {/* Quick Links */}

@@ -81,7 +81,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center h-20">
         <Link to="/" className="flex items-center gap-2" onClick={scrollToTop}>
-          <img src="/logo-navbar.jpg" alt="Hayat Concierge" className="h-16" />
+          <img src="/logo.png" alt="Hayat Concierge" className="h-16 rounded-full " />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

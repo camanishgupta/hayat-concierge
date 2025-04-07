@@ -19,7 +19,7 @@ const Footer = () => {
                 ? 'جسرك الحصري للسياحة الطبية الفاخرة والتجارب الصحية في تايلاند، مصممة خصيصًا للعملاء من الشرق الأوسط الباحثين عن التميز.'
                 : 'Your exclusive bridge to Thailand\'s luxury medical tourism and wellness experiences, specially tailored for Middle Eastern clients seeking excellence.'}
             </p> */}
-            <img src="/logo-footer.jpg" alt="Hayat Concierge" className="h-64 mb-4" />
+            <img src="/logo.png" alt="Hayat Concierge" className="h-24 mb-4 rounded-full" />
           </div>
 
           {/* Quick Links */}
@@ -71,13 +71,19 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li className="text-offwhite/70 text-sm">
-                {language === 'ar' ? 'السياحة الطبية' : 'Medical Tourism'}
+                <Link to="/healthcare-solutions" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'السياحة الطبية' : 'Medical Tourism'}
+                </Link>
               </li>
               <li className="text-offwhite/70 text-sm">
-                {language === 'ar' ? 'منتجعات العافية' : 'Wellness Retreats'}
+                <Link to="/wellness-journey" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'منتجعات العافية' : 'Wellness Retreats'}
+                </Link>
               </li>
               <li className="text-offwhite/70 text-sm">
-                {language === 'ar' ? 'إقامات فاخرة' : 'Luxury Accommodations'}
+                <Link to="/luxury-experience" className="text-offwhite/70 hover:text-gold transition-colors text-sm">
+                  {language === 'ar' ? 'إقامات فاخرة' : 'Luxury Accommodations'}
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Index from './pages/Index';
 import AboutUs from './pages/AboutUs';
@@ -41,6 +41,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<AboutUs />} />
+              {/* Add redirect from /about-us to /about */}
+              <Route path="/about-us" element={<Navigate to="/about" replace />} />
               <Route path="/services" element={<Services />} />
               <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
               <Route path="/luxury-experience" element={<LuxuryExperience />} />

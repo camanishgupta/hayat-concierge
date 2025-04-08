@@ -40,7 +40,7 @@ const LuxuryExperience = () => {
       description: isRTL 
         ? 'أسطول من السيارات والقوارب والطائرات الفاخرة الخاصة لضمان تنقلك بأقصى درجات الراحة والخصوصية.'
         : 'A fleet of luxury cars, boats, and private jets ensure your movement with maximum comfort and privacy.',
-      image: getImageUrl('private-transportation', 'https://images.unsplash.com/photo-1669058611147-1e9e5501e9e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'),
+      image: getImageUrl('private-transportation', 'luxury_experience_privateTransport.png'),
       features: [
         'Chauffeur-driven luxury vehicles',
         'Private yacht charters',

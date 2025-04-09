@@ -16,8 +16,8 @@ const Index = () => {
       <ServicesSection />
       <Suspense fallback={<div className="min-h-[40vh] flex items-center justify-center">Loading...</div>}>
         <AboutSection />
-        <TestimonialsSection />
-        <PartnersSection />
+        {/* <TestimonialsSection />
+        <PartnersSection /> */}
         <ContactSection />
       </Suspense>
     </div>

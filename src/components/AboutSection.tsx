@@ -95,7 +95,7 @@ const AboutSection = () => {
           </div>
           
           <div className="flex justify-center mt-12">
-            <a href="#contact" className="button-primary inline-flex items-center gap-2">
+            <a href="/contact" className="button-primary inline-flex items-center gap-2">
               {cta}
               <ArrowRight size={16} />
             </a>

@@ -22,7 +22,7 @@ const Founder = () => {
     { name: isRTL ? 'العربية' : 'Arabic', level: 'Native' },
     { name: isRTL ? 'الإنجليزية' : 'English', level: 'Fluent' },
     { name: isRTL ? 'الفرنسية' : 'French', level: 'Fluent' },
-    { name: isRTL ? 'التايلاندية' : 'Thai', level: 'Conversational' }
+    // { name: isRTL ? 'التايلاندية' : 'Thai', level: 'Conversational' }
   ];
 
   return (
@@ -125,7 +125,7 @@ const Founder = () => {
             {isRTL ? 'المهارات اللغوية' : 'Language Proficiency'}
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {languages.map((language) => (
               <div key={language.name} className="glass-card p-6 text-center">
                 <Globe className="mx-auto mb-3 text-gold" size={24} />

@@ -133,7 +133,7 @@ const Navbar = () => {
                           )}
                           onClick={scrollToTop}
                         >
-                          <div className="text-sm font-medium text-teal">{t('nav.aboutFounder')}</div>
+                          <div className="text-sm font-medium text-teal">{t('About the Founder')}</div>
                         </Link>
                       </NavigationMenuLink>
                     </li>

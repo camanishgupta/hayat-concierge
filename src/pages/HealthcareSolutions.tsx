@@ -90,7 +90,7 @@ const HealthcareSolutions = () => {
       {/* Main Content */}
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-16 items-start">
             <div>
               <img 
                 src={mainImage}
@@ -174,7 +174,7 @@ const HealthcareSolutions = () => {
                   {affordableCareParagraph}
                 </p>
 
-                <Card className="bg-white p-6 rounded-lg shadow-md mt-8">
+                {/* <Card className="bg-white p-6 rounded-lg shadow-md mt-8">
                   <CardContent className="p-0">
                     <h3 className="text-lg font-semibold mb-4 text-teal">
                       {servicesListTitle}
@@ -200,7 +200,7 @@ const HealthcareSolutions = () => {
                       </li>
                     </ul>
                   </CardContent>
-                </Card>
+                </Card> */}
               </div>
               
               <div className="mt-12">
